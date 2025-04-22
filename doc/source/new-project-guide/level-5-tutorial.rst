@@ -6,7 +6,7 @@ In this guide, you will learn to migrate your package from Level 4 to Level 5. O
 Prerequisites
 ^^^^^^^^^^^^^
 
-- You have already completed and created your scientific code in Level 4, where you have a lightweight Python package that can be installed locally and have your project hosted on GitHub.
+You have already completed and created your scientific code in Level 4, where you have a lightweight Python package that can be installed locally and have your project hosted on GitHub.
 
 What's the difference between Level 4 and Level 5?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -18,17 +18,13 @@ Besides the final goal of releasing your package, you will also have the followi
 - Use GitHub tags to release your package to GitHub and PyPI.
 - Maintain changelogs and release notes automatically for each version.
 
-Create a new project with ``scikit-package``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Make sure you have the latest version of ``scikit-package`` installed as shown in Level 4.
 
 .. include:: snippets/scikit-installation.rst
 
-Go to your project directory
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Create a new package folder with ``scikit-package``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Visit your project directory and sync with the latest version of the main branch.
+#. Visit your project directory and sync with the latest version of the main branch:
 
     .. code-block:: bash
 
@@ -36,13 +32,13 @@ Go to your project directory
         git checkout main
         git pull origin main
 
-#. Create a new branch where you will initiate a new project.
+#. Create a new branch where you will initiate a new project:
 
     .. code-block:: bash
 
         git checkout -b skpkg-public
 
-#. Create a new project with ``scikit-package`` using the Level-5 ``public`` template.
+#. Create a new project with ``scikit-package`` using the Level-5 ``public`` template:
 
     .. code-block:: bash
 
@@ -50,7 +46,7 @@ Go to your project directory
 
 .. _level-5-user-input:
 
-#. Answer the following questions:
+4. Answer the following questions:
 
     :proj_owner_name: e.g., Simon J. L. Billinge
 
@@ -84,13 +80,13 @@ Go to your project directory
 
     :has_gui_tests: Whether the package runs headless testing in GitHub CI. If your package does not contain a GUI, type ``1`` to select ``No``.
 
-#. Enter the Level 5 project.
+#. Enter the Level 5 project:
 
     .. code-block:: bash
 
         cd my-package
 
-#. Check that you have the following nested folder structure. Here is the structure. We will go through each file and folder.
+#. Check that you have the following nested folder structure. Here is the structure. We will go through each file and folder:
 
     .. code-block:: text
 
@@ -116,23 +112,23 @@ Go to your project directory
         ├── src
         └── tests
 
-Migration code from Level 4 to Level 5
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Move code from Level 4 to Level 5
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Move the local ``git`` repository from the Level 4 to the Level 5 folder.
+#. Move the local ``git`` repository from the Level 4 to the Level 5 folder:
 
     .. code-block:: bash
 
         mv ../.git .
 
-#. Move the ``src`` and ``tests`` folders from Level 4 to Level 5.
+#. Move the ``src`` and ``tests`` folders from Level 4 to Level 5:
 
     .. code-block:: bash
 
         cp -n -r ../src .
         cp -n -r ../tests .
 
-#. Copy the requirements files from Level 4 to Level 5.
+#. Copy the ``requirements`` files from Level 4 to Level 5:
 
     .. code-block:: bash
 
@@ -140,21 +136,21 @@ Migration code from Level 4 to Level 5
         cp ../requirements/pip.txt ./requirements/pip.txt
         cp ../requirements/test.txt ./requirements/test.txt
 
-#. At this point, you should be able to install the package locally and test it.
+#. At this point, you should be able to install the package locally and test it:
 
     .. code-block:: bash
 
         pip install -e .
         pytest
 
-#. Once the tests pass, let's manually migrate hand-written files like ``README.rst`` from Level 4 to Level 5.
+#. Ensure ``pytest`` works locally. If not, please fix the errors before proceeding.
 
-#. Done!
+#. Then, manually migrate hand-written files like ``README.rst`` from Level 4 to Level 5.
+
+#. Done! Notice that you also have a new folder called ``doc``. Let's build the documentation locally in the next section.
 
 Build documentation locally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-``/doc`` is the Sphinx documentation folder. The documentation will be built locally first and then automatically built and hosted on GitHub Pages when a new release is created.
 
 .. include:: snippets/doc-local-build.rst
 
