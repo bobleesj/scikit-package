@@ -8,12 +8,19 @@
 
 Welcome to Billinge Group's Python scikit-package documentation!
 
-Statement of need
------------------
+How `scikit-package` benefits scientists
+----------------------------------------
 
-Your research impact can be amplified by distributing your contributions through well-documented software packages. However, creating these packages requires time dedicated to software infrastructure and ongoing maintenance. ``scikit-package`` is a Python package standard and generator that helps you launch new scientific code or migrate existing ones.
+A challenge for scientists is to share software with the community. As a scientist, if you **have useful code you want to share and further develop**, how do you go about doing that? Sharing code can be challenging due to complications inherent in the process. Here we provide a roadmap and helpful templates for scientists who wish to share their code with others.
 
-``scikit-package`` provides research-quality documents suitable for open-source development and supports Python versions compatible with the `SPEC0 <https://scientific-python.org/specs/spec-0000/>`_ proposal through automated workflows. Additionally, it offers a streamlined process for building and distributing your scientific software, ensuring reproducibility across all major operating systems. With ``scikit-package``, you can focus on developing your scientific code while ensuring it reaches a broader audience.
+The goal of ``scikit-package`` is to offer students and scientists an easy path to share code at various levels of complexity. At the lowest level it has pedagogical examples for simple sharing such as reusing functions across files, building up in complexity all the way to sharing with the wider scientific community as a fully open-source, maintained and tested package.
+
+When your software is ready for public distribution, ``scikit-package`` provides pre-configured documents and a straightforward release process that, once it is set up, significantly reduces the time required to release and share code. It also standardizes procedures across projects.
+
+Getting started
+---------------
+
+To get started, please visit the :ref:`Getting started <getting-started>` page to learn how to navigate the documentation!
 
 
 Who are using ``scikit-package``?

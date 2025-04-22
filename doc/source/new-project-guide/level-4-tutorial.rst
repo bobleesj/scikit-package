@@ -259,8 +259,6 @@ Push your code to GitHub repository
 
 #. Visit your remote GitHub repository. You should see the new branch ``skpkg-proj``.
 
-#. Let's then merge the code from the remote ``skpkg-proj`` to the remote ``main`` branch via a pull request (PR).
-
 #. Done!
 
 Create a pull request from ``skpkg-proj`` to ``main``
