@@ -138,7 +138,7 @@
 <blockquote>
 <div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>my-package/
 ├── LICENSE.rst
-├── README.rst
+├── README.md
 ├── environment.yml
 ├── pyproject.toml
 ├── requirements
@@ -208,55 +208,64 @@
 <p class="admonition-title">Note</p>
 <p>Why is it required to list dependencies both under <code class="docutils literal notranslate"><span class="pre">pip.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">conda.txt</span></code>? Please refer to the FAQ section <span class="xref std std-ref">here</span>.</p>
 </div>
+<ol class="arabic simple">
+<li><p>Done! You have successfully formatted your code. But, let’s also make sure these hooks are triggered automatically when you make a commit.</p></li>
+</ol>
 </section>
-<section id="automatic-code-formatting-with-pre-commit">
-<h1>Automatic code formatting with <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code><a class="headerlink" href="#automatic-code-formatting-with-pre-commit" title="Link to this heading"></a></h1>
-<p>Notice that there is a hidden file called <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> in the root directory. This file is used to configure pre-commit “hooks”. These hooks are checks that can be automatically executed when you commit your code to Git.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you are not familiar with Git/GitHub, don’t worry. Here, we provide step-by-step instructions.</p>
-</div>
+<section id="create-a-new-project-on-github">
+<h1>Create a new project on GitHub<a class="headerlink" href="#create-a-new-project-on-github" title="Link to this heading"></a></h1>
+<ol class="arabic simple">
+<li><p>Visit <a class="reference external" href="https://github.com/new">https://github.com/new</a></p></li>
+<li><p>Choose and enter values for <code class="docutils literal notranslate"><span class="pre">Owner</span></code> and <code class="docutils literal notranslate"><span class="pre">Repository</span> <span class="pre">name</span></code>.</p></li>
+<li><p>Choose <code class="docutils literal notranslate"><span class="pre">Public</span></code> or <code class="docutils literal notranslate"><span class="pre">Private</span></code>.</p></li>
+<li><p>Do not check <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">a</span> <span class="pre">README</span> <span class="pre">file</span></code>.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">None</span></code> under <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">.gitignore</span></code>.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">MIT</span> <span class="pre">License</span> <span class="pre">or</span> <span class="pre">BSD</span> <span class="pre">3-Caluse</span></code> under <code class="docutils literal notranslate"><span class="pre">Choose</span> <span class="pre">a</span> <span class="pre">license</span></code>.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">repository</span></code> green button to create the repository.</p></li>
+<li><p>Done. Let’s push your code from your local Git repository to the remote GitHub repository.</p></li>
+</ol>
+</section>
+<section id="trigger-pre-commit-hooks-automatically-with-git-commit">
+<h1>Trigger pre-commit hooks automatically with Git commit<a class="headerlink" href="#trigger-pre-commit-hooks-automatically-with-git-commit" title="Link to this heading"></a></h1>
 <ol class="arabic">
-<li><p>Initialize a local Git repository in your project folder:</p>
+<li><p>Create a local Git repository in the project directory:</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p>Add your files to the local Git repository:</p>
+<li><p>Set up the remote GitHub repository. Let’s call this repository <code class="docutils literal notranslate"><span class="pre">origin</span></code>, a common name for the remote repository.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/&lt;OWNER&gt;/&lt;project-name&gt;.git
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p>Format your code by running:</p>
+</ol>
+<ol class="arabic" id="level-4-pull-license">
+<li><p>Pull the code from the remote <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. Recall we had a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file created.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>Ensure that all of the checks pass.</p>
-<blockquote>
-<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>black....................................................................Passed
-prettier.................................................................Passed
-docformatter.............................................................Passed
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">black</span></code> is a tool that automatically formats Python code to conform to the PEP 8 style guide. <code class="docutils literal notranslate"><span class="pre">prettier</span></code> is a tool that formats code in various languages, including <code class="docutils literal notranslate"><span class="pre">.md</span></code>, <code class="docutils literal notranslate"><span class="pre">.rst</span></code>, and <code class="docutils literal notranslate"><span class="pre">.json</span></code> files. <code class="docutils literal notranslate"><span class="pre">docformatter</span></code> is a tool that formats docstrings in Python code.</p>
+<p>Notice that you have both <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> and <code class="docutils literal notranslate"><span class="pre">LICENSE.rst</span></code>. The <code class="docutils literal notranslate"><span class="pre">LICENSE.rst</span></code> file is the one created by <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code>. The <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> file is the one created by GitHub and you’ve recently “pulled” it from the GitHub repository. We will remove the <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> file later.</p>
 </div>
 </div></blockquote>
 </li>
-<li><p>Done! You have successfully formatted your code. But, let’s also make sure these hooks are triggered automatically when you make a commit.</p></li>
-</ol>
-</section>
-<section id="trigger-pre-commit-hooks-automatically-with-git-commit">
-<h1>Trigger pre-commit hooks automatically with Git commit<a class="headerlink" href="#trigger-pre-commit-hooks-automatically-with-git-commit" title="Link to this heading"></a></h1>
-<ol class="arabic">
+<li><p>Create a new local branch from the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. Let’s call this branch <code class="docutils literal notranslate"><span class="pre">skpkg-proj</span></code>.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>skpkg-proj
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-b</span></code> flag indicates that you want to create a new branch if it does not already exist.</p>
+</div>
+</div></blockquote>
+</li>
 <li><p>Configure <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> to run each time a new commit is made:</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>install
@@ -272,80 +281,54 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 </div>
 </div></blockquote>
 </li>
-<li><p>Notice that the hooks all pass. You will see the new commit in the git log:</p>
+<li><p>Ensure that all of the <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hooks pass.</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>black....................................................................Passed
+prettier.................................................................Passed
+docformatter.............................................................Passed
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">black</span></code> is a tool that automatically formats Python code to conform to the PEP 8 style guide. <code class="docutils literal notranslate"><span class="pre">prettier</span></code> is a tool that formats code in various languages, including <code class="docutils literal notranslate"><span class="pre">.md</span></code>, <code class="docutils literal notranslate"><span class="pre">.rst</span></code>, and <code class="docutils literal notranslate"><span class="pre">.json</span></code> files. <code class="docutils literal notranslate"><span class="pre">docformatter</span></code> is a tool that formats docstrings in Python code.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>You will see the new commit in the git log:</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If one or more of the hooks fail, no commit will be made. But, <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> will automatically lint your code too. If this is the case, simply re-enter the same commit message again.</p>
+<p>Did you see any failed <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hooks? If so, no commit will be made. Simply re-run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;file&gt;</span></code> on the files that have been modified by <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> and re-enter the same commit message again, such as <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;skpkg:</span> <span class="pre">start</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">project</span> <span class="pre">with</span> <span class="pre">skpkg</span> <span class="pre">system</span> <span class="pre">template&quot;</span></code>.</p>
 </div>
 </div></blockquote>
 </li>
-<li><p>Done. Let’s now push your code to GitHub, which is a remote/cloud Git repository.</p></li>
-</ol>
-</section>
-<section id="create-a-new-project-on-github">
-<h1>Create a new project on GitHub<a class="headerlink" href="#create-a-new-project-on-github" title="Link to this heading"></a></h1>
-<ol class="arabic simple">
-<li><p>Visit <a class="reference external" href="https://github.com/new">https://github.com/new</a></p></li>
-<li><p>Choose and enter values for <code class="docutils literal notranslate"><span class="pre">Owner</span></code> and <code class="docutils literal notranslate"><span class="pre">Repository</span> <span class="pre">name</span></code>.</p></li>
-<li><p>Choose <code class="docutils literal notranslate"><span class="pre">Public</span></code> or <code class="docutils literal notranslate"><span class="pre">Private</span></code>.</p></li>
-<li><p>Check <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">a</span> <span class="pre">README</span> <span class="pre">file</span></code>.</p></li>
-<li><p>Set <code class="docutils literal notranslate"><span class="pre">None</span></code> under <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">.gitignore</span></code>.</p></li>
-<li><p>Set <code class="docutils literal notranslate"><span class="pre">None</span></code> under <code class="docutils literal notranslate"><span class="pre">Choose</span> <span class="pre">a</span> <span class="pre">license</span></code>.</p></li>
-<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">repository</span></code> green button to create the repository.</p></li>
-<li><p>Done. Let’s push your code from your local Git repository to the remote GitHub repository.</p></li>
-</ol>
-</section>
-<section id="push-your-code-to-github-repository">
-<h1>Push your code to GitHub repository<a class="headerlink" href="#push-your-code-to-github-repository" title="Link to this heading"></a></h1>
-<ol class="arabic">
-<li><p>Set up the remote GitHub repository. Let’s call this repository <code class="docutils literal notranslate"><span class="pre">origin</span></code>, a common name for the remote repository.</p>
+<li><p>Finally, let’s now remove the <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> file. Recall that we have both <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> and <code class="docutils literal notranslate"><span class="pre">LICENSE.rst</span></code> mentioend <a class="reference internal" href="../start-new-project-package-lightweight.html#level-4-pull-license"><span class="std std-ref">above</span></a>.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/&lt;OWNER&gt;/&lt;project-name&gt;.git
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>Pull the code from the remote <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. Recall we had a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file created.</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>Create a new local branch from the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. Let’s call this branch <code class="docutils literal notranslate"><span class="pre">skpkg-proj</span></code>.</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>skpkg-proj
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">-b</span></code> flag indicates that you want to create a new branch if it does not already exist.</p>
-</div>
-</div></blockquote>
-</li>
-<li><p>Remove the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file. We already have a <code class="docutils literal notranslate"><span class="pre">README.rst</span></code> file created with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code>.</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>README.md
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>LICENSE
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Let’s now stage and commit the code.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>README.md
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;chore: remove README.md file pulled from remote main branch&quot;</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>LICENSE
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;chore: remove LICENSE file created from initial GitHub repo creation&quot;</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You may wonder why we <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">README.md</span></code>. While we removed it from our local computer, we still have to let the local Git repository know manually that it has been removed. Recall that when you run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>, it creates a hidden folder called <code class="docutils literal notranslate"><span class="pre">.git</span></code> in your local project directory.</p>
+<p>You may wonder why we <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">LICENSE</span></code>. While we removed it from our local computer, we still have to let the local Git repository know manually that it has been removed. Recall that when you run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>, it creates a hidden folder called <code class="docutils literal notranslate"><span class="pre">.git</span></code> in your local project directory.</p>
 </div>
 </div></blockquote>
 </li>
+</ol>
+</section>
+<section id="push-your-code-to-the-remote-github-repository">
+<h1>Push your code to the remote GitHub repository<a class="headerlink" href="#push-your-code-to-the-remote-github-repository" title="Link to this heading"></a></h1>
+<ol class="arabic">
 <li><p>Let’s now push our code to the new <code class="docutils literal notranslate"><span class="pre">skpkg-proj</span></code> local branch and push to the remote <code class="docutils literal notranslate"><span class="pre">skpkg-proj</span></code> branch.</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class="w"> </span>origin<span class="w"> </span>skpkg-proj
@@ -366,8 +349,9 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 <li><p>The <code class="docutils literal notranslate"><span class="pre">base</span></code> branch should be <code class="docutils literal notranslate"><span class="pre">main</span></code> and the <code class="docutils literal notranslate"><span class="pre">compare</span></code> branch should be <code class="docutils literal notranslate"><span class="pre">skpkg-proj</span></code>.</p></li>
 <li><p>Click on the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">pull</span> <span class="pre">request</span></code> button.</p></li>
 <li><p>Wait for <code class="docutils literal notranslate"><span class="pre">Tests</span> <span class="pre">on</span> <span class="pre">PR</span></code> to run and pass. It runs <code class="docutils literal notranslate"><span class="pre">pytest</span></code> on the incoming code in each pull request.</p></li>
-<li><p>While waiting, review the files that are changed. Ensure the only file removed is <code class="docutils literal notranslate"><span class="pre">README.md</span></code>.</p></li>
-<li><p>Do not merge the PR yet! Let’s set up <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> in this GitHub repository as well so that it runs the hooks in each PR.</p></li>
+<li><p>While waiting, review the files that are changed.</p></li>
+<li><p><strong>Do not merge the PR yet!</strong></p></li>
+<li><p>Let’s set up <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">CI</span></code> in this GitHub repository as well so that it runs the hooks in each PR.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

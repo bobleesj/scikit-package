@@ -80,16 +80,17 @@
   <section id="install-scikit-package-with-conda">
 <span id="scikit-package-installation"></span><h1>Install <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> with conda<a class="headerlink" href="#install-scikit-package-with-conda" title="Link to this heading"></a></h1>
 <ol class="arabic">
+<li><p>Ensure you have <code class="docutils literal notranslate"><span class="pre">conda</span></code> installed and the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel added to your conda configuration. If you haven’t, check <a class="reference internal" href="../start-new-project-no-package.html#conda-setup-simple"><span class="std std-ref">here</span></a> for instructions on how to install and include the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel.</p></li>
 <li><p>Create a new environment named <code class="docutils literal notranslate"><span class="pre">&lt;project&gt;_env</span></code>, e.g., <code class="docutils literal notranslate"><span class="pre">skpkg_env</span></code>. Install <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> and <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> simultaneously by running the following command:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>&lt;project&gt;_env<span class="w"> </span>scikit-package<span class="w"> </span>pre-commit
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>skpkg_env<span class="w"> </span>scikit-package<span class="w"> </span>pre-commit
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Activate the environment:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>&lt;project&gt;_env
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>skpkg_env
 </pre></div>
 </div>
 </div></blockquote>
