@@ -46,7 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-lightweight.html">(Level 4) Start a lightweight Python package (Recommended)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-full.html">(Level 5) Start a full Python package ready for public release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pypi-release-guide.html">Release package to GitHub and PyPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Release conda package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Create conda package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../migration-guide.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -92,35 +92,36 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>package<span class="w"> </span>create<span class="w"> </span>workspace
 </pre></div>
 </div>
-<p>You will then be asked to enter the <code class="docutils literal notranslate"><span class="pre">project-name</span></code>. The default value is <code class="docutils literal notranslate"><span class="pre">workspace_folder</span></code>.</p>
+<p>You will then be asked to enter the <code class="docutils literal notranslate"><span class="pre">project-name</span></code>. The default value is <code class="docutils literal notranslate"><span class="pre">workspace-folder</span></code>.</p>
+<p>In this example, enter <code class="docutils literal notranslate"><span class="pre">data-analysis-project</span></code> as the workspace folder you are about to create.</p>
 <p><code class="docutils literal notranslate"><span class="pre">cd</span></code> into the new directory created by the <code class="docutils literal notranslate"><span class="pre">package</span> <span class="pre">create</span> <span class="pre">workspace</span></code> command above:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;project-name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>data-analysis-project
 </pre></div>
 </div>
 </section>
 <section id="folder-structure">
 <h2>Folder structure<a class="headerlink" href="#folder-structure" title="Link to this heading"></a></h2>
 <p>When you <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the new directory, you will see a folder structure as shown below:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>workspace_folder/
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>data-analysis-project/
 ├── README.md
 ├── requirements.txt
-├── calculator.py
-├── proj_one
+├── shared_functions.py
+├── proj-one
 │   ├── __init__.py
-│   └── reuse_code.py
-├── proj_two
+│   └── proj_one_code.py
+├── proj-two
 │   ├── __init__.py
-│   └── reuse_code.py
+│   └── proj_two_code.py
 └── tests
      ├── __init__.py
-     └── test_calculator.py
+     └── test_shared_functions.py
 </pre></div>
 </div>
 <p>Please take a look at those files created with your favorite IDE software (e.g., Visual Studio Code, PyCharm, etc.).</p>
 <p>See the descriptions below for each file created in the project:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">calculator.py</span></code> is an example module where you can define functions that are imported across the project folders <code class="docutils literal notranslate"><span class="pre">proj_one</span></code> and <code class="docutils literal notranslate"><span class="pre">proj_two</span></code>. The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> files are required and empty files that indicate to Python that the directories contain Python modules.</p>
+<p><code class="docutils literal notranslate"><span class="pre">shared_functions.py</span></code> is an example module where you can define functions that are imported across the project folders <code class="docutils literal notranslate"><span class="pre">proj-one</span></code> and <code class="docutils literal notranslate"><span class="pre">proj-two</span></code>. The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> files are required and empty files that indicate to Python that the directories contain Python modules.</p>
 <p><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> is the file where you list Python dependencies. The <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file is where you add notes for your project. The <code class="docutils literal notranslate"><span class="pre">tests</span></code> folder contains tests for your reusable code.</p>
 </div>
 </section>

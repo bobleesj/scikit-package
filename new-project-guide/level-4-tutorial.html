@@ -46,7 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-lightweight.html">(Level 4) Start a lightweight Python package (Recommended)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-full.html">(Level 5) Start a full Python package ready for public release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pypi-release-guide.html">Release package to GitHub and PyPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Release conda package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Create conda package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../migration-guide.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -79,12 +79,13 @@
              
   <section id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
-<p>In Level 3, you learned to reuse code across multiple projects. Here, you will learn to reuse code across all files on your local computer by turning your project into an installable Python package. Hence, Level 4 is also referred to as <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
-<p>This tutorial may take about 10 to 15 minutes.</p>
+<p>In this section, you will use <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> to start a new project that is readily installable. This ensures that your code is available across all files on your local computer. Hence, Level 4 is also referred to as <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
+<p>By the end of this tutorial, you will also have your package hosted on GitHub, where you will utilize GitHub Actions to run automatic linting and testing for the incoming code in your GitHub repository.</p>
+<p>This tutorial should take about 10 to 15 minutes.</p>
 </section>
 <section id="prerequisites">
 <h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h1>
-<p>We assume you have at least hosted one project on GitHub. If you are new to GitHub, please refer to the FAQ guide on GitHub workflow <a class="reference internal" href="../frequently-asked-questions.html#faq-github-workflow"><span class="std std-ref">here</span></a>.</p>
+<p>For Level 4, we assume you have prior experience in developing scientific code in Python. Additionally, we assume you have hosted at least one project on GitHub. If you are new to GitHub, please refer to the FAQ guide on the GitHub workflow <a class="reference internal" href="../frequently-asked-questions.html#faq-github-workflow"><span class="std std-ref">here</span></a>.</p>
 </section>
 <section id="initiate-a-project-with-scikit-package">
 <h1>Initiate a project with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code><a class="headerlink" href="#initiate-a-project-with-scikit-package" title="Link to this heading"></a></h1>
@@ -147,9 +148,9 @@
 ├── src
 │   └── my_package
 │       ├── __init__.py
-│       └── calculator.py
+│       └── functions.py
 └── tests
-    └── test_calculator.py
+    └── test_functions.py
 </pre></div>
 </div>
 </div></blockquote>
@@ -199,7 +200,7 @@
 </div></blockquote>
 </li>
 <li><p>Ensure tests all pass.</p></li>
-<li><p>Check that <code class="docutils literal notranslate"><span class="pre">tests/test_calculator.py</span></code>. Notice you are importing the locally installed package.</p></li>
+<li><p>Notice that in <code class="docutils literal notranslate"><span class="pre">tests/test_functions.py</span></code>, we are importing the locally installed package.</p></li>
 <li><p>Congratulations! Your package is now available for use in any Python script or Jupyter notebook on your local computer.</p></li>
 <li><p>Done! Let’s now learn to automate your code formatting locally.</p></li>
 </ol>
@@ -390,8 +391,8 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 <li><p>Congratulations! You are done with Level 4!</p></li>
 </ol>
 </section>
-<section id="how-to-develop-your-code-moving-forward">
-<h1>How to develop your code moving forward<a class="headerlink" href="#how-to-develop-your-code-moving-forward" title="Link to this heading"></a></h1>
+<section id="optional-how-to-develop-your-code-moving-forward">
+<h1>(Optional) How to develop your code moving forward<a class="headerlink" href="#optional-how-to-develop-your-code-moving-forward" title="Link to this heading"></a></h1>
 <p>Assume that you have successfully followed the previous steps. Now, you want to add new code to your GitHub repository. Perhaps you are working with a group of people. Here is a high-level overview with step-by-step instructions on how to do that:</p>
 <ol class="arabic">
 <li><p>Pull the latest code from the remote <code class="docutils literal notranslate"><span class="pre">main</span></code> branch:</p>

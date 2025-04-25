@@ -46,7 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-lightweight.html">(Level 4) Start a lightweight Python package (Recommended)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-full.html">(Level 5) Start a full Python package ready for public release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pypi-release-guide.html">Release package to GitHub and PyPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Release conda package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Create conda package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../migration-guide.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -91,14 +91,14 @@
 <h2>Folder structure<a class="headerlink" href="#folder-structure" title="Link to this heading"></a></h2>
 <p>Here is the folder structure for this example:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>my_project/
-└── calculator.py
+└── example_code.py
 </pre></div>
 </div>
 </section>
 <section id="example-code">
 <h2>Example code<a class="headerlink" href="#example-code" title="Link to this heading"></a></h2>
-<p>In the <code class="docutils literal notranslate"><span class="pre">calculator.py</span></code> file, define a function called <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> that takes two vectors as input and returns their dot product:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculator.py</span>
+<p>In the <code class="docutils literal notranslate"><span class="pre">example_code.py</span></code> file, define a function called <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> that takes two vectors as input and returns their dot product:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># example_code.py</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">dot_product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -122,11 +122,11 @@
 </pre></div>
 </div>
 <p>Then run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>calculator.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>example_code.py
 </pre></div>
 </div>
 <p>You should see the outputs of 11 and 83 printed.</p>
-<p>Here is the full content of the <code class="docutils literal notranslate"><span class="pre">calculator.py</span></code> file:</p>
+<p>Here is the full content of the <code class="docutils literal notranslate"><span class="pre">example_code.py</span></code> file:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">dot_product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>

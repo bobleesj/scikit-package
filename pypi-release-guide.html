@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Release conda package" href="conda-forge-release-guide.html" />
+    <link rel="next" title="Create conda package" href="conda-forge-release-guide.html" />
     <link rel="prev" title="(Level 5) Start a full Python package ready for public release" href="start-new-project-package-full.html" /> 
 </head>
 
@@ -53,12 +53,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#instructions-for-project-owner-for-pypi-github-release-for-the-first-time">Instructions for Project Owner for PyPI/GitHub release for the first time</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#release-your-package-for-pypi-github-release-after-pre-release">Release your package for PyPI/GitHub release after pre-release</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#release-conda-forge-package">Release conda-forge package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#appendix-1-setup-pypi-token">Appendix 1. Setup <code class="docutils literal notranslate"><span class="pre">PYPI_TOKEN</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#appendix-2-setup-pat-token">Appendix 2. Setup <code class="docutils literal notranslate"><span class="pre">PAT_TOKEN</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#appendix-3-how-to-host-your-package-documentation-online">Appendix 3. How to host your package documentation online</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#appendix-1-setup-pypi-token-to-allow-github-actions-to-upload-to-pypi">Appendix 1. Setup <code class="docutils literal notranslate"><span class="pre">PYPI_TOKEN</span></code> to allow GitHub Actions to upload to PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#appendix-2-setup-pat-token-to-allow-github-actions-to-compile-changelog-rst">Appendix 2. Setup <code class="docutils literal notranslate"><span class="pre">PAT_TOKEN</span></code> to allow GitHub Actions to compile <code class="docutils literal notranslate"><span class="pre">CHANGELOG.rst</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#appendix-3-host-documentation-online-with-github-pages">Appendix 3. Host documentation online with GitHub Pages</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="conda-forge-release-guide.html">Release conda package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conda-forge-release-guide.html">Create conda package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migration-guide.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -150,8 +150,8 @@
 <h2>Release conda-forge package<a class="headerlink" href="#release-conda-forge-package" title="Link to this heading"></a></h2>
 <p>To support <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">&lt;package-name&gt;</span></code>, for your package, follow the instructions <a class="reference internal" href="conda-forge-release-guide.html#conda-forge-release-guide"><span class="std std-ref">here</span></a>.</p>
 </section>
-<section id="appendix-1-setup-pypi-token">
-<span id="pypi-token-setup"></span><h2>Appendix 1. Setup <code class="docutils literal notranslate"><span class="pre">PYPI_TOKEN</span></code><a class="headerlink" href="#appendix-1-setup-pypi-token" title="Link to this heading"></a></h2>
+<section id="appendix-1-setup-pypi-token-to-allow-github-actions-to-upload-to-pypi">
+<span id="pypi-token-setup"></span><h2>Appendix 1. Setup <code class="docutils literal notranslate"><span class="pre">PYPI_TOKEN</span></code> to allow GitHub Actions to upload to PyPI<a class="headerlink" href="#appendix-1-setup-pypi-token-to-allow-github-actions-to-upload-to-pypi" title="Link to this heading"></a></h2>
 <p>Generate a PyPI API token from <code class="docutils literal notranslate"><span class="pre">pypi.org</span></code>:</p>
 <ol class="arabic simple">
 <li><p>Visit <a class="reference external" href="https://pypi.org/manage/account/">https://pypi.org/manage/account/</a> and log in.</p></li>
@@ -170,9 +170,9 @@
 <a class="reference internal image-reference" href="_images/add-pypi-secret.png"><img alt="add-pypi-secret" src="_images/add-pypi-secret.png" style="width: 600px;" />
 </a>
 </section>
-<section id="appendix-2-setup-pat-token">
-<span id="pat-token-setup"></span><h2>Appendix 2. Setup <code class="docutils literal notranslate"><span class="pre">PAT_TOKEN</span></code><a class="headerlink" href="#appendix-2-setup-pat-token" title="Link to this heading"></a></h2>
-<p>The GitHub workflow needs to link with this privilege through a personal access token (PAT) of the project owner.</p>
+<section id="appendix-2-setup-pat-token-to-allow-github-actions-to-compile-changelog-rst">
+<span id="pat-token-setup"></span><h2>Appendix 2. Setup <code class="docutils literal notranslate"><span class="pre">PAT_TOKEN</span></code> to allow GitHub Actions to compile <code class="docutils literal notranslate"><span class="pre">CHANGELOG.rst</span></code><a class="headerlink" href="#appendix-2-setup-pat-token-to-allow-github-actions-to-compile-changelog-rst" title="Link to this heading"></a></h2>
+<p>Recall that dring a release (not pre-release) process, the GitHub Actions workflow compiles the news items in the <code class="docutils literal notranslate"><span class="pre">CHANGELOG.rst</span></code> file in the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. Hence, the GitHub workflow needs to link with this privilege through a personal access token (PAT) of the project owner.</p>
 <ol class="arabic simple">
 <li><p>Visit <a class="reference external" href="https://github.com/settings/tokens">https://github.com/settings/tokens</a></p></li>
 <li><p>Click <code class="docutils literal notranslate"><span class="pre">Generate</span> <span class="pre">new</span> <span class="pre">token</span></code> and choose the classic option.</p></li>
@@ -192,8 +192,8 @@
 <li><p>Done!</p></li>
 </ol>
 </section>
-<section id="appendix-3-how-to-host-your-package-documentation-online">
-<span id="gh-pages-setup"></span><h2>Appendix 3. How to host your package documentation online<a class="headerlink" href="#appendix-3-how-to-host-your-package-documentation-online" title="Link to this heading"></a></h2>
+<section id="appendix-3-host-documentation-online-with-github-pages">
+<span id="gh-pages-setup"></span><h2>Appendix 3. Host documentation online with GitHub Pages<a class="headerlink" href="#appendix-3-host-documentation-online-with-github-pages" title="Link to this heading"></a></h2>
 <p>The goal is to host the official documentation online i.g., <code class="docutils literal notranslate"><span class="pre">https://diffpy.github.io/diffpy.utils</span></code> using GitHub Pages.</p>
 <ol class="arabic">
 <li><p>Visit the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> page in your repository and and click <code class="docutils literal notranslate"><span class="pre">pages</span></code> under <code class="docutils literal notranslate"><span class="pre">Code</span> <span class="pre">and</span> <span class="pre">automation</span></code>.</p></li>
@@ -210,7 +210,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="start-new-project-package-full.html" class="btn btn-neutral float-left" title="(Level 5) Start a full Python package ready for public release" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="conda-forge-release-guide.html" class="btn btn-neutral float-right" title="Release conda package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="conda-forge-release-guide.html" class="btn btn-neutral float-right" title="Create conda package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

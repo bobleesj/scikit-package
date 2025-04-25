@@ -81,7 +81,7 @@
 <li class="toctree-l1"><a class="reference internal" href="start-new-project-package-lightweight.html">(Level 4) Start a lightweight Python package (Recommended)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="start-new-project-package-full.html">(Level 5) Start a full Python package ready for public release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pypi-release-guide.html">Release package to GitHub and PyPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conda-forge-release-guide.html">Release conda package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conda-forge-release-guide.html">Create conda package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migration-guide.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -128,14 +128,14 @@
 <h3>Folder structure<a class="headerlink" href="#folder-structure" title="Link to this heading"></a></h3>
 <p>Here is the folder structure for this example:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>my_project/
-└── calculator.py
+└── example_code.py
 </pre></div>
 </div>
 </section>
 <section id="example-code">
 <h3>Example code<a class="headerlink" href="#example-code" title="Link to this heading"></a></h3>
-<p>In the <code class="docutils literal notranslate"><span class="pre">calculator.py</span></code> file, define a function called <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> that takes two vectors as input and returns their dot product:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculator.py</span>
+<p>In the <code class="docutils literal notranslate"><span class="pre">example_code.py</span></code> file, define a function called <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> that takes two vectors as input and returns their dot product:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># example_code.py</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">dot_product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -159,11 +159,11 @@
 </pre></div>
 </div>
 <p>Then run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>calculator.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>example_code.py
 </pre></div>
 </div>
 <p>You should see the outputs of 11 and 83 printed.</p>
-<p>Here is the full content of the <code class="docutils literal notranslate"><span class="pre">calculator.py</span></code> file:</p>
+<p>Here is the full content of the <code class="docutils literal notranslate"><span class="pre">example_code.py</span></code> file:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">dot_product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -200,7 +200,7 @@ conda<span class="w"> </span>activate<span class="w"> </span>&lt;project-name&gt
 python<span class="w"> </span>--version
 
 <span class="c1"># Run the script</span>
-python<span class="w"> </span>calculator.py
+python<span class="w"> </span>&lt;python_file_name&gt;.py
 </pre></div>
 </div>
 </section>
@@ -223,7 +223,7 @@ python<span class="w"> </span>calculator.py
 <span id="id3"></span><h3>Folder structure<a class="headerlink" href="#level-2-folder-structure" title="Link to this heading"></a></h3>
 <p>Here is the project structure for this example:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>my_project/
-├── calculator.py
+├── shared_functions.py
 ├── file_one.py
 └── file_two.py
 </pre></div>
@@ -231,8 +231,8 @@ python<span class="w"> </span>calculator.py
 </section>
 <section id="id4">
 <h3>Example code<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
-<p>In <code class="docutils literal notranslate"><span class="pre">calculator.py</span></code>, define a function called <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> that takes two vectors as input and returns their dot product:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculator.py</span>
+<p>In <code class="docutils literal notranslate"><span class="pre">shared_functions.py</span></code>, define a function called <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> that takes two vectors as input and returns their dot product:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># shared_functions.py</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">dot_product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -240,7 +240,7 @@ python<span class="w"> </span>calculator.py
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For <code class="docutils literal notranslate"><span class="pre">file_one.py</span></code> and <code class="docutils literal notranslate"><span class="pre">file_two.py</span></code>, you are able to import the function <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> from the <code class="docutils literal notranslate"><span class="pre">calculator.py</span></code> file and use it in the same way as in Level 1.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">file_one.py</span></code> and <code class="docutils literal notranslate"><span class="pre">file_two.py</span></code>, you are able to import the function <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> from the <code class="docutils literal notranslate"><span class="pre">shared_functions.py</span></code> file and use it in the same way as in Level 1.</p>
 <p>This is the content of <code class="docutils literal notranslate"><span class="pre">file_one.py</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file_one.py</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">calculator</span><span class="w"> </span><span class="kn">import</span> <span class="n">dot_product</span>
@@ -314,35 +314,36 @@ python<span class="w"> </span>calculator.py
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>package<span class="w"> </span>create<span class="w"> </span>workspace
 </pre></div>
 </div>
-<p>You will then be asked to enter the <code class="docutils literal notranslate"><span class="pre">project-name</span></code>. The default value is <code class="docutils literal notranslate"><span class="pre">workspace_folder</span></code>.</p>
+<p>You will then be asked to enter the <code class="docutils literal notranslate"><span class="pre">project-name</span></code>. The default value is <code class="docutils literal notranslate"><span class="pre">workspace-folder</span></code>.</p>
+<p>In this example, enter <code class="docutils literal notranslate"><span class="pre">data-analysis-project</span></code> as the workspace folder you are about to create.</p>
 <p><code class="docutils literal notranslate"><span class="pre">cd</span></code> into the new directory created by the <code class="docutils literal notranslate"><span class="pre">package</span> <span class="pre">create</span> <span class="pre">workspace</span></code> command above:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;project-name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>data-analysis-project
 </pre></div>
 </div>
 </section>
 <section id="id8">
 <h3>Folder structure<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>When you <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the new directory, you will see a folder structure as shown below:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>workspace_folder/
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>data-analysis-project/
 ├── README.md
 ├── requirements.txt
-├── calculator.py
-├── proj_one
+├── shared_functions.py
+├── proj-one
 │   ├── __init__.py
-│   └── reuse_code.py
-├── proj_two
+│   └── proj_one_code.py
+├── proj-two
 │   ├── __init__.py
-│   └── reuse_code.py
+│   └── proj_two_code.py
 └── tests
      ├── __init__.py
-     └── test_calculator.py
+     └── test_shared_functions.py
 </pre></div>
 </div>
 <p>Please take a look at those files created with your favorite IDE software (e.g., Visual Studio Code, PyCharm, etc.).</p>
 <p>See the descriptions below for each file created in the project:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">calculator.py</span></code> is an example module where you can define functions that are imported across the project folders <code class="docutils literal notranslate"><span class="pre">proj_one</span></code> and <code class="docutils literal notranslate"><span class="pre">proj_two</span></code>. The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> files are required and empty files that indicate to Python that the directories contain Python modules.</p>
+<p><code class="docutils literal notranslate"><span class="pre">shared_functions.py</span></code> is an example module where you can define functions that are imported across the project folders <code class="docutils literal notranslate"><span class="pre">proj-one</span></code> and <code class="docutils literal notranslate"><span class="pre">proj-two</span></code>. The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> files are required and empty files that indicate to Python that the directories contain Python modules.</p>
 <p><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> is the file where you list Python dependencies. The <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file is where you add notes for your project. The <code class="docutils literal notranslate"><span class="pre">tests</span></code> folder contains tests for your reusable code.</p>
 </div>
 </section>

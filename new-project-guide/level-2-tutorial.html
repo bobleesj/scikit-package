@@ -46,7 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-lightweight.html">(Level 4) Start a lightweight Python package (Recommended)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-full.html">(Level 5) Start a full Python package ready for public release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pypi-release-guide.html">Release package to GitHub and PyPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Release conda package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Create conda package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../migration-guide.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -91,7 +91,7 @@
 <span id="level-2-folder-structure"></span><h2>Folder structure<a class="headerlink" href="#folder-structure" title="Link to this heading"></a></h2>
 <p>Here is the project structure for this example:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>my_project/
-├── calculator.py
+├── shared_functions.py
 ├── file_one.py
 └── file_two.py
 </pre></div>
@@ -99,8 +99,8 @@
 </section>
 <section id="example-code">
 <h2>Example code<a class="headerlink" href="#example-code" title="Link to this heading"></a></h2>
-<p>In <code class="docutils literal notranslate"><span class="pre">calculator.py</span></code>, define a function called <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> that takes two vectors as input and returns their dot product:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculator.py</span>
+<p>In <code class="docutils literal notranslate"><span class="pre">shared_functions.py</span></code>, define a function called <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> that takes two vectors as input and returns their dot product:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># shared_functions.py</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">dot_product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -108,7 +108,7 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For <code class="docutils literal notranslate"><span class="pre">file_one.py</span></code> and <code class="docutils literal notranslate"><span class="pre">file_two.py</span></code>, you are able to import the function <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> from the <code class="docutils literal notranslate"><span class="pre">calculator.py</span></code> file and use it in the same way as in Level 1.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">file_one.py</span></code> and <code class="docutils literal notranslate"><span class="pre">file_two.py</span></code>, you are able to import the function <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> from the <code class="docutils literal notranslate"><span class="pre">shared_functions.py</span></code> file and use it in the same way as in Level 1.</p>
 <p>This is the content of <code class="docutils literal notranslate"><span class="pre">file_one.py</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file_one.py</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">calculator</span><span class="w"> </span><span class="kn">import</span> <span class="n">dot_product</span>
