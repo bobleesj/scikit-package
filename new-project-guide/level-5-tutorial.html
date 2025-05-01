@@ -48,6 +48,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../pypi-release-guide.html">Release package to GitHub and PyPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Create conda package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../migration-guide.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../billinge-group-standards.html">Billinge Group standards</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release.html">Release Notes</a></li>
@@ -258,7 +259,7 @@ pytest
 </section>
 <section id="build-documentation-locally">
 <h1>Build documentation locally<a class="headerlink" href="#build-documentation-locally" title="Link to this heading"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">/doc</span></code> is the Sphinx documentation folder. The documentation will be built locally first and then automatically built and hosted on GitHub Pages when a new release is created.</p>
+<p><code class="docutils literal notranslate"><span class="pre">/doc</span></code> is the the Sphinx documentation folder. The documentation will be built locally first and then automatically built and hosted on GitHub Pages when a new release is created.</p>
 </section>
 <section id="upload-your-code-to-github">
 <h1>Upload your code to GitHub<a class="headerlink" href="#upload-your-code-to-github" title="Link to this heading"></a></h1>
@@ -293,11 +294,28 @@ git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class
 <section id="setup-codecov-token-for-github-repository">
 <h1>Setup Codecov token for GitHub repository<a class="headerlink" href="#setup-codecov-token-for-github-repository" title="Link to this heading"></a></h1>
 </section>
-<section id="add-news-items-in-your-pull-request">
-<h1>Add news items in your pull request<a class="headerlink" href="#add-news-items-in-your-pull-request" title="Link to this heading"></a></h1>
-<p>If you are happy with the changes, let’s merge the code from <code class="docutils literal notranslate"><span class="pre">skpkg-migration</span></code> to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p>
-<p>However, before merging to <code class="docutils literal notranslate"><span class="pre">main</span></code>, you are required to add a news item for the changes made in the PR. This is to ensure that the changes are documented in the <code class="docutils literal notranslate"><span class="pre">CHANGELOG.rst</span></code> when you create a new release as shown in <a class="reference external" href="https://billingegroup.github.io/scikit-package/release.html">https://billingegroup.github.io/scikit-package/release.html</a> for example.</p>
-<p>We require that each PR includes a news item as a <code class="docutils literal notranslate"><span class="pre">&lt;branch-name&gt;.rst</span></code> file under the <code class="docutils literal notranslate"><span class="pre">news</span></code> directory.</p>
+<section id="allow-github-actions-to-write-comments-in-prs">
+<h1>Allow GitHub Actions to write comments in PRs<a class="headerlink" href="#allow-github-actions-to-write-comments-in-prs" title="Link to this heading"></a></h1>
+<p>As you will see in the next section, we’d like to have GitHub Actions write comments such as warnings. Let’s specify the permissions in the GitHub repository settings by following the steps below.</p>
+<ol class="arabic simple">
+<li><p>Visit the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> page of the GitHub repository.</p></li>
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">Actions</span></code> in the left sidebar.</p></li>
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">General</span></code> in the left sidebar.</p></li>
+<li><p>Scroll down to the <code class="docutils literal notranslate"><span class="pre">Workflow</span> <span class="pre">permissions</span></code> section.</p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">Read</span> <span class="pre">and</span> <span class="pre">write</span> <span class="pre">permissions</span></code>.</p></li>
+<li><p>Done!</p></li>
+</ol>
+</section>
+<section id="add-news-items-in-the-github-pull-request">
+<h1>Add news items in the GitHub pull request<a class="headerlink" href="#add-news-items-in-the-github-pull-request" title="Link to this heading"></a></h1>
+<p>Before merging to <code class="docutils literal notranslate"><span class="pre">main</span></code>, we require that each PR includes a file documenting the changes under <code class="docutils literal notranslate"><span class="pre">\news</span></code>. This ensures that the changes are documented in the <code class="docutils literal notranslate"><span class="pre">CHANGELOG.rst</span></code> when you create a new release, as shown in <a class="reference external" href="https://billingegroup.github.io/scikit-package/release.html">https://billingegroup.github.io/scikit-package/release.html</a>, for example.</p>
+<blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If no news file is created for this PR, the CI will not only fail but also write a comment to remind you to create a news file. Recall we granted GitHub Actions permission to write comments in the PR in the previous section.</p>
+</div>
+</div></blockquote>
+<p>Let’s create a news item for the changes made in this PR.</p>
 <ol class="arabic">
 <li><p>Get the latest updates from the remote GitHub repository.</p>
 <blockquote>
@@ -331,7 +349,7 @@ git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </
 <p>Add a description of the edits made in this PR. This should be a user-facing high-level summary of the edits made in this PR and will be automatically converted into the <code class="docutils literal notranslate"><span class="pre">CHANGELOG.rst</span></code> when the code is released.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>How do I write good news items? What if the changes in the PR are trivial and no news is needed? Please check out the news guide in the FAQ <a class="reference internal" href="../frequently-asked-questions.html#faq-news-item-practice"><span class="std std-ref">here</span></a>.</p>
+<p>How do I write good news items? What if the changes in the PR are trivial and no news is needed? Please check out the news guide in the FAQ <a class="reference internal" href="../billinge-group-standards.html#news-item-practice"><span class="std std-ref">here</span></a>.</p>
 </div>
 </div></blockquote>
 </li>
@@ -359,7 +377,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <blockquote>
 <div><div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>For writing great news items, Python docstrings, tests, and commit messages, check the Billinge research group’s guidelines <a class="reference internal" href="../frequently-asked-questions.html#faq-billinge-group-standards"><span class="std std-ref">here</span></a>.</p>
+<p>For writing great news items, Python docstrings, tests, and commit messages, check the Billinge research group’s guidelines <a class="reference internal" href="../billinge-group-standards.html#billinge-group-standards"><span class="std std-ref">here</span></a>.</p>
 </div>
 </div></blockquote>
 </section>

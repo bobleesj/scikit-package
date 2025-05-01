@@ -49,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pypi-release-guide.html">Release package to GitHub and PyPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conda-forge-release-guide.html">Create conda package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migration-guide.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="billinge-group-standards.html">Billinge Group standards</a></li>
 <li class="toctree-l1"><a class="reference internal" href="frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release.html">Release Notes</a></li>
@@ -81,7 +82,7 @@
   <hr class="docutils" />
 <div class="line-block">
 <div class="line">Software version 0.0.1.</div>
-<div class="line">Last updated April 25, 2025.</div>
+<div class="line">Last updated May 01, 2025.</div>
 </div>
 <p>Welcome to Billinge Group’s Python <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> documentation!</p>
 <p><code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> offers tools and practices for the scientific community to make better and more reusable Scientific Python packages and applications.</p>
@@ -106,8 +107,8 @@
 <li><p>Level 5, <code class="docutils literal notranslate"><span class="pre">public</span></code>, is the final step, where the source code is uploaded online so that anyone in the world can install the package, sourced from PyPI or conda-forge.</p></li>
 </ul>
 </section>
-<section id="who-are-using-scikit-package">
-<h1>Who are using <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code>?<a class="headerlink" href="#who-are-using-scikit-package" title="Link to this heading"></a></h1>
+<section id="who-is-using-scikit-package">
+<h1>Who is using <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code>?<a class="headerlink" href="#who-is-using-scikit-package" title="Link to this heading"></a></h1>
 <p>The full list of packages is as follows:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/diffpy/diffpy.pdffit2">diffpy.pdffit2</a></p></li>
@@ -210,7 +211,8 @@
 <li class="toctree-l2"><a class="reference internal" href="start-new-project-package-full.html#build-documentation-locally">Build documentation locally</a></li>
 <li class="toctree-l2"><a class="reference internal" href="start-new-project-package-full.html#upload-your-code-to-github">Upload your code to GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="start-new-project-package-full.html#setup-codecov-token-for-github-repository">Setup Codecov token for GitHub repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="start-new-project-package-full.html#add-news-items-in-your-pull-request">Add news items in your pull request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start-new-project-package-full.html#allow-github-actions-to-write-comments-in-prs">Allow GitHub Actions to write comments in PRs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start-new-project-package-full.html#add-news-items-in-the-github-pull-request">Add news items in the GitHub pull request</a></li>
 <li class="toctree-l2"><a class="reference internal" href="start-new-project-package-full.html#build-api-reference-documentation">Build API reference documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="start-new-project-package-full.html#ready-for-public-release">Ready for public release?</a></li>
 </ul>
@@ -246,11 +248,19 @@
 <li class="toctree-l2"><a class="reference internal" href="migration-guide.html#ready-for-public-release">Ready for public release?</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="billinge-group-standards.html">Billinge Group standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="billinge-group-standards.html#github-workflow">GitHub workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="billinge-group-standards.html#unit-tests">Unit tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="billinge-group-standards.html#docstrings">Docstrings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="billinge-group-standards.html#naming-conventions">Naming conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="billinge-group-standards.html#error-message">Error message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="billinge-group-standards.html#other-considerations-for-maintaining-group-infrastructure">Other considerations for maintaining group infrastructure</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="frequently-asked-questions.html">Frequently asked questions (FAQ)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="frequently-asked-questions.html#pre-commit">Pre-commit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="frequently-asked-questions.html#project-setup">Project setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="frequently-asked-questions.html#release">Release</a></li>
-<li class="toctree-l2"><a class="reference internal" href="frequently-asked-questions.html#billinge-group-standards">Billinge Group standards</a></li>
 <li class="toctree-l2"><a class="reference internal" href="frequently-asked-questions.html#documentation">Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="frequently-asked-questions.html#conda-forge">conda-forge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="frequently-asked-questions.html#github-actions">GitHub Actions</a></li>

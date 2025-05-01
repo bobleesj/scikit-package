@@ -48,6 +48,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../pypi-release-guide.html">Release package to GitHub and PyPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Create conda package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../migration-guide.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../billinge-group-standards.html">Billinge Group standards</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release.html">Release Notes</a></li>
@@ -111,7 +112,7 @@
 <p>For <code class="docutils literal notranslate"><span class="pre">file_one.py</span></code> and <code class="docutils literal notranslate"><span class="pre">file_two.py</span></code>, you are able to import the function <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> from the <code class="docutils literal notranslate"><span class="pre">shared_functions.py</span></code> file and use it in the same way as in Level 1.</p>
 <p>This is the content of <code class="docutils literal notranslate"><span class="pre">file_one.py</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file_one.py</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">calculator</span><span class="w"> </span><span class="kn">import</span> <span class="n">dot_product</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shared_functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">dot_product</span>
 
 <span class="n">v1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="n">v2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
@@ -120,16 +121,16 @@
 </div>
 <p>This is the content of <code class="docutils literal notranslate"><span class="pre">file_two.py</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file_two.py</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">calculator</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shared_functions</span>
 
 <span class="n">v3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 <span class="n">v4</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">calculator</span><span class="o">.</span><span class="n">dot_product</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span> <span class="n">v4</span><span class="p">))</span>  <span class="c1"># returns 83</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">shared_functions</span><span class="o">.</span><span class="n">dot_product</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span> <span class="n">v4</span><span class="p">))</span>  <span class="c1"># returns 83</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Notice that in <code class="docutils literal notranslate"><span class="pre">file_two.py</span></code>, you can import the entire module <code class="docutils literal notranslate"><span class="pre">calculator</span></code> and use the function <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> by prefixing it with the module name. Importing a modele is a good practice when you have multiple functions in the same file. This way, you can avoid name conflicts and make your code more readable.</p>
+<p>Notice that in <code class="docutils literal notranslate"><span class="pre">file_two.py</span></code>, you can import the entire module <code class="docutils literal notranslate"><span class="pre">shared_functions</span></code> and use the function <code class="docutils literal notranslate"><span class="pre">dot_product</span></code> by prefixing it with the module name. Importing a modele is a good practice when you have multiple functions in the same file. This way, you can avoid name conflicts and make your code more readable.</p>
 </div>
 </section>
 <section id="are-you-having-trouble-running-the-code">

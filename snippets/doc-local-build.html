@@ -48,6 +48,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../pypi-release-guide.html">Release package to GitHub and PyPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Create conda package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../migration-guide.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../billinge-group-standards.html">Billinge Group standards</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release.html">Release Notes</a></li>
@@ -77,9 +78,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <p><code class="docutils literal notranslate"><span class="pre">/doc</span></code> is the the Sphinx documentation folder. The documentation will be built locally first and then automatically built and hosted on GitHub Pages when a new release is created.</p>
-<ol class="arabic">
-<li><p>Build the documentation locally by running:</p>
+  <ol class="arabic">
+<li><p>Install the requirements for building the documentation.</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>--file<span class="w"> </span>requirements/docs.txt
 </pre></div>
@@ -104,7 +104,6 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>Done! Later, you will learn to host this documentation on GitHub Pages via public URL.</p></li>
 </ol>
 
 
