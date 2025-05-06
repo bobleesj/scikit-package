@@ -40,18 +40,37 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../start-new-project-no-package.html">(Level 1-3) Reuse your scripts across files and folders without install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-lightweight.html">(Level 4) Start a lightweight Python package (Recommended)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-full.html">(Level 5) Start a full Python package ready for public release</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pypi-release-guide.html">Release package to GitHub and PyPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Create conda package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../migration-guide.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
+              <p class="caption" role="heading"><span class="caption-text">GETTING STARTED</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/level-1-2-3-tutorials.html">(Level 1-3) Reuse code within a file, across files and folders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/level-4-tutorial.html">(Level 4) Share code as a locally installable Python package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/level-5-tutorial.html">(Level 5) Share code as a publicly installable Python package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RELEASE GUIDES</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release-guides/pypi-github.html">Publish on GitHub and to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-guides/conda-forge.html">Create conda package with conda-forge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PROGRAMMING GUIDES</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../billinge-group-standards.html">Billinge Group standards</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/migration.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../release.html">Release Notes</a></li>
 </ul>
 
         </div>
@@ -70,7 +89,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">(Required) Use conda environment to install packages and run Python code</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/snippets/conda-env-setup-simple.rst.txt" rel="nofollow"> View page source</a>
+              <a href="https://github.com/Billingegroup/scikit-package/blob/main/doc/source/snippets/conda-env-setup-simple.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -86,7 +105,7 @@
 <li><p>Install <code class="docutils literal notranslate"><span class="pre">conda</span></code> by following the installation guide of <code class="docutils literal notranslate"><span class="pre">miniconda</span></code> found at <a class="reference external" href="https://www.anaconda.com/docs/getting-started/miniconda/main">https://www.anaconda.com/docs/getting-started/miniconda/main</a>.</p></li>
 <li><p>Add the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel to your conda configuration by running the following command:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>conda-forge
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>conda-forge
 </pre></div>
 </div>
 </div></blockquote>
@@ -94,10 +113,10 @@
 <li><p>Now, let’s create a new environment and install <code class="docutils literal notranslate"><span class="pre">numpy</span></code> in it. <code class="docutils literal notranslate"><span class="pre">numpy</span></code> will be sourced from the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel. Replace <code class="docutils literal notranslate"><span class="pre">&lt;project-name&gt;</span></code> with the name of your project.</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new environment and install numpy in the environment</span>
-conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>&lt;project-name&gt;_env<span class="w"> </span>numpy
+$<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>&lt;project-name&gt;-env<span class="w"> </span>numpy
 
 <span class="c1"># Activate the environment</span>
-conda<span class="w"> </span>activate<span class="w"> </span>&lt;project-name&gt;_env
+$<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>&lt;project-name&gt;-env
 </pre></div>
 </div>
 </div></blockquote>
@@ -105,17 +124,17 @@ conda<span class="w"> </span>activate<span class="w"> </span>&lt;project-name&gt
 <li><p>Let’s check if the installation was successful. You can do this by running the following command:</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check Python version</span>
-python<span class="w"> </span>--version
+$<span class="w"> </span>python<span class="w"> </span>--version
 
 <span class="c1"># Run the script</span>
-python<span class="w"> </span>&lt;python_file_name&gt;.py
+$<span class="w"> </span>python<span class="w"> </span>&lt;python_file_name&gt;.py
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you are a Windows PowerShell user and Python is not found after activating the environment, you can run the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For Windows (PowerShell)</span>
-conda<span class="w"> </span>init<span class="w"> </span>powershell
+$<span class="w"> </span>conda<span class="w"> </span>init<span class="w"> </span>powershell
 </pre></div>
 </div>
 </div>

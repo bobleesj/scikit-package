@@ -40,18 +40,37 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../start-new-project-no-package.html">(Level 1-3) Reuse your scripts across files and folders without install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-lightweight.html">(Level 4) Start a lightweight Python package (Recommended)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-full.html">(Level 5) Start a full Python package ready for public release</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pypi-release-guide.html">Release package to GitHub and PyPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Create conda package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../migration-guide.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
+              <p class="caption" role="heading"><span class="caption-text">GETTING STARTED</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/level-1-2-3-tutorials.html">(Level 1-3) Reuse code within a file, across files and folders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/level-4-tutorial.html">(Level 4) Share code as a locally installable Python package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/level-5-tutorial.html">(Level 5) Share code as a publicly installable Python package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RELEASE GUIDES</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release-guides/pypi-github.html">Publish on GitHub and to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-guides/conda-forge.html">Create conda package with conda-forge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PROGRAMMING GUIDES</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../billinge-group-standards.html">Billinge Group standards</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/migration.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../release.html">Release Notes</a></li>
 </ul>
 
         </div>
@@ -70,7 +89,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">&lt;no title&gt;</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/snippets/github-codecov-setup.rst.txt" rel="nofollow"> View page source</a>
+              <a href="https://github.com/Billingegroup/scikit-package/blob/main/doc/source/snippets/github-codecov-setup.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -79,31 +98,31 @@
            <div itemprop="articleBody">
              
   <p id="codecov-token-setup">For each PR, we use <code class="docutils literal notranslate"><span class="pre">Codecov</span></code> to report the test coverage percentage change as shown below.</p>
-<img alt="codecov-in-pr-comment" src="snippets/img/codecov-pr.png" />
-<p>To do so, the repository owner needs to provide a <code class="docutils literal notranslate"><span class="pre">CODECOV_TOKEN</span></code>.  Please follow the step-by-step guide below.</p>
+<img alt="codecov-in-pr-comment" src="../_images/codecov-pr.png" />
+<p>To do so, the repository maintainer needs to provide a <code class="docutils literal notranslate"><span class="pre">CODECOV_TOKEN</span></code>.  Please follow the step-by-step guide below.</p>
 <ol class="arabic">
 <li><p>Ensure your GitHub repository is public.</p></li>
 <li><p>Visit <a class="reference external" href="https://app.codecov.io/">https://app.codecov.io/</a></p></li>
 <li><p>Connect your repository or organization with Codecov by clicking <code class="docutils literal notranslate"><span class="pre">Configure</span> <span class="pre">Codecov's</span> <span class="pre">GitHub</span> <span class="pre">app</span></code>, shown below:</p>
 <blockquote>
-<div><img alt="codecov-configure-github-project-button" src="snippets/img/codecov-configure.png" />
+<div><img alt="codecov-configure-github-project-button" src="../_images/codecov-configure.png" />
 </div></blockquote>
 </li>
 <li><p>Scroll down, find your repository of interest, and click <code class="docutils literal notranslate"><span class="pre">Configure</span></code>, shown below:</p>
 <blockquote>
-<div><img alt="codecov-list-github-projects" src="snippets/img/codecov-projects.png" />
+<div><img alt="codecov-list-github-projects" src="../_images/codecov-projects.png" />
 </div></blockquote>
 </li>
 <li><p>Scroll down again, copy <code class="docutils literal notranslate"><span class="pre">CODECOV_TOKEN</span></code>, shown below:</p>
 <blockquote>
-<div><img alt="codecov-list-github-projects" src="snippets/img/codecov-token.png" />
+<div><img alt="codecov-list-github-projects" src="../_images/codecov-token.png" />
 </div></blockquote>
 </li>
 <li><p>In your GitHub repository, go to <code class="docutils literal notranslate"><span class="pre">Settings</span></code>, then click <code class="docutils literal notranslate"><span class="pre">Actions</span></code> under the <code class="docutils literal notranslate"><span class="pre">Secrets</span> <span class="pre">and</span> <span class="pre">Variables</span></code> tab.</p></li>
 <li><p>Click <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">repository</span> <span class="pre">secret</span></code>.</p></li>
 <li><p>Paste the token value and name it as <code class="docutils literal notranslate"><span class="pre">CODECOV_TOKEN</span></code> secret as shown below:</p>
 <blockquote>
-<div><img alt="codecov-list-github-projects" src="snippets/img/codecov-github.png" />
+<div><img alt="codecov-list-github-projects" src="../_images/codecov-github.png" />
 </div></blockquote>
 </li>
 <li><p>Done. The <strong>Codecov token</strong> is now set up for the repository. From now on, a new comment will be generated on each PR with the Codecov status automatically.</p></li>

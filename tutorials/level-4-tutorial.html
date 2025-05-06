@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Overview &mdash; scikit-package 0.0.1 documentation</title>
+  <title>(Level 4) Share code as a locally installable Python package &mdash; scikit-package 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -18,7 +18,9 @@
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="(Level 5) Share code as a publicly installable Python package" href="level-5-tutorial.html" />
+    <link rel="prev" title="(Level 1-3) Reuse code within a file, across files and folders" href="level-1-2-3-tutorials.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,18 +42,54 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../start-new-project-no-package.html">(Level 1-3) Reuse your scripts across files and folders without install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-lightweight.html">(Level 4) Start a lightweight Python package (Recommended)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../start-new-project-package-full.html">(Level 5) Start a full Python package ready for public release</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pypi-release-guide.html">Release package to GitHub and PyPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../conda-forge-release-guide.html">Create conda package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../migration-guide.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
+              <p class="caption" role="heading"><span class="caption-text">GETTING STARTED</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="level-1-2-3-tutorials.html">(Level 1-3) Reuse code within a file, across files and folders</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">(Level 4) Share code as a locally installable Python package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-scikit-package-with-conda">Install <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> with conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initiate-a-project-with-scikit-package">Initiate a project with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-folder-structure">Check folder structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-your-package-locally">Install your package locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-tests-with-your-locally-installed-package">Run tests with your locally installed package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-new-project-on-github">Create a new project on GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trigger-pre-commit-hooks-automatically-with-git-commit">Trigger pre-commit hooks automatically with Git commit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#push-your-code-to-the-remote-github-repository">Push your code to the remote GitHub repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-pull-request-from-skpkg-proj-to-main">Create a pull request from <code class="docutils literal notranslate"><span class="pre">skpkg-proj</span></code> to <code class="docutils literal notranslate"><span class="pre">main</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-pre-commit-ci-in-github-repository-for-public-repository">Setup pre-commit CI in GitHub repository for public repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#merge-the-pull-request">Merge the pull request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-how-to-develop-your-code-moving-forward">(Optional) How to develop your code moving forward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-next">What’s next?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="level-5-tutorial.html">(Level 5) Share code as a publicly installable Python package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RELEASE GUIDES</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release-guides/pypi-github.html">Publish on GitHub and to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-guides/conda-forge.html">Create conda package with conda-forge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PROGRAMMING GUIDES</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../billinge-group-standards.html">Billinge Group standards</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/migration.html">Migrate your existing package with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../release.html">Release Notes</a></li>
 </ul>
 
         </div>
@@ -68,9 +106,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Overview</li>
+      <li class="breadcrumb-item active">(Level 4) Share code as a locally installable Python package</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/new-project-guide/level-4-tutorial.rst.txt" rel="nofollow"> View page source</a>
+              <a href="https://github.com/Billingegroup/scikit-package/blob/main/doc/source/tutorials/level-4-tutorial.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -78,22 +116,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
+  <section id="level-4-share-code-as-a-locally-installable-python-package">
+<span id="level-4-tutorial"></span><h1>(Level 4) Share code as a locally installable Python package<a class="headerlink" href="#level-4-share-code-as-a-locally-installable-python-package" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
 <p>In this section, you will use <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> to start a new project that is readily installable. This ensures that your code is available across all files on your local computer. Hence, Level 4 is also referred to as <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
 <p>By the end of this tutorial, you will also have your package hosted on GitHub, where you will utilize GitHub Actions to run automatic linting and testing for the incoming code in your GitHub repository.</p>
 <p>This tutorial should take about 10 to 15 minutes.</p>
 </section>
 <section id="prerequisites">
-<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h1>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
 <p>For Level 4, we assume you have prior experience in developing scientific code in Python. Additionally, we assume you have hosted at least one project on GitHub. If you are new to GitHub, please refer to the FAQ guide on the GitHub workflow <a class="reference internal" href="../frequently-asked-questions.html#faq-github-workflow"><span class="std std-ref">here</span></a>.</p>
 </section>
+<section id="install-scikit-package-with-conda">
+<span id="scikit-package-installation"></span><h2>Install <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> with conda<a class="headerlink" href="#install-scikit-package-with-conda" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Ensure you have <code class="docutils literal notranslate"><span class="pre">conda</span></code> installed and the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel added to your conda configuration. If you haven’t, check <a class="reference internal" href="level-1-2-3-tutorials.html#conda-env-setup-simple"><span class="std std-ref">here</span></a> for instructions on how to install and include the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel.</p></li>
+<li><p>Create a new environment named <code class="docutils literal notranslate"><span class="pre">&lt;project&gt;-env</span></code>, e.g., <code class="docutils literal notranslate"><span class="pre">skpkg-env</span></code>. Install <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> and <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> simultaneously by running the following command:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>skpkg-env<span class="w"> </span>scikit-package<span class="w"> </span>pre-commit
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Activate the environment:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>skpkg-env
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Confirm that you have the latest version of <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> available on GitHub:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>scikit-package
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</section>
 <section id="initiate-a-project-with-scikit-package">
-<h1>Initiate a project with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code><a class="headerlink" href="#initiate-a-project-with-scikit-package" title="Link to this heading"></a></h1>
+<h2>Initiate a project with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code><a class="headerlink" href="#initiate-a-project-with-scikit-package" title="Link to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Run the following command to create a new project with <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code>:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>package<span class="w"> </span>create<span class="w"> </span>system
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>package<span class="w"> </span>create<span class="w"> </span>system
 </pre></div>
 </div>
 </div></blockquote>
@@ -101,12 +168,6 @@
 <li><p>Answer the following questions:</p>
 <blockquote>
 <div><dl class="field-list simple">
-<dt class="field-odd">project_name<span class="colon">:</span></dt>
-<dd class="field-odd"><p>(my-project)</p>
-</dd>
-<dt class="field-even">github_org<span class="colon">:</span></dt>
-<dd class="field-even"><p>(billingegroup)</p>
-</dd>
 <dt class="field-odd">github_repo_name<span class="colon">:</span></dt>
 <dd class="field-odd"><p>(my-project)</p>
 </dd>
@@ -116,15 +177,50 @@
 <dt class="field-odd">package_dir_name<span class="colon">:</span></dt>
 <dd class="field-odd"><p>(my_project)</p>
 </dd>
-<dt class="field-even">project_owner_name<span class="colon">:</span></dt>
+<dt class="field-even">maintainer_name<span class="colon">:</span></dt>
 <dd class="field-even"><p>(Simon Billinge)</p>
 </dd>
 </dl>
 </div></blockquote>
 </li>
+<li><p>Answer the following questions:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description and example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>project_name</p></td>
+<td><p>The project name displayed on README. e.g., my-package</p></td>
+</tr>
+<tr class="row-odd"><td><p>github_username_or_orgname</p></td>
+<td><p>The GitHub username or organization name, e.g., sbillinge or billingegroup</p></td>
+</tr>
+<tr class="row-even"><td><p>github_repo_name</p></td>
+<td><p>The GitHub repository name. Use <code class="docutils literal notranslate"><span class="pre">name-with-hypens</span></code>. e.g., my-package</p></td>
+</tr>
+<tr class="row-odd"><td><p>conda_pypi_package_dist_name</p></td>
+<td><p>The name displayed on PyPI and conda-forge. Use <code class="docutils literal notranslate"><span class="pre">name-with-hypens</span></code>. e.g., my-package</p></td>
+</tr>
+<tr class="row-even"><td><p>package_dir_name</p></td>
+<td><p>The name of the package directory under <code class="docutils literal notranslate"><span class="pre">src</span></code>. Use <code class="docutils literal notranslate"><span class="pre">name_with_underscores</span></code>. e.g., my_package</p></td>
+</tr>
+<tr class="row-odd"><td><p>contributors</p></td>
+<td><p>The contributors involved in the project. e.g., Sangjoon Lee, Simon Billinge</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cd</span></code> into the project directory created by the <code class="docutils literal notranslate"><span class="pre">package</span> <span class="pre">create</span></code> command above:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;project-name&gt;
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;project-name&gt;
 </pre></div>
 </div>
 </div></blockquote>
@@ -133,14 +229,13 @@
 </ol>
 </section>
 <section id="check-folder-structure">
-<h1>Check folder structure<a class="headerlink" href="#check-folder-structure" title="Link to this heading"></a></h1>
+<h2>Check folder structure<a class="headerlink" href="#check-folder-structure" title="Link to this heading"></a></h2>
 <ol class="arabic">
 <li><p>When you <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the new directory, you will see a folder structure as shown below:</p>
 <blockquote>
 <div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>my-package/
 ├── LICENSE.rst
 ├── README.md
-├── environment.yml
 ├── pyproject.toml
 ├── requirements
 │   ├── conda.txt
@@ -159,11 +254,11 @@
 </ol>
 </section>
 <section id="install-your-package-locally">
-<h1>Install your package locally<a class="headerlink" href="#install-your-package-locally" title="Link to this heading"></a></h1>
+<h2>Install your package locally<a class="headerlink" href="#install-your-package-locally" title="Link to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Build and install the package locally:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
 </div>
 <div class="admonition note">
@@ -175,7 +270,7 @@
 </li>
 <li><p>Check your package is installed in the conda environment:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>list
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>list
 </pre></div>
 </div>
 </div></blockquote>
@@ -184,37 +279,37 @@
 </ol>
 </section>
 <section id="run-tests-with-your-locally-installed-package">
-<h1>Run tests with your locally installed package<a class="headerlink" href="#run-tests-with-your-locally-installed-package" title="Link to this heading"></a></h1>
+<h2>Run tests with your locally installed package<a class="headerlink" href="#run-tests-with-your-locally-installed-package" title="Link to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Install the testing dependencies for testing.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>--file<span class="w"> </span>requirements/test.txt
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>--file<span class="w"> </span>requirements/test.txt
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Then, run the tests using the following command:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pytest
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p>Ensure tests all pass.</p></li>
+<li><p>Ensure tests all pass with green checkmarks.</p></li>
 <li><p>Notice that in <code class="docutils literal notranslate"><span class="pre">tests/test_functions.py</span></code>, we are importing the locally installed package.</p></li>
 <li><p>Congratulations! Your package is now available for use in any Python script or Jupyter notebook on your local computer.</p></li>
 <li><p>Done! Let’s now learn to automate your code formatting locally.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Why is it required to list dependencies both under <code class="docutils literal notranslate"><span class="pre">pip.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">conda.txt</span></code>? Please refer to the FAQ section <span class="xref std std-ref">here</span>.</p>
+<p>Why is it required to list dependencies both under <code class="docutils literal notranslate"><span class="pre">pip.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">conda.txt</span></code>? Please refer to the FAQ section <a class="reference internal" href="../frequently-asked-questions.html#faq-dependency-management"><span class="std std-ref">here</span></a>.</p>
 </div>
 <ol class="arabic simple">
 <li><p>Done! You have successfully formatted your code. But, let’s also make sure these hooks are triggered automatically when you make a commit.</p></li>
 </ol>
 </section>
 <section id="create-a-new-project-on-github">
-<h1>Create a new project on GitHub<a class="headerlink" href="#create-a-new-project-on-github" title="Link to this heading"></a></h1>
+<h2>Create a new project on GitHub<a class="headerlink" href="#create-a-new-project-on-github" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Visit <a class="reference external" href="https://github.com/new">https://github.com/new</a></p></li>
 <li><p>Choose and enter values for <code class="docutils literal notranslate"><span class="pre">Owner</span></code> and <code class="docutils literal notranslate"><span class="pre">Repository</span> <span class="pre">name</span></code>.</p></li>
@@ -227,18 +322,18 @@
 </ol>
 </section>
 <section id="trigger-pre-commit-hooks-automatically-with-git-commit">
-<h1>Trigger pre-commit hooks automatically with Git commit<a class="headerlink" href="#trigger-pre-commit-hooks-automatically-with-git-commit" title="Link to this heading"></a></h1>
+<h2>Trigger pre-commit hooks automatically with Git commit<a class="headerlink" href="#trigger-pre-commit-hooks-automatically-with-git-commit" title="Link to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Create a local Git repository in the project directory:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>init
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Set up the remote GitHub repository. Let’s call this repository <code class="docutils literal notranslate"><span class="pre">origin</span></code>, a common name for the remote repository.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/&lt;OWNER&gt;/&lt;project-name&gt;.git
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/&lt;OWNER&gt;/&lt;project-name&gt;.git
 </pre></div>
 </div>
 </div></blockquote>
@@ -247,7 +342,7 @@
 <ol class="arabic" id="level-4-pull-license">
 <li><p>Pull the code from the remote <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. Recall we had a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file created.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
 <div class="admonition note">
@@ -258,7 +353,7 @@
 </li>
 <li><p>Create a new local branch from the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. Let’s call this branch <code class="docutils literal notranslate"><span class="pre">skpkg-proj</span></code>.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>skpkg-proj
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>skpkg-proj
 </pre></div>
 </div>
 <div class="admonition note">
@@ -269,15 +364,15 @@
 </li>
 <li><p>Configure <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> to run each time a new commit is made:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>install
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pre-commit<span class="w"> </span>install
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Let’s now stage and commit the code:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;skpkg: start a new project with skpkg system template&quot;</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;skpkg: start a new project with skpkg system template&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -297,26 +392,26 @@ docformatter.............................................................Passed
 </li>
 <li><p>You will see the new commit in the git log:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>log
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Did you see any failed <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hooks? If so, no commit will be made. Simply re-run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;file&gt;</span></code> on the files that have been modified by <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> and re-enter the same commit message again, such as <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;skpkg:</span> <span class="pre">start</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">project</span> <span class="pre">with</span> <span class="pre">skpkg</span> <span class="pre">system</span> <span class="pre">template&quot;</span></code>.</p>
+<p>Did you see any failed <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hooks? If so, no commit will be made. Simply re-run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;file&gt;</span></code> on the files that have been modified by <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> and re-enter the same commit message again, such as <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;skpkg:</span> <span class="pre">start</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">project</span> <span class="pre">with</span> <span class="pre">skpkg</span> <span class="pre">system</span> <span class="pre">template&quot;</span></code>. If you are having trouble getting a commit to be accepted, please refer to the FAQ section <a class="reference internal" href="../frequently-asked-questions.html#faq-pre-commit-error"><span class="std std-ref">here</span></a>.</p>
 </div>
 </div></blockquote>
 </li>
-<li><p>Finally, let’s now remove the <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> file. Recall that we have both <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> and <code class="docutils literal notranslate"><span class="pre">LICENSE.rst</span></code> mentioend <a class="reference internal" href="../start-new-project-package-lightweight.html#level-4-pull-license"><span class="std std-ref">above</span></a>.</p>
+<li><p>Finally, let’s now remove the <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> file. Recall that we have both <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> and <code class="docutils literal notranslate"><span class="pre">LICENSE.rst</span></code> mentioend <a class="reference internal" href="#level-4-pull-license"><span class="std std-ref">above</span></a>.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>LICENSE
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>rm<span class="w"> </span>LICENSE
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Let’s now stage and commit the code.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>LICENSE
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;chore: remove LICENSE file created from initial GitHub repo creation&quot;</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>LICENSE
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;chore: remove LICENSE file created from initial GitHub repo creation&quot;</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -328,11 +423,11 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 </ol>
 </section>
 <section id="push-your-code-to-the-remote-github-repository">
-<h1>Push your code to the remote GitHub repository<a class="headerlink" href="#push-your-code-to-the-remote-github-repository" title="Link to this heading"></a></h1>
+<h2>Push your code to the remote GitHub repository<a class="headerlink" href="#push-your-code-to-the-remote-github-repository" title="Link to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Let’s now push our code to the new <code class="docutils literal notranslate"><span class="pre">skpkg-proj</span></code> local branch and push to the remote <code class="docutils literal notranslate"><span class="pre">skpkg-proj</span></code> branch.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class="w"> </span>origin<span class="w"> </span>skpkg-proj
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class="w"> </span>origin<span class="w"> </span>skpkg-proj
 </pre></div>
 </div>
 </div></blockquote>
@@ -342,7 +437,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 </ol>
 </section>
 <section id="create-a-pull-request-from-skpkg-proj-to-main">
-<h1>Create a pull request from <code class="docutils literal notranslate"><span class="pre">skpkg-proj</span></code> to <code class="docutils literal notranslate"><span class="pre">main</span></code><a class="headerlink" href="#create-a-pull-request-from-skpkg-proj-to-main" title="Link to this heading"></a></h1>
+<h2>Create a pull request from <code class="docutils literal notranslate"><span class="pre">skpkg-proj</span></code> to <code class="docutils literal notranslate"><span class="pre">main</span></code><a class="headerlink" href="#create-a-pull-request-from-skpkg-proj-to-main" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Visit your GitHub repository.</p></li>
 <li><p>Click on the new green button that says <code class="docutils literal notranslate"><span class="pre">Compare</span> <span class="pre">&amp;</span> <span class="pre">pull</span> <span class="pre">request</span></code>.</p></li>
@@ -361,14 +456,28 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 </div>
 </section>
 <section id="setup-pre-commit-ci-in-github-repository-for-public-repository">
-<h1>Setup pre-commit CI in GitHub repository for public repository<a class="headerlink" href="#setup-pre-commit-ci-in-github-repository-for-public-repository" title="Link to this heading"></a></h1>
+<h2>Setup pre-commit CI in GitHub repository for public repository<a class="headerlink" href="#setup-pre-commit-ci-in-github-repository-for-public-repository" title="Link to this heading"></a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p><code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">CI</span></code> is FREE for <code class="docutils literal notranslate"><span class="pre">public</span></code> repositories. If you are using a private repository, you may skip this section.</p>
 </div>
+<ol class="arabic">
+<li><p>Visit <a class="reference external" href="https://github.com/apps/pre-commit-ci">https://github.com/apps/pre-commit-ci</a> and click <span class="guilabel">Configure</span>.</p></li>
+<li><p>Select the repository(s).</p></li>
+<li><p>Done!</p></li>
+<li><p>Let’s attempt to activate the <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">CI</span></code> by sending an empty commit to the remote branch by running</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--allow-empty<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;ci: empty commit to test pre-commit CI setup&quot;</span>
+$<span class="w"> </span>git<span class="w"> </span>push
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Notice you have an additional check in the pull request!</p></li>
+</ol>
 </section>
 <section id="merge-the-pull-request">
-<h1>Merge the pull request<a class="headerlink" href="#merge-the-pull-request" title="Link to this heading"></a></h1>
+<h2>Merge the pull request<a class="headerlink" href="#merge-the-pull-request" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Merge the PR.</p></li>
 <li><p>Delete the <code class="docutils literal notranslate"><span class="pre">skpkg-proj</span></code> branch after merging.</p></li>
@@ -377,13 +486,13 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 </ol>
 </section>
 <section id="optional-how-to-develop-your-code-moving-forward">
-<h1>(Optional) How to develop your code moving forward<a class="headerlink" href="#optional-how-to-develop-your-code-moving-forward" title="Link to this heading"></a></h1>
+<h2>(Optional) How to develop your code moving forward<a class="headerlink" href="#optional-how-to-develop-your-code-moving-forward" title="Link to this heading"></a></h2>
 <p>Assume that you have successfully followed the previous steps. Now, you want to add new code to your GitHub repository. Perhaps you are working with a group of people. Here is a high-level overview with step-by-step instructions on how to do that:</p>
 <ol class="arabic">
 <li><p>Pull the latest code from the remote <code class="docutils literal notranslate"><span class="pre">main</span></code> branch:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
-git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>main
+$<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
 <div class="admonition note">
@@ -394,29 +503,29 @@ git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </
 </li>
 <li><p>Ensure that your local <code class="docutils literal notranslate"><span class="pre">main</span></code> branch is synced with the remote <code class="docutils literal notranslate"><span class="pre">main</span></code> branch by running:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>log
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Create a new local branch from the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. Let’s call this branch <code class="docutils literal notranslate"><span class="pre">skpkg-proj</span></code>:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>&lt;branch-name&gt;
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>&lt;branch-name&gt;
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Modify any file that you want. Then, stage and commit the changes:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>&lt;file-modified-added-deleted&gt;
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: &lt;your commit message&gt;&quot;</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>&lt;file-modified-added-deleted&gt;
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: &lt;your commit message&gt;&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Push your code from <code class="docutils literal notranslate"><span class="pre">&lt;branch-name&gt;</span></code> to the remote <code class="docutils literal notranslate"><span class="pre">&lt;branch-name&gt;</span></code> branch:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class="w"> </span>origin<span class="w"> </span>&lt;branch-name&gt;
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class="w"> </span>origin<span class="w"> </span>&lt;branch-name&gt;
 </pre></div>
 </div>
 </div></blockquote>
@@ -430,18 +539,22 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 </ol>
 </section>
 <section id="what-s-next">
-<h1>What’s next?<a class="headerlink" href="#what-s-next" title="Link to this heading"></a></h1>
+<h2>What’s next?<a class="headerlink" href="#what-s-next" title="Link to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Make sure you check out the best practices and Billinge group’s guidelines for communications and examples in the FAQ section <a class="reference internal" href="../frequently-asked-questions.html#frequently-asked-questions"><span class="std std-ref">here</span></a>.</p>
 </div>
-<p>Once you are ready to release your package to the wider world, let’s proceed to <a class="reference internal" href="../start-new-project-package-full.html#start-new-project-package-full"><span class="std std-ref">Level 5</span></a> where you will learn to release your package to PyPI and conda-forge so that your package can be installed by anyone in the world.</p>
+<p>Once you are ready to release your package to the wider world, let’s proceed to <a class="reference internal" href="level-5-tutorial.html#level-5-tutorial"><span class="std std-ref">Level 5</span></a> where you will learn to release your package to PyPI and conda-forge so that your package can be installed by anyone in the world.</p>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="level-1-2-3-tutorials.html" class="btn btn-neutral float-left" title="(Level 1-3) Reuse code within a file, across files and folders" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="level-5-tutorial.html" class="btn btn-neutral float-right" title="(Level 5) Share code as a publicly installable Python package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

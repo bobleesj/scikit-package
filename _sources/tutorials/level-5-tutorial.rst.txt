@@ -1,3 +1,9 @@
+.. _level-5-tutorial:
+
+(Level 5) Share code as a publicly installable Python package
+--------------------------------------------------------------
+
+
 Overview
 ^^^^^^^^
 
@@ -23,72 +29,46 @@ Create a new project with ``scikit-package``
 
 Make sure you have the latest version of ``scikit-package`` installed as shown in Level 4.
 
-.. include:: snippets/scikit-installation.rst
+.. include:: ../snippets/scikit-installation.rst
 
-Go to your project directory
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _level-5-new-project:
+
+Create a new project folder with ``scikit-package`` using the Level-5 ``public`` template.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Visit your project directory and sync with the latest version of the main branch.
 
     .. code-block:: bash
 
-        cd <project-name>
-        git checkout main
-        git pull origin main
+        $ cd <project-name>
+        $ git checkout main
+        $ git pull origin main
 
 #. Create a new branch where you will initiate a new project.
 
     .. code-block:: bash
 
-        git checkout -b skpkg-public
+        $ git checkout -b skpkg-public
 
 #. Create a new project with ``scikit-package`` using the Level-5 ``public`` template.
 
     .. code-block:: bash
 
-        package create public
-
-.. _level-5-user-input:
+        $ package create public
 
 #. Answer the following questions:
 
-    :proj_owner_name: e.g., Simon J. L. Billinge
+.. include:: ../snippets/user-input-level-5.rst
 
-    :proj_owner_email: e.g., sbillinge@columbia.edu
+Enter the new folder
+^^^^^^^^^^^^^^^^^^^^
 
-    :proj_owner_gh_username: e.g., sbillinge
-
-    :contributors: e.g., Billinge Group members and community contributors.
-
-    :license_holders: e.g., The Trustees of Columbia University in the City of New York.
-
-    :proj_name: For namespace packages, use e.g., ``<org.project-name>``.
-
-    :gh_org: The GitHub organization name or owner's GitHub username. e.g., billingegroup or sbillinge.
-
-    :gh_repo_name: e.g., my-package. The repository name of the project displayed on GitHub.
-
-    :package_dist_name: The name in the package distribution in PyPI and conda-forge.
-
-    :package_dir_name: The name of the package directory under ``src``.
-
-    :proj_short_description: e.g., A Python package standard and generator for scientific code.
-
-    :keywords: Each word is separated by a comma and a space. e.g., ``pdf, diffraction, neutron, x-ray``.
-
-    :min_python_version: The minimum Python version for package distribution.
-
-    :max_python_version: The maximum Python version for package distribution.
-
-    :needs_c_code_compiled: Whether C/C++ is compiled to build the package. For a pure Python package, type ``1`` to select ``No``.
-
-    :has_gui_tests: Whether the package runs headless testing in GitHub CI. If your package does not contain a GUI, type ``1`` to select ``No``.
-
-#. Enter the Level 5 project.
+#. Enter into the Level 5 projet directory.
 
     .. code-block:: bash
 
-        cd my-package
+        $ cd my-package
 
 #. Check that you have the following nested folder structure. Here is the structure. We will go through each file and folder.
 
@@ -109,8 +89,7 @@ Go to your project directory
             ├── src
             └── tests
         ├── LICENSE.rst
-        ├── README.rst
-        ├── environment.yml
+        ├── README.md
         ├── pyproject.toml
         ├── requirements
         ├── src
@@ -123,31 +102,35 @@ Migration code from Level 4 to Level 5
 
     .. code-block:: bash
 
-        mv ../.git .
+        $ mv ../.git .
 
 #. Move the ``src`` and ``tests`` folders from Level 4 to Level 5.
 
     .. code-block:: bash
 
-        cp -n -r ../src .
-        cp -n -r ../tests .
+        $ cp -n -r ../src .
+        $ cp -n -r ../tests .
 
 #. Copy the requirements files from Level 4 to Level 5.
 
     .. code-block:: bash
 
-        cp ../requirements/conda.txt ./requirements/conda.txt
-        cp ../requirements/pip.txt ./requirements/pip.txt
-        cp ../requirements/test.txt ./requirements/test.txt
+        $ cp ../requirements/conda.txt ./requirements/conda.txt
+        $ cp ../requirements/pip.txt ./requirements/pip.txt
+        $ cp ../requirements/test.txt ./requirements/test.txt
 
 #. At this point, you should be able to install the package locally and test it.
 
     .. code-block:: bash
 
-        pip install -e .
-        pytest
+        $ pip install -e .
+        $ pytest
 
-#. Once the tests pass, let's manually migrate hand-written files like ``README.rst`` from Level 4 to Level 5.
+#. Once the tests pass, let's manually migrate hand-written files like ``README.md`` from Level 4 to Level 5.
+
+    .. note::
+
+        In Level 5, we provide a rich template for ``README.rst`` instead of using ``README.md``. If you already had a rich ``README.md`` in Level 4, you can use a tool to convert ``.md`` to ``.rst``. For example, you may use this free `CloudConvert <https://cloudconvert.com/md-to-rst/>`_ tool.
 
 #. Done!
 
@@ -168,9 +151,9 @@ Upload your code to GitHub
 
     .. code-block:: bash
 
-        git add .
-        git commit -m "skpkg: migrate from Level 4 to Level 5"
-        git push --set-upstream origin skpkg-public
+        $ git add .
+        $ git commit -m "skpkg: migrate from Level 4 to Level 5"
+        $ git push --set-upstream origin skpkg-public
 
 #. Let's not migrate our code to the ``main`` branch just yet since mistakes could happen. Let's create a new branch called ``skpkg-migration``.
 
@@ -195,24 +178,26 @@ Upload your code to GitHub
 Setup Codecov token for GitHub repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. include:: snippets/github-codecov-setup.rst
+.. include:: ../snippets/github-codecov-setup.rst
 
 Allow GitHub Actions to write comments in PRs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As you will see in the next section, we'd like to have GitHub Actions write comments such as warnings. Let's specify the permissions in the GitHub repository settings by following the steps below.
 
-#. Visit the ``Settings`` page of the GitHub repository.
+#. Visit the :guilabel:`Settings` page of the GitHub repository.
 
-#. Click on ``Actions`` in the left sidebar.
+#. Click on :guilabel:`Actions` in the left sidebar.
 
-#. Click on ``General`` in the left sidebar.
+#. Click on :guilabel:`General` in the left sidebar.
 
-#. Scroll down to the ``Workflow permissions`` section.
+#. Scroll down to the :guilabel:`Workflow permissions` section.
 
-#. Select ``Read and write permissions``.
+#. Select :guilabel:`Read and write permissions`.
 
 #. Done!
+
+.. _news-keyboard-shortcut:
 
 Add news items in the GitHub pull request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -229,31 +214,32 @@ Let's create a news item for the changes made in this PR.
 
     .. code-block:: bash
 
-        git fetch --all
+        $ git fetch --all
 
 #. Check out the ``skpkg-migration`` branch and sync with the remote branch.
 
     .. code-block:: bash
 
-        git checkout skpkg-migration
-        git pull origin skpkg-migration
+        $ git checkout skpkg-migration
+        $ git pull origin skpkg-migration
 
 #. Make a copy of ``news/TEMPLATE.rst`` and rename to ``news/<branch-name>.rst``.
 
 #. (optional) If you are using a Linux shell, you can setup an ``alias`` to make the creation of the news file ready for editing much quicker and easier:
 
+
     Add the following line to ``~/.bashrc`` or ``~/.zshrc`` file:
 
     .. code-block:: bash
 
-        alias cpnews="cp news/TEMPLATE.rst news/$(git rev-parse --abbrev-ref HEAD).rst"
+        $ alias cpnews="cp news/TEMPLATE.rst news/$(git rev-parse --abbrev-ref HEAD).rst"
 
     Run the following command to apply the shell configuration.
 
     .. code-block:: bash
 
-        source ~/.bashrc  # if you are using bash
-        source ~/.zshrc  # if you are using zsh
+        $ source ~/.bashrc  # if you are using bash
+        $ source ~/.zshrc  # if you are using zsh
 
     Now, whenever you want to create a news file, simply navigate to the top-level directory in the project and type ``cpnews`` on the command line.
 
@@ -280,9 +266,9 @@ Let's create a news item for the changes made in this PR.
 
     .. code-block:: bash
 
-        git add news/skpkg-migration.rst
-        git commit -m "chore: Add news item for skpkg-migration"
-        git push origin skpkg-migration
+        $ git add news/skpkg-migration.rst
+        $ git commit -m "chore: Add news item for skpkg-migration"
+        $ git push origin skpkg-migration
 
 Congratulations! You are done with migrating your package from Level 4 to Level 5. You can now start writing docstrings for your Python code and tests for your code. Then, also write good documentation for your code, including Getting Started guides.
 
@@ -290,15 +276,12 @@ Congratulations! You are done with migrating your package from Level 4 to Level 
 
         For writing great news items, Python docstrings, tests, and commit messages, check the Billinge research group's guidelines :ref:`here<billinge-group-standards>`.
 
-Build API reference documentation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you want to build the API documentation for your package like https://www.diffpy.org/diffpy.utils/api/diffpy.utils.html, please follow the instructions below.
-
-.. include:: snippets/doc-api-create.rst
-
+(Optional) Build API reference documentation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 
+.. include:: ../snippets/api-reference-doc.rst
 
 Ready for public release?
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Congratulations! Your package has been successfully migrated. This has been the most challenging step. Now, let's release your package to PyPI and conda-forge. Please visit the :ref:`Release your package <pypi-release-guide>` page to learn how to release your package!
+Congratulations! Your package has been successfully migrated. This has been the most challenging step. Now, let's release your package to PyPI and conda-forge. Please visit the :ref:`Release your package <release-pypi-github>` page to learn how to release your package!

@@ -1,12 +1,7 @@
-
-#######
-
-.. |title| replace:: scikit-package documentation
-
 | Software version |release|.
 | Last updated |today|.
 
-Welcome to Billinge Group's Python ``scikit-package`` documentation!
+Welcome to Billinge Group's ``scikit-package`` documentation!
 
 ``scikit-package`` offers tools and practices for the scientific community to make better and more reusable Scientific Python packages and applications.
 
@@ -65,7 +60,7 @@ The full list of packages is as follows:
 How do I get started?
 ---------------------
 
-Please visit the :ref:`Getting started <getting-started>` page to learn how to navigate the documentation!
+Please visit the :ref:`Overview <overview>` page to learn how to navigate the documentation!
 
 What are the full benefits when I reach Level 5?
 -------------------------------------------------
@@ -80,7 +75,7 @@ What are the full benefits when I reach Level 5?
 
 For technical users, here are some of the advanced features:
 
-- Namespace package support, e.g., ``import diffpy.utils``.
+- Namespace package import, e.g., ``import diffpy.utils``.
 - Generate conda-package ``meta.yaml`` with ``package create conda-forge``.
 - Support headless GitHub CI testing for GUI applications.
 - Support non-pure Python package releases with ``cibuildwheel``.
@@ -103,9 +98,10 @@ Authors
 
 - Sangjoon Lee (sl5400@columbia.edu)
 - Andrew Yang (ay2546@columbia.edu)
+- Caden Myers (cjm2304@columbia.edu)
 - Simon Billinge (sb2896@columbia.edu)
 
-scikit-package is developed by Billinge Group and its community contributors.
+``scikit-package`` is developed by Billinge Group and its community contributors.
 
 For a detailed list of contributors, see
 https://github.com/Billingegroup/scikit-package/graphs/contributors.
@@ -114,29 +110,63 @@ https://github.com/Billingegroup/scikit-package/graphs/contributors.
 Acknowledgements
 ================
 
-The Billinge Group's scikit-package has been modified from the NSLS-II scientific cookiecutter: https://github.com/nsls-ii/scientific-python-cookiecutter
+The Billinge Group's ``scikit-package`` has been modified from the NSLS-II scientific cookiecutter: https://github.com/nsls-ii/scientific-python-cookiecutter
 
-=================
-Table of contents
-=================
+
 .. toctree::
    :maxdepth: 2
+   :hidden:
+   :caption: GETTING STARTED
 
-   getting-started
-   start-new-project-no-package
-   start-new-project-package-lightweight
-   start-new-project-package-full
-   pypi-release-guide
-   conda-forge-release-guide
-   migration-guide
+   overview
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: TUTORIALS
+
+   tutorials/level-1-2-3-tutorials
+   tutorials/level-4-tutorial
+   tutorials/level-5-tutorial
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: RELEASE GUIDES
+
+   release-guides/pypi-github
+   release-guides/conda-forge
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: PROGRAMMING GUIDES
+
    billinge-group-standards
-   frequently-asked-questions
-   license
-   release
 
-=======
-Indices
-=======
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: EXAMPLES
+
+   examples/migration
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: SUPPORT
+
+   frequently-asked-questions
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: REFERENCE
+
+   release
+   license
+
+
+
 
 * :ref:`genindex`
-* :ref:`search`
