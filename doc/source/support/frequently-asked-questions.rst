@@ -348,6 +348,63 @@ Visit the following URL of your package: ``https://github.com/<org-name>/<packag
 
 Click ``Run workflow`` and select the ``main`` branch. Your online documentation will be updated with the latest changes without a new release.
 
+How can I insert plots in the documentation?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Here we provide a quick tutorial on how to insert plots in the documentation using ``matplotlib``.
+
+#. Add ``matplotlib-base`` under ``requirements/docs.txt`` and install it:
+
+    .. code-block:: bash
+
+        conda install --file requirements/docs.txt
+
+#. Add ``"matplotlib.sphinxext.plot_directive"`` in ``conf.py`` under ``extensions``:
+
+    .. code-block:: python
+
+        extensions = [
+            ...
+            "matplotlib.sphinxext.plot_directive",
+            ...
+        ]
+
+#. Create ``doc/source/plots/example_plot.py`` and add the following code:
+
+  .. code-block:: python
+    
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    x = np.linspace(0, 5, 100)
+    y = np.sin(x)
+    plt.plot(x, y)
+    plt.title('Example plot')
+    plt.xlabel('X-axis')
+    plt.ylabel('Y-axis')
+    plt.show()
+
+  .. seealso:: 
+    
+      Of course you can also directly import your package in ``doc/source/plots/example_plot.py`` as shown below:
+
+      .. code-block:: python
+
+        from <your_pakcage> import <module_name>
+        <module_name>.plot_example()
+
+#. In any of the rendered ``.rst`` file, add the following lines:
+
+  .. code-block:: rst
+
+    .. plot:: plots/example_plot.py
+
+    The plot caption.
+
+  .. note:: 
+
+    If your plot is not being modified, run ``rm -rf doc/_build`` to remove the existing build folder.
+
 .. _faq-doc-favicon-logo:
 
 How do I add a favicon and logo to the documentation?
@@ -366,6 +423,7 @@ In ``doc/source/conf.py``, add the following lines:
   html_logo = "<path-to-logo>"
 
 The clickable logo will be displayed above the menu bar on the left side of the page.
+
 
 conda-forge
 -----------
