@@ -351,9 +351,13 @@ Click ``Run workflow`` and select the ``main`` branch. Your online documentation
 How can I insert plots in the documentation?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Here we provide a quick tutorial on how to insert plots in the documentation using ``matplotlib``.
+Here we provide a quick tutorial on how to insert plots in the documentation using ``matplotlib`` shown below:
 
-#. Add ``matplotlib-base`` under ``requirements/docs.txt`` and install it:
+.. image:: ../img/doc-plot.png
+   :alt: How to embed plot in documentation
+   :width: 70%
+
+#. Add ``matplotlib-base`` under ``requirements/docs.txt``
 
     .. code-block:: bash
 
@@ -386,14 +390,14 @@ Here we provide a quick tutorial on how to insert plots in the documentation usi
 
   .. seealso:: 
     
-      Of course you can also directly import your package in ``doc/source/plots/example_plot.py`` as shown below:
+      You may also import your package in ``doc/source/plots/example_plot.py`` as shown below:
 
       .. code-block:: python
 
         from <your_pakcage> import <module_name>
         <module_name>.plot_example()
 
-#. In any of the rendered ``.rst`` file, add the following lines:
+#. In your ``index.rst`` for example, import the Python module as shown below:
 
   .. code-block:: rst
 
@@ -403,7 +407,7 @@ Here we provide a quick tutorial on how to insert plots in the documentation usi
 
   .. note:: 
 
-    If your plot is not being modified, run ``rm -rf doc/_build`` to remove the existing build folder.
+    If your plot is not being modified, run ``rm -rf doc/_build`` to remove the existing build folder and save any of the .rst files under the ``doc/source`` directory while you are using ``sphinx-reload``. You should see the new plot re-rendered.
 
 .. _faq-doc-favicon-logo:
 
