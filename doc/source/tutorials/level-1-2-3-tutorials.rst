@@ -292,66 +292,68 @@ Now that the folder structure is created, let's go through the files and folders
 
   - ``requirements.txt`` lists your project's dependencies. These are Python packages that are used throughout your project(s), which in this case includes ``numpy`` and ``pytest``. Please refer to the section "**Install dependencies**" below for more details on how to install them. You can add any other dependencies you need in this file:
 
-.. code-block:: python
+   .. code-block:: python
 
      # requirements.txt
      numpy
      pytest
 
-- The ``tests`` folder contains tests for your shared functions. For example, ``test_shared_functions.py`` includes tests for the ``dot_product()`` function using ``pytest``. General naming convention for test files is ``test_<module_name>.py``. Similarly, test function names should be ``test_<function_name>()``. This is how ``pytest`` recognizes them as test functions. This can also contain tests for your sub-project modules.
+.. seealso::
 
-To write your own test, follow these steps:
+     - The ``tests`` folder contains tests for your shared functions. For example, ``test_shared_functions.py`` includes tests for the ``dot_product()`` function using ``pytest``. General naming convention for test files is ``test_<module_name>.py``. Similarly, test function names should be ``test_<function_name>()``. This is how ``pytest`` recognizes them as test functions. This can also contain tests for your sub-project modules.
 
-1. Create your function in a module. For example, under the ``proj_one`` directory, you might create a module called ``my_module.py`` that defines a function ``my_function()``.
+     To write your own test, follow these steps:
 
-2. Create a corresponding test file in the ``tests`` directory. The test file should be named ``test_<module_name>.py`` — in this case, ``test_my_module.py``.
+     1. Create your function in a module. For example, under the ``proj_one`` directory, you might create a module called ``my_module.py`` that defines a function ``my_function()``.
 
-3. Inside the test file, create a function that tests your code. The test function should be named ``test_<function_name>()`` — in this case, ``test_my_function()``.
+     2. Create a corresponding test file in the ``tests`` directory. The test file should be named ``test_<module_name>.py`` — in this case, ``test_my_module.py``.
 
-Following this naming pattern ensures that ``pytest`` can automatically discover and run your tests:
+     3. Inside the test file, create a function that tests your code. The test function should be named ``test_<function_name>()`` — in this case, ``test_my_function()``.
 
-.. code-block:: python
+     Following this naming pattern ensures that ``pytest`` can automatically discover and run your tests:
 
-     # test_shared_functions.py
-     import numpy as np
-     import pytest
-     import shared_functions
+     .. code-block:: python
 
-
-     def test_dot_product_2D_list():
-     a = [1, 2]
-     b = [3, 4]
-     expected = 11.0
-     actual = shared_functions.dot_product(a, b)
-     assert actual == expected
+          # test_shared_functions.py
+          import numpy as np
+          import pytest
+          import shared_functions
 
 
-     def test_dot_product_3D_list():
-     a = [1, 2, 3]
-     b = [4, 5, 6]
-     expected = 32.0
-     actual = shared_functions.dot_product(a, b)
-     assert actual == expected
+          def test_dot_product_2D_list():
+          a = [1, 2]
+          b = [3, 4]
+          expected = 11.0
+          actual = shared_functions.dot_product(a, b)
+          assert actual == expected
 
 
-     @pytest.mark.parametrize(
-     "a, b, expected",
-     [
-          # Test whether the dot product function works with 2D and 3D vectors
-          # C1: lists, expect correct float output
-          ([1, 2], [3, 4], 11.0),
-          ([1, 2, 3], [4, 5, 6], 32.0),
-          # C2: tuples, expect correct float output
-          ((1, 2), (3, 4), 11.0),
-          ((1, 2, 3), (4, 5, 6), 32.0),
-          # C3: numpy arrays, expect correct float output
-          (np.array([1, 2]), np.array([3, 4]), 11.0),
-          (np.array([1, 2, 3]), np.array([4, 5, 6]), 32.0),
-     ],
-     )
-     def test_dot_product(a, b, expected):
-     actual = shared_functions.dot_product(a, b)
-     assert actual == expected
+          def test_dot_product_3D_list():
+          a = [1, 2, 3]
+          b = [4, 5, 6]
+          expected = 32.0
+          actual = shared_functions.dot_product(a, b)
+          assert actual == expected
+
+
+          @pytest.mark.parametrize(
+          "a, b, expected",
+          [
+               # Test whether the dot product function works with 2D and 3D vectors
+               # C1: lists, expect correct float output
+               ([1, 2], [3, 4], 11.0),
+               ([1, 2, 3], [4, 5, 6], 32.0),
+               # C2: tuples, expect correct float output
+               ((1, 2), (3, 4), 11.0),
+               ((1, 2, 3), (4, 5, 6), 32.0),
+               # C3: numpy arrays, expect correct float output
+               (np.array([1, 2]), np.array([3, 4]), 11.0),
+               (np.array([1, 2, 3]), np.array([4, 5, 6]), 32.0),
+          ],
+          )
+          def test_dot_product(a, b, expected):
+          actual = shared_functions.dot_product(a, b)
+          assert actual == expected
 
 - ``.pre-commit-config.yaml`` is a configuration file for pre-commit hooks. To use ``pre-commit`` you must install the package with ``conda install pre-commit``. This file and its usage is described in more detail in the section "**Automatic code formatting with pre-commit**" below.
 
@@ -435,7 +437,7 @@ Then, you can run the code by running:
 
 .. code-block:: bash
 
-    python proj_one/reuse_code.py
+    python proj-one/proj_one_code.py
 
 Run tests
 ^^^^^^^^^^
