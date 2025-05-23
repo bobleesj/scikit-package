@@ -636,6 +636,8 @@ Notice that you also have ``origin`` with an URL linking to your forked reposito
 
   What is ``remote``? The term ``remote`` is the opposite of ``local``. In other words, ``remote`` refers to the repository that is hosted by GitHub. e.g., ``github.com/scikit-package/scikit-package`` or ``github.com/sbillinge``.
 
+.. _faq-github-terminology:
+
 Do you have a general summary of each term used in the GitHub workflow?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

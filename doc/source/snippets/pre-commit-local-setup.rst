@@ -1,4 +1,4 @@
-First, let's ensure that before we upload any of our code to the remote repository, we lint the code and ensure that it is formatted correctly. We will use a library called ``pre-commit`` to do this. 
+First, let's ensure that before we upload any of our code to the remote repository, we lint the code and ensure that it is formatted correctly. We will use a library called ``pre-commit`` to do this.
 
 #. Configure ``pre-commit`` to run each time a new commit is made:
 

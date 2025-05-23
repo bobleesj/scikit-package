@@ -6,17 +6,18 @@
 Overview
 --------
 
-1. Create a new GitHub repository
-
-2. Create a new Package locally with ``scikit-package``
-
-3. Upload your new project to the GitHub repository
-
-In this section, you will use ``scikit-package`` to start a new project that is readily installable. This ensures that your code is available across all files on your local computer. Hence, Level 4 is also referred to as ``system``.
-
-By the end of this tutorial, you will also have your package hosted on GitHub, where you will utilize GitHub Actions to run automatic linting and testing for the incoming code in your GitHub repository.
+You will learn to share code across any files in your computer. By the end of this tutorial, you will also have your package hosted on GitHub, where you will utilize GitHub Actions to run automatic linting and testing for the incoming code in your GitHub repository.
 
 This tutorial should take about 10 to 15 minutes.
+
+Table of contents
+^^^^^^^^^^^^^^^^^
+
+1. :ref:`create-new-project-with-scikit-package`
+
+2. :ref:`automate-code-linting-and-testing`
+
+3. :ref:`use-pull-request-to-upload-code-to-github`
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -25,15 +26,19 @@ For Level 4, we assume you have prior experience in developing scientific code i
 
 .. include:: ../snippets/scikit-installation.rst
 
-Step 1. Create a project with ``scikit-package``
------------------------------------------------
+.. _create-new-project-with-scikit-package:
+
+Step 1. Create a new package with ``scikit-package``
+----------------------------------------------------
 
 Create a new GitHub repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We assume we are staring a new project.
+In this tutorial, we will start by creating a new GitHub repository. The GitHub repository is where we will host our code online (remote).
 
 .. include:: ../snippets/github-create-new-repo.rst
+
+Let's now create a new package in your computer (local) next using ``scikit-package``.
 
 Create a new project with ``scikit-package``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -69,7 +74,7 @@ Create a new project with ``scikit-package``
 
         You may press the "Enter" key on your keyboard to accept the default value for the field provided in parentheses.
 
-#. ``cd`` into the project directory created by the ``package create system`` command above. We will assume that the user has enetered the project name as ``my-package``.
+#. ``cd`` into the project directory created by the ``package create system`` command above. We will assume that the user has entered the project name as ``my-package``.
 
     .. code-block:: bash
 
@@ -94,24 +99,12 @@ Create a new project with ``scikit-package``
         └── tests
             └── test_functions.py
 
-#. Done! Let's now install the package in your local conda environment and run the unit tests.
+#. Done! Let's now install your package in your local computer where the code can be used in any Python script or Jupyter notebook.
 
 Install your package locally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Create a new conda environment. Let's call this environment ``my-package-env``:
-
-    .. code-block:: bash
-
-        $ conda create -n my-package-env python=<LATEST-PYTHON-VERSION> \
-            --file requirements/conda.txt \
-            --file requirements/test.txt
-
-    .. note::
-
-          You may replace ``<LATEST-PYTHON-VERSION>`` with the latest version of Python which is |PYTHON_MAX_VERSION|.
-
-    So for the example above using ``my-package``, the actual command would be
 
     .. code-block:: bash
 
@@ -143,19 +136,6 @@ Install your package locally
 
         Why is it required to list dependencies both under ``pip.txt`` and ``conda.txt``? Please refer to the FAQ section :ref:`faq-dependency-management`.
 
-
-#. Check your package is installed in the conda environment:
-
-    .. code-block:: bash
-
-        $ conda list
-
-#. Install the testing dependencies for testing.
-
-    .. code-block:: bash
-
-        $ conda install --file requirements/test.txt
-
 #. Then, run the tests using the following command:
 
     .. code-block:: bash
@@ -171,41 +151,58 @@ Upload ``README.md`` to your GitHub repository
 
 At the moment, the GitHub repository is empty. Let's create a local branch called ``main`` and upload this local branch to the remote GitHub repository.
 
-#. Create a new local branch called ``skpkg``:
+#. Follow the series of steps to initialite ``Git``, create a new branch called ``main`` in the local repository and push the branch to the remote GitHub repository:
 
     .. code-block:: bash
 
         $ git init
-        $ git add REAMDE.md
+        $ git add README.md
         $ git commit -m "docs: add README.md"
         $ git branch -M main
         $ git remote add origin <your-github-repo-url>
         $ git push -u origin main
 
-#. Done! Ensure that your GitHub repository displays the content of ``README.md``. However, we still haven't upload other files like under ``src`` and ``tests`` files; we will do so to the ``main`` branch of the remote repository through a pull request in the following section but also configure some automated testing and linting for the code.
+    .. note:: What's ``origin``?
+
+        ``origin`` is the default name for the remote repository under your GitHub account. You can think of it as a nickname for the remote repository. You can also use any other name you like, but ``origin`` is the most common convention. For more, please read :ref:`faq-github-terminology`.
+
+    .. note:: What is ``-u`` next to ``git push``?
+
+        The ``-u`` flag tells Git to set the upstream (remote) branch for the local branch. This means that in the future, you can simply use ``git push`` without specifying the remote and branch name, and Git will know where to push your changes.
+
+#. Done! Ensure that your GitHub repository displays the content of ``README.md``. However, we still haven't upload other files like under ``src`` and ``tests`` files; we will do so to the ``main`` branch of the remote repository through a pull request in the following section. We will also configure some automated testing and linting for incoming code.
+
+.. _automate-code-linting-and-testing:
 
 Step 2. Automate code linting and testing with GitHub Actions
 -------------------------------------------------------------
 
-Setup pre-commit locally before pushing anything to GitHub
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Setup pre-commit to lint code before making a commit in the local repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: ../snippets/pre-commit-local-setup.rst
 
-Setup ``pre-commit CI`` in GitHub repository
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Setup ``pre-commit CI`` in the remote repository in each pull request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: ../snippets/github-pre-commit-setup.rst
 
+.. _use-pull-request-to-upload-code-to-github:
 
 Step 3. Upload rest of files to GitHub repository with pull request
 -------------------------------------------------------------------
 
-While we previously uploaded the ``README.md`` file to the remote GitHub ``main`` repository, this is not a good workflow. We want to ensure that before any code is pushed to the ``main`` branch, it is properly linted, tested, and reviewed. We will do so creating a pull request (PR) to the ``main`` branch.
-
+While we previously uploaded the ``README.md`` file to the remote GitHub ``main`` repository, this is not a recommended workflow. We want to ensure that before any code is pushed to the ``main`` branch, the incoming code **formatted**, **tested**, and **reviewed**. We will try to automate these tasks as much as we can while creating a pull request (PR) to the ``main`` branch.
 
 Create a pull request from ``skpkg`` to ``main``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Just in case, pull the latest code from the remote ``main`` branch:
+
+    .. code-block:: bash
+
+        $ git checkout main
+        $ git pull origin main
 
 #. Checkout a new branch called ``skpkg-system`` from the ``main`` branch:
 
@@ -213,7 +210,8 @@ Create a pull request from ``skpkg`` to ``main``
 
         $ git checkout -b skpkg-system
         $ git add .
-        $ git commit -m "skpkg: start a new project with skpkg system template"
+        $ git commit -m "skpkg: start a new project with skpkg Level 4 template"
+        $ git push -u origin skpkg-system
 
 #. Visit your GitHub repository online.
 
@@ -227,18 +225,33 @@ Create a pull request from ``skpkg`` to ``main``
 
 #. Wait for ``Tests on PR`` to run and pass. It runs ``pytest`` on the incoming code in each pull request.
 
-#. While waiting, review the files that are changed.
+#. Also wait for ``pre-commit`` CI to run and pass.
+
+    .. note:: Did ``pre-commit CI`` fail?
+
+        If the pre-commit failed, you will need to first pull the new commit created by ``pre-commit CI`` before making any new edits locally. You can do this by running the following command:
+
+        .. code-block:: bash
+
+         $ git pull origin skpkg-system
+         $ git add <file-modified-that-fixes-pre-commit-error>
+         $ git commit -m "chore: <your commit message>"
+         $ git push
+
+#. Click the :guilabel:`Files changed` in the PR to to review the new files added to the repository.
 
 #. Once reviewed, click on the ``Merge pull request`` button.
 
 #. Delete the ``skpkg-system`` remote branch after merging.
 
-#. Check that your remote ``main`` branch is updated by visiting your GitHub repository.
+#. Visit your GitHub repository and confirm that the ``main`` branch is updated.
 
 #. Congratulations! You are done with Level 4!
 
-How to develop your code moving forward
----------------------------------------
+Now that you are done with this tutorial, we provide you how you can further develop your code using pull requests moving forrward in the following section.
+
+(Recommended) How to develop your code moving forward using pull requests
+-------------------------------------------------------------------------
 
 Assume that you have successfully followed the previous steps. Now, you want to add new code to your GitHub repository. Perhaps you are working with a group of people. Here is a high-level overview with step-by-step instructions on how to do that:
 
@@ -296,7 +309,6 @@ What's next?
 
 .. note::
 
-    Make sure you check out the best practices and Billinge group's guidelines for communications and examples in the FAQ section :ref:`here<frequently-asked-questions>`.
-
+    Make sure you check out the best practices and Billinge group's guidelines for communications and examples in :ref:`frequently-asked-questions`.
 
 Once you are ready to release your package to the wider world, let's proceed to :ref:`level-5-tutorial` where you will learn to release your package to PyPI and conda-forge so that your package can be installed by anyone in the world.

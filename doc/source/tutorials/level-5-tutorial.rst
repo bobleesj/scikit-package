@@ -91,4 +91,3 @@ Add news items in the GitHub pull request
 
 What's next?
 ------------
-
