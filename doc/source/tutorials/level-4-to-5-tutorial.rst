@@ -1,18 +1,19 @@
 .. _level-4-to-5-tutorial:
 
-(Level 4 to 5) Migrate your package
-===================================
-
+(Level 4 to 5) Migrate your package for public release
+=======================================================
 
 Overview
 ---------
 
-In this guide, you will learn to migrate your package from Level 4 to Level 5. Once you have your package up to the Level 5 standard, you can share your code with the world.
+In this guide, you will learn to migrate your package from Level 4 to Level 5. Once you have your package up to the Level 5 standard, you can share your code with the world. Here are the 3 main steps:
 
-Prerequisites
-^^^^^^^^^^^^^
+- :ref:`migrate-existing-level-4-code-to-level-5`
+- :ref:`set-up-github-repository-for-level-5`
+- :ref:`create-pull-request-to-finalize-migration`
+- :ref:`other-useful-features-in-level-5`
+- :ref:`ready-for-public-release`
 
-You have already completed and created your scientific code in Level 4, where you have a lightweight Python package that can be installed locally and have your project hosted on GitHub.
 
 What's the difference between Level 4 and Level 5?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -24,18 +25,24 @@ Besides the final goal of releasing your package, you will also have the followi
 - Use GitHub tags to release your package to GitHub and PyPI.
 - Maintain changelogs and release notes automatically for each version.
 
-Migrate your package from Level 4 to Level 5
---------------------------------------------
+Prerequisites
+^^^^^^^^^^^^^
 
-Make sure you have the latest version of ``scikit-package`` installed as shown in Level 4.
+We assume you have already completed and created your scientific code in Level 4, where you have a lightweight Python package that can be installed locally and have your project hosted on GitHub.
 
 .. include:: ../snippets/scikit-installation.rst
 
+.. _migrate-existing-level-4-code-to-level-5:
+
+Step 1. Create a new Level 5 project and migrate files
+------------------------------------------------------
+
+The first step is to create a new project with ``scikit-package`` using the Level 5 ``public`` template. Then we will migrate the files and folderes from the existing Level 4 project to the new Level 5 project. Let's begin!
 
 .. _level-5-new-project:
 
-Create a new project folder with ``scikit-package`` using the Level-5 ``public`` template.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Create a new project with ``scikit-package``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Visit your project directory and sync with the latest version of the main branch.
 
@@ -51,7 +58,7 @@ Create a new project folder with ``scikit-package`` using the Level-5 ``public``
 
         $ git checkout -b skpkg-public
 
-#. Create a new project with ``scikit-package`` using the Level-5 ``public`` template.
+#. Create a new project with ``scikit-package`` using the Level 5 ``public`` template.
 
     .. code-block:: bash
 
@@ -59,10 +66,7 @@ Create a new project folder with ``scikit-package`` using the Level-5 ``public``
 
 #. Answer the following questions:
 
-.. include:: ../snippets/user-input-level-5.rst
-
-Enter the new folder
-^^^^^^^^^^^^^^^^^^^^
+    .. include:: ../snippets/user-input-level-5.rst
 
 #. Enter into the Level 5 project directory.
 
@@ -95,10 +99,16 @@ Enter the new folder
         ├── src
         └── tests
 
-Migration code from Level 4 to Level 5
+Migration files from Level 4 to Level 5
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Move the local ``git`` repository from the Level 4 to the Level 5 folder.
+#. Enter into the nested Level 5 project directory.
+
+    .. code-block:: bash
+
+        $ cd my-package
+
+#. Move the local ``git`` repository from the Level 4 (``..``) to the Level 5 folder (``.``).
 
     .. code-block:: bash
 
@@ -122,8 +132,9 @@ Migration code from Level 4 to Level 5
 #. At this point, you should be able to install the package locally and test it.
 
     .. code-block:: bash
-
-        $ pip install -e .
+        
+        $ conda activate my-package-env
+        $ pip install --no-deps -e .
         $ pytest
 
 #. Once the tests pass, let's manually migrate hand-written files like ``README.md`` from Level 4 to Level 5.
@@ -132,25 +143,26 @@ Migration code from Level 4 to Level 5
 
         In Level 5, we provide a rich template for ``README.rst`` instead of using ``README.md``. If you already had a rich ``README.md`` in Level 4, you can use a tool to convert ``.md`` to ``.rst``. For example, you may use this free `CloudConvert <https://cloudconvert.com/md-to-rst/>`_ tool.
 
+    .. seealso::
 
- your codebase. You can install and run ``vulture`` on code in ``src`` and ``tests`` as follows:
+        You can also find "dead" code in your codebase. You can do so by installing ``vulture`` and running the following command:
 
-    .. code-block:: bash
+        .. code-block:: bash
 
-        $ conda install vulture
-        $ vulture src/ tests/
+            $ conda install vulture
+            $ vulture src/ tests/
 
-  This will generate a report of unused code in the ``src`` and ``tests`` directories. Below is an example of what these outputs might look like. You can then review the report and decide whether to remove the identified unused code.
+        This will generate a report of unused code in the ``src`` and ``tests`` directories. Below is an example of what these outputs might look like. You can then review the report and decide whether to remove the identified unused code.
 
-    .. code-block:: bash
+        .. code-block:: bash
 
-       #### Example outputs after running vulture ####
-       $ vulture src/ tests/
-       src/module1.py:10: unused function 'helper_function' (60% confidence)
-       src/module2.py:45: unused variable 'temp_var' (80% confidence)
-       tests/test_module1.py:22: unused import 'os' (100% confidence)
+            #### Example outputs after running vulture ####
+            $ vulture src/ tests/
+            src/module1.py:10: unused function 'helper_function' (60% confidence)
+            src/module2.py:45: unused variable 'temp_var' (80% confidence)
+            tests/test_module1.py:22: unused import 'os' (100% confidence)
 
-  For more details on how ``vulture`` works, visit the `vulture GitHub repository <https://github.com/jendrikseipp/vulture>`_.
+        For more details on how ``vulture`` works, visit the `vulture GitHub repository <https://github.com/jendrikseipp/vulture>`_.
 
 Build documentation locally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -159,10 +171,12 @@ Build documentation locally
 
 .. include:: ../snippets/doc-local-build.rst
 
-In your GitHub repository, setup pre-commit CI, Codecov CI, and GitHub Actions permisison
---------------------------------------------------------------
+.. _set-up-github-repository-for-level-5:
 
-#. Let's fix the ``Codecov`` CI error in the following section.
+Step 2. Setup Codecov CI, and GitHub Actions permission in GitHub repository
+--------------------------------------------------------------------------
+
+In Level 5, we offer more powerful GitHub Actions CI workflows beyond ``pre-commit CI``. First, we will set up ``Codecov``, which will report the code coverage of incoming code via a PR comment.
 
 Setup Codecov token for GitHub repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -178,37 +192,17 @@ As you will see in the next section, we'd like to have GitHub Actions write comm
 
 .. include:: ../snippets/github-ci-permission.rst
 
-Push your code to GitHub and create a pull request
----------------------------------------------------
+.. _create-pull-request-to-finalize-migration:
 
-#. Let's now add all the files and folders to the GitHub repository.
+Step 3. Push your code to GitHub and create a pull request
+----------------------------------------------------------
 
-#. Since the template is expected to work out of the box from Level 4 to 5, we can simply git add all the files and folders to the GitHub repository.
+#. In the ``skpkg-public`` branch, since the template is expected to work out of the box from Level 4 to 5, we can simply git add all the files and folders to the GitHub repository.
 
     .. code-block:: bash
 
         $ git add .
         $ git commit -m "skpkg: migrate from Level 4 to Level 5"
-        $ git push --set-upstream origin skpkg-public
-
-#. Let's not migrate our code to the ``main`` branch just yet since mistakes could happen. Let's create a new branch called ``skpkg-migration``.
-
-#. Visit your GitHub repository. On the main page, notice the ``main`` branch clickable button, and it says, ``Find or create a branch``.
-
-#. Enter ``skpkg-migration`` in the text box. Click on the ``Create branch: skpkg-migration from main`` button.
-
-#. Create a PR from ``skpkg-public`` to a new branch called ``skpkg-migration``.
-
-#. Set the PR title as ``skpkg: migrate from Level 4 to Level 5``.
-
-    .. note::
-
-        There are some important files and folders that are different from Level 4. Don't worry about them. We will go through them one by one for each section throughout the guide.
-
-#. Expect ``tests-on-PR`` to fail while ``pre-commit CI`` works.
-
-#. Merge the PR to the ``skpkg-migration`` branch. It's okay that the CI fails. We will fix it in the following section.
-
 
 .. _news-keyboard-shortcut:
 
@@ -217,15 +211,35 @@ Add news items in the GitHub pull request
 
 .. include:: ../snippets/news-item-PR.rst
 
-Congratulations! You are done with migrating your package from Level 4 to Level 5. You can now start writing docstrings for your Python code and tests for your code. Then, also write good documentation for your code, including Getting Started guides.
 
-    .. important::
+Push your code to GitHub repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        For writing great news items, Python docstrings, tests, and commit messages, check the Billinge research group's guidelines :ref:`here<billinge-group-standards>`.
+Now that you have added the news items, let's push the code to the GitHub repository
+
+#. Push the code to the GitHub repository.
+
+    .. code-block:: bash
+
+        $ git push origin skpkg-public
+#. Create a pull request in the GitHub repository to ``main``.
+
+#. As we have done in Level 4, wait for the CI to pass. You can also check the status of the CI in the pull request.
+
+#. Once the CI passes, you can merge the pull request as you are the owner of the repository.
+
+#. Done!
+
+.. _other-useful-features-in-level-5:
+
+Other useful features available in Level 5
+------------------------------------------
 
 .. include:: ../snippets/level-4-5-optional.rst
 
+.. _ready-for-public-release:
+
 Ready for public release?
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 Congratulations! Your package has been successfully migrated. This has been the most challenging step. Now, let's release your package to PyPI and conda-forge. Please visit the :ref:`Release your package <release-pypi-github>` page to learn how to release your package!

@@ -1,6 +1,6 @@
 #. Visit `https://github.com/new <https://github.com/new>`_
 
-#. Choose and enter values for ``Owner`` and ``Repository name``.
+#. Enter the ``Repository name``. You may use ``my-package`` or any other name you like.
 
 #. Choose ``Public``.
 
@@ -10,4 +10,4 @@
 
 #. Click the :guilabel:`Create repository` green button to create the repository.
 
-#. Done! Let's now create a new project with ``scikit-package`` in the following section.
+#. Done!
