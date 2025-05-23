@@ -9,13 +9,17 @@
   <title>(Level 1-3) Reuse code within a file, across files and folders &mdash; scikit-package 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
 
   
+    <link rel="shortcut icon" href="../_static/scikit-package-logo-blank.png"/>
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=f539c95a"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=cca77546"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -31,8 +35,9 @@
 
           
           
-          <a href="../index.html" class="icon icon-home">
-            scikit-package
+          <a href="../index.html">
+            
+              <img src="../_static/scikit-package-logo-docs.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -84,7 +89,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="level-4-tutorial.html">(Level 4) Share code as a locally installable Python package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="level-5-tutorial.html">(Level 5) Share code as a publicly installable Python package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="level-5-tutorial.html">(Level 5) Share your code as a publicly installable package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="level-4-to-5-tutorial.html">(Level 4 to 5) Migrate your package for public release</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">RELEASE GUIDES</span></p>
 <ul>
@@ -93,7 +99,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">PROGRAMMING GUIDES</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../billinge-group-standards.html">Billinge Group standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming-guides/billinge-group-standards.html">Billinge Group standards</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">EXAMPLES</span></p>
 <ul>
@@ -101,7 +107,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SUPPORT</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/frequently-asked-questions.html">Frequently asked questions (FAQ)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">REFERENCE</span></p>
 <ul>
@@ -125,7 +131,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">(Level 1-3) Reuse code within a file, across files and folders</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/Billingegroup/scikit-package/blob/main/doc/source/tutorials/level-1-2-3-tutorials.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/scikit-package/scikit-package/blob/main/doc/source/tutorials/level-1-2-3-tutorials.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -332,13 +338,24 @@ $<span class="w"> </span>conda<span class="w"> </span>init<span class="w"> </spa
 <p>This tutorial will take about 3-10 minutes.</p>
 </section>
 <section id="install-scikit-package-with-conda">
-<span id="scikit-package-installation"></span><h3>Install <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> with conda<a class="headerlink" href="#install-scikit-package-with-conda" title="Link to this heading"></a></h3>
+<h3>Install <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> with conda<a class="headerlink" href="#install-scikit-package-with-conda" title="Link to this heading"></a></h3>
 <ol class="arabic">
-<li><p>Ensure you have <code class="docutils literal notranslate"><span class="pre">conda</span></code> installed and the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel added to your conda configuration. If you haven’t, check <a class="reference internal" href="#conda-env-setup-simple"><span class="std std-ref">here</span></a> for instructions on how to install and include the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel.</p></li>
-<li><p>Create a new environment named <code class="docutils literal notranslate"><span class="pre">&lt;project&gt;-env</span></code>, e.g., <code class="docutils literal notranslate"><span class="pre">skpkg-env</span></code>. Install <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> and <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> simultaneously by running the following command:</p>
+<li><p>Ensure that <code class="docutils literal notranslate"><span class="pre">conda</span></code> is installed on your local computer as instructed in <a class="reference internal" href="#conda-env-setup-simple"><span class="std std-ref">(Required) Use conda environment to install packages and run Python code</span></a>.</p></li>
+<li><p>Ensure that you have added the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel to your <code class="docutils literal notranslate"><span class="pre">conda</span></code> configuration.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>conda-forge
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Create a new conda environment <code class="docutils literal notranslate"><span class="pre">skpkg-env</span></code> and install <code class="docutils literal notranslate"><span class="pre">scikit-package</span></code> and <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> simultaneously by running the following command:</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>skpkg-env<span class="w"> </span>scikit-package<span class="w"> </span>pre-commit
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the above command does not work, ensure you have added the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel to your <code class="docutils literal notranslate"><span class="pre">conda</span></code> configuration in Step 2.</p>
 </div>
 </div></blockquote>
 </li>
@@ -426,15 +443,22 @@ $<span class="w"> </span>touch<span class="w"> </span>proj_two_code.py
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> files mark directories as Python modules. These are empty by default at this level.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file, when placed inside a directory, tells Python to treat that directory as a package, which can contain modules. A module can be either a Python script or another package (i.e., a subpackage). The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file is empty in the <code class="docutils literal notranslate"><span class="pre">workspace</span></code> level.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> lists your project’s dependencies. These are Python packages that are used throughout your project(s), which in this case includes <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pytest</span></code>. Please refer to the section “<strong>Install dependencies</strong>” below for more details on how to install them. You can add any other dependencies you need in this file:</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># requirements.txt</span>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># requirements.txt</span>
 <span class="n">numpy</span>
 <span class="n">pytest</span>
 </pre></div>
 </div>
+</div></blockquote>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">tests</span></code> folder contains tests for your shared functions. For example, <code class="docutils literal notranslate"><span class="pre">test_shared_functions.py</span></code> includes tests for the <code class="docutils literal notranslate"><span class="pre">dot_product()</span></code> function using <code class="docutils literal notranslate"><span class="pre">pytest</span></code>. General naming convention for test files is <code class="docutils literal notranslate"><span class="pre">test_&lt;module_name&gt;.py</span></code>. Similarly, test function names should be <code class="docutils literal notranslate"><span class="pre">test_&lt;function_name&gt;()</span></code>. This is how <code class="docutils literal notranslate"><span class="pre">pytest</span></code> recognizes them as test functions. This can also contain tests for your sub-project modules.</p></li>
 </ul>
@@ -486,6 +510,7 @@ $<span class="w"> </span>touch<span class="w"> </span>proj_two_code.py
 <span class="n">actual</span> <span class="o">=</span> <span class="n">shared_functions</span><span class="o">.</span><span class="n">dot_product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">actual</span> <span class="o">==</span> <span class="n">expected</span>
 </pre></div>
+</div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> is a configuration file for pre-commit hooks. To use <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> you must install the package with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pre-commit</span></code>. This file and its usage is described in more detail in the section “<strong>Automatic code formatting with pre-commit</strong>” below.</p></li>
@@ -552,7 +577,7 @@ $<span class="w"> </span>.<span class="w"> </span><span class="nv">$PROFILE</spa
 <section id="run-your-code">
 <h3>Run your code<a class="headerlink" href="#run-your-code" title="Link to this heading"></a></h3>
 <p>Then, you can run the code by running:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>proj_one/reuse_code.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>proj-one/proj_one_code.py
 </pre></div>
 </div>
 </section>
@@ -601,7 +626,7 @@ docformatter.............................................................Passed
 <section id="id8">
 <h3>What’s next?<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Notice that it’s quite annoying to set <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> every time you open a new terminal. In Level 4, you will learn how to set it permanently by turning your software into a locally installed package. You will also learn to use <code class="docutils literal notranslate"><span class="pre">Git</span></code> and <code class="docutils literal notranslate"><span class="pre">GitHub</span></code> to host your code online and share it with others and also enjoy the benefits of <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hooks and other automatic <code class="docutils literal notranslate"><span class="pre">tests</span></code> done not locally but also on GitHub’s remote server known as “GitHub Actions”.</p>
-<p>We highly recommend you become familiar with Git/GitHub before proceeding to Level 4. Feel free to check out our GitHub workflow guide in the FAQ <a class="reference internal" href="../frequently-asked-questions.html#faq-github-workflow"><span class="std std-ref">here</span></a>.</p>
+<p>We highly recommend you become familiar with Git/GitHub before proceeding to Level 4. Feel free to check out our GitHub workflow guide in the FAQ <a class="reference internal" href="../support/frequently-asked-questions.html#faq-github-workflow"><span class="std std-ref">here</span></a>.</p>
 </section>
 </section>
 </section>
