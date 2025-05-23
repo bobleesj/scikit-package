@@ -132,7 +132,7 @@ Migration files from Level 4 to Level 5
 #. At this point, you should be able to install the package locally and test it.
 
     .. code-block:: bash
-        
+
         $ conda activate my-package-env
         $ pip install --no-deps -e .
         $ pytest
