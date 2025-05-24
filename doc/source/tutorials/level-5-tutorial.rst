@@ -65,7 +65,7 @@ Upload ``README.md`` to your GitHub repository
 Step 2. Automate code linting and testing with GitHub Actions
 -------------------------------------------------------------
 
-We will do 3 things in order to automate testing, linting, infrastructure in your GitHub repository. 
+We will do 3 things in order to automate testing, linting, infrastructure in your GitHub repository.
 
 - :ref:`pre-commit-ci`
 - :ref:`github-codecov-setup`
@@ -112,7 +112,7 @@ While we previously uploaded the ``README`` file to the remote GitHub ``main`` r
 
     .. code-block:: bash
 
-        $ pre-commit install 
+        $ pre-commit install
 
 #. Checkout a new branch called ``skpkg-public`` from the ``main`` branch:
 
@@ -122,7 +122,7 @@ While we previously uploaded the ``README`` file to the remote GitHub ``main`` r
         $ git add .
         $ git commit -m "skpkg: start a new level 5 project with skpkg"
         $ git push -u origin skpkg-public
-        
+
     .. note::
 
         Did you see any failed ``pre-commit`` hooks? If so, no commit will be made. Simply re-run ``git add <file>`` on the files that have been modified by ``pre-commit`` and re-enter the same commit message again, such as ``git commit -m "skpkg: start a new project with skpkg template"``. If you are having trouble getting a commit to be accepted, please refer to the FAQ section :ref:`here<faq-pre-commit-error>`.
@@ -176,4 +176,3 @@ Useful features available in Level 5
 ------------------------------------
 
 .. include:: ../snippets/level-5-optional-sections.rst
-
