@@ -62,6 +62,8 @@ Upload ``README.md`` to your GitHub repository
 
 .. include:: ../snippets/github-upload-readme-pre-commit.rst
 
+.. _tutorial-level-5-github-setup:
+
 Step 2. Automate code linting and testing with GitHub Actions
 -------------------------------------------------------------
 
@@ -96,44 +98,56 @@ The above steps will take 5 to 10 minutes in total but save hours and days of ti
 
 .. _github-news-item-PR:
 
-Step 3. Upload rest of files to GitHub repository with pull request
--------------------------------------------------------------------
+Step 3. Upload rest of files to GitHub repository with pull request and news item
+----------------------------------------------------------------------------------
 
-While we previously uploaded the ``README`` file to the remote GitHub ``main`` repository, this is not a recommended workflow. We want to ensure that before any code is pushed to the ``main`` branch, the incoming code **formatted**, **tested**, and **reviewed**. We will try to automate these tasks as much as we can while creating a pull request (PR) to the ``main`` branch.
+Upload remaining files
+^^^^^^^^^^^^^^^^^^^^^^
 
-#. Just in case, pull the latest code from the remote ``main`` branch to your local ``main`` branch:
-
-    .. code-block:: bash
-
-        $ git checkout main
-        $ git pull origin main
-
-#. Setup pre-commit locally so that code is linted before a commit is made:
-
-    .. code-block:: bash
-
-        $ pre-commit install
-
-#. Checkout a new branch called ``skpkg-public`` from the ``main`` branch:
-
-    .. code-block:: bash
-
-        $ git checkout -b skpkg-public
-        $ git add .
-        $ git commit -m "skpkg: start a new level 5 project with skpkg"
-        $ git push -u origin skpkg-public
-
-    .. note::
-
-        Did you see any failed ``pre-commit`` hooks? If so, no commit will be made. Simply re-run ``git add <file>`` on the files that have been modified by ``pre-commit`` and re-enter the same commit message again, such as ``git commit -m "skpkg: start a new project with skpkg template"``. If you are having trouble getting a commit to be accepted, please refer to the FAQ section :ref:`here<faq-pre-commit-error>`.
+.. include:: ../snippets/github-upload-all-remaining-files-level-5.rst
 
 Add news items in the GitHub pull request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There is just one more thing to do.
+Before merging to ``main``, we require that each PR includes a file documenting the changes under ``\news``. This ensures that the changes are documented in the ``CHANGELOG.rst`` when you create a new release, as shown in https://scikit-package.github.io/scikit-package/release.html, for example.
 
-.. include:: ../snippets/news-item-PR.rst
+    .. important::
 
+        If no news file is created for this PR, the CI will not only fail but also write a comment to remind you to create a news file. Recall we granted GitHub Actions permission to write comments in the PR in the previous section.
+
+Let's create a news item for the changes made in this PR.
+
+#. Check out the ``skpkg-public`` branch and sync with the remote branch.
+
+    .. code-block:: bash
+
+        $ git pull origin skpkg-public
+
+#. Make a copy of ``news/TEMPLATE.rst`` and rename to ``news/<branch-name>.rst``.
+
+#. (optional) If you are using a Linux shell, you can setup an ``alias`` to make the creation of the news file ready for editing much quicker and easier. Read :ref:`faq-github-news-automate` to learn how to setup shortcuts.
+
+#. Do not delete ``news/TEMPLATE.rst``. Leave it as it is.
+
+#. Do not modify other section headers in the rst file. Replace ``* <news item>`` with the following item:
+
+    .. code-block:: text
+
+        **Added:**
+
+        * Support public releases with scikit-package by migrating the package from Level 4 to Level 5 in the scikit-package standard.
+
+#. Push the change to the remote GitHub repository.
+
+    .. code-block:: bash
+
+        $ git add news/skpkg-public.rst
+        $ git commit -m "chore: Add news item for skpkg-public"
+        $ git push origin skpkg-public
+
+
+Create a pull request
+^^^^^^^^^^^^^^^^^^^^^
 
 #. In your GitHub repository, click :guilabel:`Compare & pull request`.
 
@@ -165,14 +179,20 @@ There is just one more thing to do.
 
 #. Visit your GitHub repository and confirm that the ``main`` branch is updated.
 
-#. Congratulations! You are done with uploading your new package!
+#. Congratulations! You are done with creating a Level 5 project with ``scikit-package``.
 
 Ready for public release?
 -------------------------
 
-Congratulations! Let's release your package to PyPI and conda-forge. Visit :ref:`release-pypi-github` to have your package avaialble via ``conda install`` and ``pip isntall``!
+Congratulations! Let's release your package to PyPI and conda-forge. Visit :ref:`release-pypi-github` to have your package available via ``conda install`` and ``pip install``!
 
-Useful features available in Level 5
+(Recommended) How to develop your code moving forward using pull requests
+-------------------------------------------------------------------------
+
+.. include:: ../snippets/github-workflow-moving-forward.rst
+
+
+(Optional) Useful features available in Level 5
 ------------------------------------
 
 .. include:: ../snippets/level-5-optional-sections.rst

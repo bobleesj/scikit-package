@@ -8,6 +8,9 @@ Frequently asked questions (FAQ)
 
 Here, you will learn how to customize the ``scikit-package`` template for your own project, such as setting the line-width and including/excluding files for PyPI distribution. We also provide design decisions for the current setup of the ``scikit-package`` template.
 
+
+.. _faq-pre-commit:
+
 Pre-commit
 ----------
 
@@ -55,6 +58,11 @@ How do I skip a specific file for ``flake8`` and ``black``?
 To skip files checked by ``flake8``, include the file path in ``.flake8`` under the ``exclude`` section.
 
 To prevent ``black`` from formatting, include the file path in ``pyproject.toml`` under the ``[tool.black]`` section.
+
+How do I suppress the ``flake8`` error?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Ad ``# noqa: <error-code>`` at the end of the line. For example, ``import numpy as np # noqa: E000``.
 
 .. _faq-pre-commit-error:
 
@@ -607,6 +615,9 @@ Then, you will download the forked repository in your GitHub account to your loc
 In the cloned repository on your local machine, you will make edits. You want to first add a description for the changes by "committing" with a message describing the changes. Then you will upload these changes to the ``forked`` repository in your account. This process of updating code from the local computer to the repository hosted by GitHub is called ``pushing``.
 
 From the forked repository, you then want to upload changes to the repository under ``github.com/scikit-package/scikit-package``, for example. This process is done through a process called ``pull request``. The Project Owner reviews this pull request and merges it into the Billinge group's repository. If you are the contributor as well as the Project Owner, you would be the one who reviews your own code and merges your changes.
+
+
+.. _faq-github-forking-workflow-overview:
 
 I have a general understanding of fork, clone, commit, push, and pull request. How do I set up my repository for packaging?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

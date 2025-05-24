@@ -25,8 +25,10 @@ Here are the 5 levels of sharing your code. We provide tutorials for each level.
 
     Do you want to upgrade from Level 4 to Level 5? To get started, visit :ref:`level-4-to-5-tutorial`.
 
-⏩️ Are you here to release your package online?
+⏩️ Are you here to **release** your package online?
 
     Do you want to streamline the release process with GitHub tags and have your package installabe with ``conda install`` and ``pip install``? To get started, visit :ref:`level-5-tutorial`.
 
-⏩️ Do you want to explore and learn **best practices** for developing scientific code? To get started, visit :ref:`billinge-group-standards`.
+⏩️ Do you want to explore **best practices** for developing and publishing scientific code?
+
+    The documentation covers, among other topics, how to write effective Git commit messages and news entries used for compiling the changelog, as well as a recommended workflow for developing and requesting new features within GitHub's ecosystem. To get started, visit :ref:`billinge-group-standards`.

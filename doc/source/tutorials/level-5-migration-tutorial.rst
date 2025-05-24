@@ -2,175 +2,176 @@
 
 .. _migrate-existing-package-to-level-5:
 
-==============================================================
 Migrate your existing package with ``scikit-package``
-==============================================================
+=====================================================
 
 Prerequisites
 -------------
 
-This guide is for developers who have an existing Python package and want to migrate it to the Billinge group's project structure using the ``scikit-package`` library up to Level 5.
-
-Hence, we assume you have a basic understanding of Python, Git, and GitHub workflows, and ``pre-commit`` and ``pytest``. If you are not familiar with GitHub workflows, please refer our brief guide provided :ref:`here <github-workflow-overview>`.
-
-We also assume you have already used ``scikit-package`` at least up to the Level 4 level and also at least have read through the guide provided for Level 5.
+This guide is for developers who have an existing Python package that is under Git control and want to migrate it to Level 5 ``scikit-package`` standard. We assume you have already created a package using ``scikit-package`` Level 4 and Level 5. We will also use a forking workflow. If you are not familiar with contributing via forking,  please read :ref:`faq-github-forking-workflow-overview`.
 
 Tips and how to receive support
 -------------------------------
 
-We understand that your migration journey can be challenging. We offer the following ways to help guide migrate your package to scikit-package:
+We understand that migration can be challenging. We offer the following ways to help guide migrate your package to ``scikit-package``:
 
 #. You may cross-check with the Billinge group's up-to-date package, ``diffpy.utils``: https://github.com/diffpy/diffpy.utils.
 
-#. If you have any questions, first read the :ref:`FAQ <frequently-asked-questions>` for how to customize your package and certain design decisions in the scikit-package template.
+#. If you have any questions, first read the :ref:`frequently-asked-questions` for how to customize your package and certain design decisions in the ``scikit-package`` template.
 
-#. After you've cross-checked and searched through the FAQ, please feel free to ask questions by creating an issue on the scikit-package repository `here <https://github.com/scikig-package/scikit-package/issues>`_.
+#. After you've cross-checked and searched through the FAQ, please feel free to ask questions by creating an issue on the ``scikit-package`` repository `here <https://github.com/scikig-package/scikit-package/issues>`_.
 
-Migration overview and expected outcome
----------------------------------------
-
-By the end of the migration process, you will have a package that is structured according to the Billinge group's project structure shown here: https://github.com/diffpy/diffpy.utils. The migration process is divided into four main steps.
-
-#. During the first step of the :ref:`pre-commit workflow <migration-pre-commit>`, you will use automatic formatting tools to standardize your package with PEP8 before migrating it to the Billinge group's project structure with ``scikit-package``.
-
-#. In the :ref:`migration workflow  <migration-workflow>`, you will use the ``scikit-package`` library to generate a new project inside the original directory. The new project contains dynamically filled templates based on your package information, and configure GitHub CI and Codecov.
-
-#. In the :ref:`API documentation build workflow <scikit-package-workflow-doc>`, you will use our Python script to automatically generate and build API documentation for your package and render the documentation locally.
-
-#. In the final :ref:`clean-up workflow <scikit-package-workflow-cleanup>`, you will host your package documentation online. Your package will be in good shape for PyPI, GitHub, and conda-forge release!
-
-.. _migration-pre-commit:
 
 .. include:: ../snippets/scikit-installation.rst
 
-1. Pre-commit workflow
-----------------------
+.. _migration-pre-commit:
 
-Here, let's first standarlize your package so that itis ``PEP8`` and ``PEP256`` compliant using both automatic formatting tools with manual edits.
+Step 1. Pre-commit workflow
+---------------------------
 
-1.1. Run black in your codebase
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#. Fork the repository that you want to standarlize from the GitHub website under your GitHub account.
-
-    If you are the maintainer of the repository, you can skip this step.
-
-#. Type ``git clone <https://github.com/<username>/<project-name>`` and ``cd <project-name>``.
-
-#. Type ``git pull upstream main`` to sync with the ``main`` branch.
-
-    If your default branch is called ``master``, run ``git pull upstream master`` instead. However, ``main`` is the new default branch name for GitHub.
-
-#. Type ``pip install black`` to install ``black``.
-
-#. Type ``git checkout -b black`` to create a new branch called ``black``.
-
-#. Create ``pyproject.toml`` at the top project level.
-
-#. Copy and paste with the following content to ``pyproject.toml``:
+#. If haven't, clone the repository and set ``upstream`` to the original repository.
 
     .. code-block::
 
-        [tool.black]
-        line-length = 79
-        include = '\.pyi?$'
-         exclude = '''
-         /(
-             \.git
-         | \.hg
-         | \.mypy_cache
-         | \.tox
-         | \.venv
-         | \.rst
-         | \.txt
-         | _build
-         | buck-out
-         | build
-         | dist
-         # The following are specific to Black, you probably don't want those.
-         | blib2to3
-         | tests/data
-         )/
-         '''
+        $ git clone <URL-of-the-forked-repo>
+        $ cd <package-name>
+        $ git remote add upstream <URL-of-the-original-repo>
 
-#. Type ``black src``. If your source code is in a different directory, replace ``src`` with the appropriate directory path. This will automatically format given the line-length provided under ``line-length`` above in ``pyproject.toml``. If you want to ignore specific files or directories, add them to the ``exclude`` section in ``pyproject.toml``
+    .. note::
+        
+        Are you the creator of the repository? You can type ``origin`` instead of ``upstream`` in the rest of the tutorial. e.g., ``git pull origin main`` instead of ``git pull upstream main``. Here, we assume a forking workflow.
 
-#. Add and commit the automatic changes by ``black``. The commit message can be ``git commit -m "skpkg: apply black to src directory with black configured in pyproject.toml"``.
+Run ``black`` in your codebase
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Type ``black .`` Here, you are running black across the entire package directory. Run ``pytest`` to test locally.
+#. Create a new branch called ``black-edits``. This branch will be used to apply ``black`` to all files in the old project directory.
 
-#. Type ``git add .`` and ``git commit -m "skpkg: apply black to all files in the project directory"``.
+    $ git checkout main
+    $ git pull upstream main
+        
 
-#. Create a pull request into ``main``. The pull request title can be ``skpkg: Apply black to project directory with no manual edits``.
+#. Activate the conda environment and install ``black``:
 
-#. Wait for the PR to be merged to ``main``.
+    $ conda activate skpkg-env
+    $ conda install black
 
-#. Done. Let's apply ``pre-commit`` hooks to the project directory next.
+#. Create a new branch called ``black-edits`` and create a new file called ``pyproject.toml``::
 
-1.2. Apply pre-commit hooks without manual edits
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    $ git checkout -b black-edits
+    $ touch pyproject.toml
 
-We will setup ``pre-commit`` locally and also via GitHub CI.
+#. Copy and paste the following content at the bottom of ``pyproject.toml``:
 
-#. Type ``git checkout main && git pull upstream main`` and ``git branch -b pre-commit`` to create a new branch called ``pre-commit``.
-
-#. Copy and paste three files of ``.flake8``, ``.isort.cfg``, ``.pre-commit-config.yaml`` from https://github.com/scikig-package/scikit-package/tree/main/%7B%7B%20cookiecutter.github_repo_name%20%7D%7D to your project directory.
-
-#. Type ``git add .flake8 .isort.cfg .pre-commit-config.yaml``
-
-#. Type ``pre-commit run --all-files``. It will attempt to lint your code such as docstrings, extra spaces, across all file types such as ``.yml``, ``.md``, ``.rst``, etc.
-
-#. Type ``git status`` to get an overview of the files modified and then by running ``git diff <file-or-directory-path>`` to see the specific changes.
-
-#. If you do not want the new changes, you can run ``git restore <file-or-directory-path>`` to revert the changes done by ``pre-commit``.
-
-#. If you want to prevent ``prettier`` from applying on specific files, create ``.`prettierignore`` file at the top project like shown here: https://github.com/scikig-package/scikit-package/blob/main/.prettierignore
-
-#. If you are satisfied with the automatic changes by ``pre-commit run --all-files``, run ``pytest``, type ``git add <file-path(s)>`` and ``git commit -m "style: apply pre-commit hooks with no manual edits"``.
-
-    .. Attention:: At this point, you may have failed hooks when you run ``pre-commit run --all-files``. Don't worry! We will fix them in the following section.
-
-#. Push the changes to the ``pre-commit`` branch by typing ``git push origin pre-commit``.
-
-#. Create a PR from ``pre-commit`` to ``package`` branch. The PR title can be ``skpkg: Apply pre-commit to project directory with no manual edits``.
-
-#. Merge the PR to ``package``. CIs will most likely fail, don't worry. We will fix them slowly.
-
-.. _migration-pre-commit-manual-edits:
-
-1.3. Apply manual edits to pass ``pre-commit`` hooks
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Your package will most likely have failed pre-commit hooks. We will manually fix the errors raised by ``flake8``, ``codespell``, etc.
-
-#. Type ``git checkout upstream package && git pull upstream package`` to sync with the ``package`` branch.
-
-#. Type ``git checkout -b flake8-length`` to create a new branch. In this branch you will fix flake8 errors. In this branch, fix all of ``flake8`` errors related to line-lenghts if there are any. If you want to ignore certain files from flake8 errors include filepaths to ``exclude`` section in the ``.flake8`` files.
-
-#. Create a PR to ``package``. Since you are fixing flake8 errors, the commit message can be ``skpkg: fix flake8 line-length errors`` and the pull request title can be ``skpkg: Fix flake8 line-length errors``.
-
-#. If you have ``codespell`` errors, create a new branch called ``codespell`` and fix all of the spelling errors. You can ignore specific words or lines by following the instructions provided here in the FAQ section :ref:`here <faq-codespell-ignore>`.
-
-#. If you want to suppress the ``flake8`` error, add ``# noqa: <error-code>`` at the end of the line. For example, ``import numpy as np # noqa: E000`` but make sure you create an issue for this so that you can revisit them.
-
-#. For each `flake8` branch, create a PR request to ``package``. Since you are fixing flake8 errors, the commit message can be ``skpkg: Fix flake8 <readable-error-type> errors`` and the pull request title can be ``skpkg: Fix flake8 <readable-error-type> errors``.
-
-#. For each PR, the project maintainer will review the PR and merge it to ``package``. If you are the project maintainer, you can merge the PR yourself.
+    [tool.black]
+    line-length = 79
+    include = '\.pyi?$'
+    exclude = '''
+    /(
+        \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | \.rst
+    | \.txt
+    | _build
+    | buck-out
+    | build
+    | dist
+    | blib2to3
+    | tests/data
+    )/
 
 
-1.4. Setup pre-commit hooks locally
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Type ``black .`` to lint the code. To skip certain files, add them under the ``exclude`` section in the ``pyproject.toml`` file above.
 
-Now that ``pre-commit`` is passing, let's setup ``pre-commit`` hooks locally and in GitHub CI that they are automatically run when you push a commit to the remote repository.
+#. Push the changes to the ``black-edits`` branch:
 
-#. Type ``git checkout main && git pull upstream main`` to sync with the ``main`` branch.
+    .. code-block:: bash
+    
+     $ git add .
+     $ git commit -m "skpkg: apply black to all files in the project directory"
+     $ git push origin black-edits
 
-#. Type ``pre-commit install`` to install the pre-commit hooks locally.
+#. Create a PR from ``username/black-edits`` to ``upstream/main``. The PR title can be ``skpkg: apply black line-length 79 to all files in the project directory``.
 
-1.5 Setup pre-commit hooks via GitHub CI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    If your default branch is called ``master``, run ``git pull upstream master`` instead. However, ``main`` is the new default branch name for GitHub.
 
-Now, you will setup ``pre-commit CI`` app via GitHub Actions. This CI will run each time a new PR is created.
+#. Review and wait for the PR to be merged to ``upstream/main``. If you are the project maintainer, you can merge the PR yourself.
+
+#. Done!
+
+Apply pre-commit auto-fixes without manual edits
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Sync with the ``upstream/main`` branch::
+
+     $ git checkout main && git pull upstream main
+
+#. Create a new branch called ``pre-commit-auto``::
+
+    $ git checkout -b pre-commit-auto
+
+#. Create a new package using ``scikit-package``::
+
+    $ package create publicly
+    
+#. Copy the ``pre-commit`` configuration files from the new to the old directoy::
+    
+    $ cp <package-name>/.pre-commit-config.yaml .
+    $ cp <package-name>/.isort.cfg .
+    $ cp <package-name>/.flake8 .
+
+#. Trigger hooks and auto-fixes without manual edits::
+
+    $ pre-commit run --all-files
+
+#. Add the changes to the ``pre-commit-auto`` branch::
+
+    $ git add . && git commit -m "style: apply pre-commit hooks with no manual edits"``
+
+#. Push the changes to the remote repository::
+    
+    $ git push origin pre-commit-auto
+
+#. Create a PR from ``username/pre-commit-auto`` to ``upstream/migration``. The PR title can be ``skpkg: apply pre-commit to project directory with no manual edits``.
+
+    .. note::
+
+        The new ``upstream/migration`` branch can be created by the project maintainer or owner. On the main page of the upstream repository, click :menuselection:`main -> Switch branches/tags -> Find or create a branch` and type ``migration``. This will create a new branch called ``migration``.
+
+#. Wait for the PR to be merged to ``upstream/migration`` branch.
+
+Apply manual edits to pass ``pre-commit`` hooks
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The package will most likely have failed pre-commit hooks. We will manually fix the errors raised by ``flake8``, ``codespell``, etc. Here, instead of fixing all errors at once, we will address each type of error one at a time.  For example, a branch called ``pre-commit-spelling`` contained spelling fixes, while another branch, ``pre-commit-flake8-line`` contained fixes of line length errors raised by flake8.
+
+
+#. Sync with the ``upstream/migration`` branch::
+
+    $ git checkout migration
+    $ git pull upstream migration
+    $ git checkout -b pre-commit-<theme>
+
+#. Run ``pre-commit run --all-files`` to see the errors.
+
+    Do you want to ignore certain files/folders and also set the preferred line-length? Visit :ref:`faq-pre-commit` to learn how to customize line-lenghts, ignore certain errors, and skip certain files and paths. If you have suprress any errors for the prupose of migration, you can create GitHub issues to track them.
+
+#. Create a PR to ``upstream/migration``. Since you are fixing flake8 errors, the commit message can be ``skpkg: fix flake8 line-length errors`` and the pull request title can be ``skpkg: fix flake8 line-length errors``.
+
+#. Repeat for other errors but ensure you always pull the latest changes from ``upstream/migration`` before creating a new branch::
+
+    $ git checkout migration
+    $ git pull upstream migration
+    $ git checkout -b pre-commit-<another-theme>
+
+#. After all pre-commit hooks pass, setup ``pre-commit`` hooks to trigger automatically moving forward::
+
+    $ pre-commit install
+
+Setup pre-commit CI
+^^^^^^^^^^^^^^^^^^^
 
 .. include:: ../snippets/github-pre-commit-setup.rst
 
@@ -178,10 +179,10 @@ Congratulations if you have successfully passed all the pre-commit hooks! You ca
 
 .. _migration-workflow:
 
-2. Migration workflow
----------------------
+Step 2. Migration workflow
+--------------------------
 
-Here, you will first check the correct folder structure. If the project structure is good, you will create a new project using ``scikit-package``, and then you will migrate existing files from the old project to the new project directory.
+Let's migrate existing files from the old project to the new project directory.
 
 .. Attention:: Please read the following carefully before proceeding:
 
@@ -189,8 +190,8 @@ Here, you will first check the correct folder structure. If the project structur
 
     - Do NOT delete project-specific content such as project descriptions in README, license information, authors, tutorials, examples.
 
-2.1. Setup correct folder structure
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Folder structure
+^^^^^^^^^^^^^^^^
 
 #. Sync with the ``main`` branch by typing ``git checkout main && git pull upstream main``.
 
@@ -200,65 +201,29 @@ Here, you will first check the correct folder structure. If the project structur
 
     .. code-block::
 
-        my-package/
-        ├── src/
-        │   ├── my_package/
+        <package-name>/
+        ├── src
+        │   ├── <package_name>
         │   │   ├── __init__.py
-        │   │   ├── file.py
-        │   │   ├── ...
-        ├── tests/
-        │   ├── test_file.py
-        │   ├── ...
-        ├── ...
+        │   │   ├── file_one.py
+        │   │   ├── file_two.py
 
-    For a namespace package, it should be structured as follows:
+    For a package with namespace import, it should be structured as follows:
 
     .. code-block::
 
-        diffpy.utils/
+        <package-name>/
         ├── src
-        │   ├── diffpy
-        │   │   ├── __init__.py
-        │   │   └── utils
-        │   │       ├── __init__.py
-        │   │       ├── file.py
-        │   │       ├── ...
-        ├── tests/
-        │   ├── test_file.py
-        │   ├── ...
-        ├── ...
-
-#. Is your package structured as above? If yes, skip to the next section in starting a new project with scikit-package :ref:`here<migration-guide-start-new-project>`.
-
-#. Type ``git checkout -b structure`` to create a new branch. In this branch, you will ensure ``src`` and ``tests`` are correctly structured.
-
-#. If your project is structured as ``my-package/my-package/<code>``, run ``git mv <package-name> src``. Your project should now be structured as ``my-package/src/<code>``.
-
-#. Run ``pytest`` locally to ensure the tests are running as expected.
-
-#. Run ``git add src`` and ``git commit -m "skpkg: src to the top level of the package directory"``
-
-#. You can run ``git mv my-package src`` to rename the directory.
-
-#. You will now move ``tests`` to the top level of the package directory ``../my-package/tests/<code>``. If your tests files are located inside ``src``, ensure you use ``git mv src/tests .``.
-
-#. Type ``git add tests`` and ``git commit -m "skpkg: tests to the top level of the package directory"``.
-
-#. Push the changes to a new branch and create a PR to ``package``.
+        │   ├── <package_name>
+        │   │   ├── __init__.py
+        │   │   ├── file_one.py
+        │   │   ├── file_two.py
+                ├── ...
 
 .. _migration-guide-start-new-project:
 
-2.2. Start a new project
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-#. Type ``package create public`` and answer the following questions provided here in :ref:`level-5-new-project`
-
-2.3. Move ``src``, ``tests``, ``requirements`` to setup GitHub CI in PR
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#. Type ``ls``. Notice there is a new directory named ``<project-name>``. We will call this new directory as the Level 5 directory.
-
-#. Type ``cd <project-name>``. Type ``pwd`` and expect you are inside the directory e.g., ``~/dev/diffpy.pdfmorph/diffpy.pdfmorph``
+Move ``src``, ``tests``, ``requirements`` to setup GitHub CI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Type ``mv ../.git .`` to move ``.git`` to the re-packaged directory created by ``scikit-package``. Please note that there is a ``.`` in ``mv ../.git .``.
 
@@ -266,9 +231,9 @@ Here, you will first check the correct folder structure. If the project structur
 
     - ``untracked`` are new files created by the ``scikit-package``
 
-    - ``deleted`` are files in the original directory but the files that are not in the re-packaged directory. Most of the ``src`` and ``tests`` and doc files will be in this category. We will move them from the original to the re-packaged directory in the next few steps.
+    - ``deleted`` are files in the old directory but the files that are not in the new directory. Most of the ``src`` and ``tests`` and doc files will be in this category. We will move them from the old to the new directory in the next few steps.
 
-    - ``modified`` are files that that exist both in the original and the re-packaged directory, while the scikig-package has made changes to them.
+    - ``modified`` are files that that exist both in the old and the new directory, while the scikig-package has made changes to them.
 
 #. Type ``git checkout -b setup-CI`` to create a new branch.
 
@@ -317,9 +282,6 @@ Here, you will first check the correct folder structure. If the project structur
 #. Files that have been (3) modified exist in both places and need to be merged **manually**. Do these one at a time. Differences will show up. Select anything you want to inherit from the file in the main repo. For example, you want to copy useful information such as LICENSE and README files.
 
 .. _scikit-package-workflow-doc:
-
-3. Documentation workflow
---------------------------
 
 3.1. Move documentation files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
