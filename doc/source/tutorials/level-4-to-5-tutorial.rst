@@ -33,7 +33,7 @@ The first step is to create a new project with ``scikit-package`` using the Leve
 Create a new project with ``scikit-package``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Visit your project directory and sync with the latest version of the main branch.
+#. Visit your project directory and sync with the latest version of the main branch:
 
     .. code-block:: bash
 
@@ -41,7 +41,7 @@ Create a new project with ``scikit-package``
         $ git checkout main
         $ git pull origin main
 
-#. Create a new project with ``scikit-package`` using the Level 5 ``public`` template.
+#. Create a new project with ``scikit-package`` using the Level 5 ``public`` template:
 
     .. code-block:: bash
 
@@ -55,13 +55,13 @@ Create a new project with ``scikit-package``
 
     .. include:: ../snippets/user-input-level-5.rst
 
-#. Enter into the Level 5 project directory.
+#. Enter into the Level 5 project directory:
 
     .. code-block:: bash
 
         $ cd <package-name>
 
-#. Check that you have the following nested folder structure. Here is the structure. We will go through each file and folder.
+#. Check that you have the following nested folder structure. Here is the structure. We will go through each file and folder:
 
     .. code-block:: text
 
@@ -89,26 +89,26 @@ Create a new project with ``scikit-package``
 Migration files from Level 4 to Level 5
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Enter into the nested Level 5 project directory.
+#. Enter into the nested Level 5 project directory:
 
     .. code-block:: bash
 
         $ cd <package-name>
 
-#. Move the local ``git`` repository from the Level 4 (``..``) to the Level 5 folder (``.``).
+#. Move the local ``git`` repository from the Level 4 (``..``) to the Level 5 folder (``.``):
 
     .. code-block:: bash
 
         $ mv ../.git .
 
-#. Move the ``src`` and ``tests`` folders from Level 4 to Level 5.
+#. Move the ``src`` and ``tests`` folders from Level 4 to Level 5:
 
     .. code-block:: bash
 
         $ cp -n -r ../src .
         $ cp -n -r ../tests .
 
-#. Copy the requirements files from Level 4 to Level 5.
+#. Copy the requirements files from Level 4 to Level 5:
 
     .. code-block:: bash
 

@@ -582,7 +582,7 @@ Recall that conda is a dependency manager that uses sophisticated algorithms to 
 
 To address this, ``mamba`` was developed. ``mamba`` uses the same commands and configuration options as conda but features a faster dependency-solving algorithm written in C++. ``mamba`` is also compatible with existing conda environments (e.g., ``environment.yml``) and continues to rely on the conda ecosystem for package distribution, using channels like ``conda-forge``. When you install ``mamba`` using ``Miniforge``, the conda-forge channel is set as the default (and only) channel.
 
-.. _faq-pip-conda-both-provided:
+.. _faq-dependence-pip-conda-both-provided:
 
 Why are both ``pip.txt`` and ``conda.txt`` provided?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -601,7 +601,7 @@ I am new to GitHub. Why do we use Git/GitHub?
 
 GitHub allows multiple contributors to work on a software project simultaneously under an organization like ``Billingegroup`` or ``diffpy``. There are two primary needs. First, we want to ensure that any changes under this organization are reviewed by the organization's project maintainer. Second, we want to ensure we add new changes from the latest version of the code, particularly when working with multiple contributors across different time zones. Hence, we use GitHub to serve the needs with a specific workflow below. Please see below for an overview of the GitHub workflow.
 
-.. _github-workflow-overview:
+.. _faq-github-workflow-overview:
 
 What is the general the workflow?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -615,9 +615,6 @@ Then, you will download the forked repository in your GitHub account to your loc
 In the cloned repository on your local machine, you will make edits. You want to first add a description for the changes by "committing" with a message describing the changes. Then you will upload these changes to the ``forked`` repository in your account. This process of updating code from the local computer to the repository hosted by GitHub is called ``pushing``.
 
 From the forked repository, you then want to upload changes to the repository under ``github.com/scikit-package/scikit-package``, for example. This process is done through a process called ``pull request``. The Project Owner reviews this pull request and merges it into the Billinge group's repository. If you are the contributor as well as the Project Owner, you would be the one who reviews your own code and merges your changes.
-
-
-.. _faq-github-forking-workflow-overview:
 
 I have a general understanding of fork, clone, commit, push, and pull request. How do I set up my repository for packaging?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

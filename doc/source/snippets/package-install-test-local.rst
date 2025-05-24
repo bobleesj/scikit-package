@@ -38,4 +38,4 @@
 
 #. Ensure tests all pass with green checkmarks. Notice that in ``tests/test_functions.py``, we are importing the locally installed package.
 
-#. Done! Your package is now available for use in any Python script or Jupyter notebook on your local computer.
+#. Done!

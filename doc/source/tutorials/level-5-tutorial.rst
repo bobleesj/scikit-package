@@ -69,30 +69,30 @@ Step 2. Automate code linting and testing with GitHub Actions
 
 We will do 3 things in order to automate testing, linting, infrastructure in your GitHub repository.
 
-- :ref:`pre-commit-ci`
-- :ref:`github-codecov-setup`
-- :ref:`github-ci-permission`
+- :ref:`tutorial-5-pre-commit-ci`
+- :ref:`tutorial-5-github-codecov-setup`
+- :ref:`tutorial-5-ci-permission`
 
 The above steps will take 5 to 10 minutes in total but save hours and days of time in the long run.
 
-.. _pre-commit-ci:
+.. _tutorial-5-pre-commit-ci:
 
 1. Setup ``pre-commit CI`` in the remote repository in each pull request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: ../snippets/github-pre-commit-setup.rst
 
-.. _github-codecov-setup:
+.. _tutorial-5-github-codecov-setup:
 
 2. Setup Codecov token for GitHub repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: ../snippets/github-codecov-setup.rst
 
-.. _github-ci-permission:
+.. _tutorial-5-ci-permission:
 
 3. Allow GitHub Actions to write comments in PRs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: ../snippets/github-ci-permission.rst
 
@@ -193,6 +193,6 @@ Congratulations! Let's release your package to PyPI and conda-forge. Visit :ref:
 
 
 (Optional) Useful features available in Level 5
-------------------------------------
+-----------------------------------------------
 
 .. include:: ../snippets/level-5-optional-sections.rst
