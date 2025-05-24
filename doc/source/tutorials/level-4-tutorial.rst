@@ -1,7 +1,7 @@
 .. _level-4-tutorial:
 
-(Level 4) Share code as a locally installable Python package
-============================================================
+(Level 4) Share your code as a locally installable Python package
+=================================================================
 
 Overview
 --------
@@ -22,7 +22,11 @@ Table of contents
 Prerequisites
 ^^^^^^^^^^^^^
 
-For Level 4, we assume you have prior experience in developing scientific code in Python. Additionally, we assume you have hosted at least one project on GitHub. If you are new to GitHub, please refer to the FAQ guide on the GitHub workflow :ref:`here <faq-github-workflow>`.
+For Level 4, we assume you have prior experience in developing scientific code in Python.
+
+.. seealso:: Are you new to Git and GitHub?
+
+    Please read the GitHub workflow section in :ref:`faq-github-workflow` to familiarize yourself with the common jargon and terms used.
 
 .. include:: ../snippets/scikit-installation.rst
 
@@ -104,81 +108,20 @@ Create a new project with ``scikit-package``
 Install your package locally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Create a new conda environment. Let's call this environment ``my-package-env``:
-
-    .. code-block:: bash
-
-        $ conda create -n my-package-env python=3.13 \
-            --file requirements/conda.txt \
-            --file requirements/test.txt
-
-#. Activate the conda environment:
-
-    .. code-block:: bash
-
-        $ conda activate my-package-env
-
-#. Build and install the package locally:
-
-    .. code-block:: bash
-
-        $ pip install -e . --no-deps
-
-    .. note:: What is the ``-e`` flag?
-
-        ``pip install`` will also install the dependencies listed in ``requirements/pip.txt``. The ``-e`` flag indicates that you want to install the package in "editable" mode, which means that any changes you make to the source code will be reflected immediately without needing to reinstall the package. This is useful for development purposes.
-
-    .. note:: What is the ``--no-deps`` flag?
-
-        The ``--no-deps`` flag tells pip not to install any dependencies listed in ``requirements/pip.txt``. This is because we have already installed the dependencies in the conda environment using the command above.
-
-    .. seealso::
-
-        Why is it required to list dependencies both under ``pip.txt`` and ``conda.txt``? Please refer to the FAQ section :ref:`faq-dependency-management`.
-
-#. Then, run the tests using the following command:
-
-    .. code-block:: bash
-
-        $ pytest
-
-#. Ensure tests all pass with green checkmarks. Notice that in ``tests/test_functions.py``, we are importing the locally installed package.
-
-#. Congratulations! Your package is now available for use in any Python script or Jupyter notebook on your local computer.
+.. include:: ../snippets/package-install-test-local.rst
 
 Upload ``README.md`` to your GitHub repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-At the moment, the GitHub repository is empty. Let's create a local branch called ``main`` and upload this local branch to the remote GitHub repository.
-
-#. Follow the series of steps to initialite ``Git``, create a new branch called ``main`` in the local repository and push the branch to the remote GitHub repository:
-
-    .. code-block:: bash
-
-        $ git init
-        $ git add README.md
-        $ git commit -m "docs: add README.md"
-        $ git branch -M main
-        $ git remote add origin <your-github-repo-url>
-        $ git push -u origin main
-
-    .. note:: What's ``origin``?
-
-        ``origin`` is the default name for the remote repository under your GitHub account. You can think of it as a nickname for the remote repository. You can also use any other name you like, but ``origin`` is the most common convention. For more, please read :ref:`faq-github-terminology`.
-
-    .. note:: What is ``-u`` next to ``git push``?
-
-        The ``-u`` flag tells Git to set the upstream (remote) branch for the local branch. This means that in the future, you can simply use ``git push`` without specifying the remote and branch name, and Git will know where to push your changes.
-
-#. Done! Ensure that your GitHub repository displays the content of ``README.md``. However, we still haven't upload other files like under ``src`` and ``tests`` files; we will do so to the ``main`` branch of the remote repository through a pull request in the following section. We will also configure some automated testing and linting for incoming code.
+.. include:: ../snippets/github-upload-readme-pre-commit.rst
 
 .. _automate-code-linting-and-testing:
 
 Step 2. Automate code linting and testing with GitHub Actions
 -------------------------------------------------------------
 
-Setup pre-commit to lint code before making a commit in the local repository
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Setup pre-commit to lint code before making a commit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: ../snippets/pre-commit-local-setup.rst
 
@@ -187,17 +130,13 @@ Setup ``pre-commit CI`` in the remote repository in each pull request
 
 .. include:: ../snippets/github-pre-commit-setup.rst
 
-.. _use-pull-request-to-upload-code-to-github:
 
 Step 3. Upload rest of files to GitHub repository with pull request
 -------------------------------------------------------------------
 
-While we previously uploaded the ``README.md`` file to the remote GitHub ``main`` repository, this is not a recommended workflow. We want to ensure that before any code is pushed to the ``main`` branch, the incoming code **formatted**, **tested**, and **reviewed**. We will try to automate these tasks as much as we can while creating a pull request (PR) to the ``main`` branch.
+While we previously uploaded the ``README`` file to the remote GitHub ``main`` repository, this is not a recommended workflow. We want to ensure that before any code is pushed to the ``main`` branch, the incoming code **formatted**, **tested**, and **reviewed**. We will try to automate these tasks as much as we can while creating a pull request (PR) to the ``main`` branch.
 
-Create a pull request from ``skpkg`` to ``main``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#. Just in case, pull the latest code from the remote ``main`` branch:
+#. Just in case, pull the latest code from the remote ``main`` branch to your local ``main`` branch:
 
     .. code-block:: bash
 
@@ -210,14 +149,14 @@ Create a pull request from ``skpkg`` to ``main``
 
         $ git checkout -b skpkg-system
         $ git add .
-        $ git commit -m "skpkg: start a new project with skpkg Level 4 template"
+        $ git commit -m "skpkg: start a new project with skpkg"
         $ git push -u origin skpkg-system
 
 #. Visit your GitHub repository online.
 
 #. Click on the new green button that says ``Compare & pull request``.
 
-#. The PR title can be ``skpkg: start a new project with skpkg system template``.
+#. The PR title can be ``skpkg: start a new project with skpkg template``.
 
 #. The ``base`` branch should be ``main`` and the ``compare`` branch should be ``skpkg-system``.
 
@@ -238,17 +177,16 @@ Create a pull request from ``skpkg`` to ``main``
          $ git commit -m "chore: <your commit message>"
          $ git push
 
-#. Click the :guilabel:`Files changed` in the PR to to review the new files added to the repository.
+#. Click :guilabel:`Files changed` in the PR to to review the new files added to the repository.
 
-#. Once reviewed, click on the ``Merge pull request`` button.
+#. Once reviewed, click :guilabel:`Merge pull request`.
 
 #. Delete the ``skpkg-system`` remote branch after merging.
 
 #. Visit your GitHub repository and confirm that the ``main`` branch is updated.
 
-#. Congratulations! You are done with Level 4!
+#. Congratulations! You are done!
 
-Now that you are done with this tutorial, we provide you how you can further develop your code using pull requests moving forrward in the following section.
 
 (Recommended) How to develop your code moving forward using pull requests
 -------------------------------------------------------------------------
@@ -303,12 +241,7 @@ Assume that you have successfully followed the previous steps. Now, you want to 
 
 #. Done!
 
-
 What's next?
 ------------
-
-.. note::
-
-    Make sure you check out the best practices and Billinge group's guidelines for communications and examples in :ref:`frequently-asked-questions`.
 
 Once you are ready to release your package to the wider world, let's proceed to :ref:`level-5-tutorial` where you will learn to release your package to PyPI and conda-forge so that your package can be installed by anyone in the world.

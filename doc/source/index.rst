@@ -3,8 +3,6 @@
 
 Welcome to the ``scikit-package`` official documentation!
 
-Test for Emil
-
 ``scikit-package`` offers tools and practices for the scientific community to make better and more reusable Scientific Python packages and applications.
 
 How does ``scikit-package`` benefit scientists?
@@ -139,6 +137,7 @@ The Billinge Group's ``scikit-package`` has been modified from the NSLS-II scien
    tutorials/level-4-tutorial
    tutorials/level-5-tutorial
    tutorials/level-4-to-5-tutorial
+   tutorials/level-5-migration-tutorial
 
 .. toctree::
    :maxdepth: 2
@@ -160,7 +159,6 @@ The Billinge Group's ``scikit-package`` has been modified from the NSLS-II scien
    :hidden:
    :caption: EXAMPLES
 
-   examples/migration
 
 .. toctree::
    :maxdepth: 2

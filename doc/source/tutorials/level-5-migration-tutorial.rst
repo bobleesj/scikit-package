@@ -1,8 +1,6 @@
-:tocdepth: -1
-
 .. index:: migration-guide
 
-.. _migration-guide:
+.. _migrate-existing-package-to-level-5:
 
 ==============================================================
 Migrate your existing package with ``scikit-package``

@@ -1,7 +1,7 @@
 .. _level-4-to-5-tutorial:
 
-(Level 4 to 5) Migrate your package for public release
-=======================================================
+Migrate your package from Level 4 to Level 5
+============================================
 
 Overview
 ---------
@@ -143,27 +143,6 @@ Migration files from Level 4 to Level 5
 
         In Level 5, we provide a rich template for ``README.rst`` instead of using ``README.md``. If you already had a rich ``README.md`` in Level 4, you can use a tool to convert ``.md`` to ``.rst``. For example, you may use this free `CloudConvert <https://cloudconvert.com/md-to-rst/>`_ tool.
 
-    .. seealso::
-
-        You can also find "dead" code in your codebase. You can do so by installing ``vulture`` and running the following command:
-
-        .. code-block:: bash
-
-            $ conda install vulture
-            $ vulture src/ tests/
-
-        This will generate a report of unused code in the ``src`` and ``tests`` directories. Below is an example of what these outputs might look like. You can then review the report and decide whether to remove the identified unused code.
-
-        .. code-block:: bash
-
-            #### Example outputs after running vulture ####
-            $ vulture src/ tests/
-            src/module1.py:10: unused function 'helper_function' (60% confidence)
-            src/module2.py:45: unused variable 'temp_var' (80% confidence)
-            tests/test_module1.py:22: unused import 'os' (100% confidence)
-
-        For more details on how ``vulture`` works, visit the `vulture GitHub repository <https://github.com/jendrikseipp/vulture>`_.
-
 Build documentation locally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -211,7 +190,6 @@ Add news items in the GitHub pull request
 
 .. include:: ../snippets/news-item-PR.rst
 
-
 Push your code to GitHub repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -222,6 +200,7 @@ Now that you have added the news items, let's push the code to the GitHub reposi
     .. code-block:: bash
 
         $ git push origin skpkg-public
+
 #. Create a pull request in the GitHub repository to ``main``.
 
 #. As we have done in Level 4, wait for the CI to pass. You can also check the status of the CI in the pull request.

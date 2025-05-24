@@ -384,6 +384,13 @@ Visit the following URL of your package: ``https://github.com/<org-name>/<packag
 
 Click ``Run workflow`` and select the ``main`` branch. Your online documentation will be updated with the latest changes without a new release.
 
+.. _faq-doc-error-no-module-name:
+
+How do I fix the "No module named" error when I render documentation?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+(e.g., ``WARNING: autodoc: failed to import module 'tools' from module 'diffpy.pdfmorph'; the following exception was raised: No module named 'diffpy.utils'``), it can be resolved by adding ``autodoc_mock_imports = [<pkg>]`` to your ``conf.py`` right under imports. This file is located in ``/doc/source/conf.py``.
+
 .. _faq-doc-favicon-logo:
 
 How do I add a favicon and logo to the documentation?
@@ -589,7 +596,7 @@ GitHub allows multiple contributors to work on a software project simultaneously
 .. _github-workflow-overview:
 
 What is the general the workflow?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Starting a new Python package in Level 4 and 5 requires a basic understanding of GitHub's workflow, we will provide you with a brief overview and how to set up your repository.
 
@@ -728,6 +735,36 @@ Again, you checkout a new branch from the ``main`` branch. You can name it anyth
   git checkout -b docs-typo
 
 You repeat the process of git add, commit, push to your ``origin`` (your forked repository) and then make a PR to the ``upstream`` repository (the organization's repository).
+
+.. _faq-github-news-automate:
+
+How can I automate the process of creating a new file from the command line?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Add the following line to ``~/.bashrc`` or ``~/.zshrc`` file:
+
+.. code-block:: bash
+
+    $ alias cpnews="cp news/TEMPLATE.rst news/$(git rev-parse --abbrev-ref HEAD).rst"
+
+Run the following command to apply the shell configuration.
+
+.. code-block:: bash
+
+    $ source ~/.bashrc  # if you are using bash
+    $ source ~/.zshrc  # if you are using zsh
+
+Now, whenever you want to create a news file, simply navigate to the top-level directory in the project and type ``cpnews`` on the command line.
+
+You can then open the project in an editor. The news file located under ``news`` will have the name ``<branch-name>.rst`` where ``<branch-name>`` is replaced by the current branch name.
+
+Add a description of the edits made in this PR. This should be a user-facing high-level summary of the edits made in this PR and will be automatically converted into the ``CHANGELOG.rst`` when the code is released.
+
+.. note::
+
+    How do I write good news items? What if the changes in the PR are trivial and no news is needed? Please check out the news guide in the FAQ :ref:`here<news-item-practice>`.
+
+
 
 Maintaining ``scikit-package``
 ------------------------------

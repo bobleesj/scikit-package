@@ -12,41 +12,16 @@ Let's create a news item for the changes made in this PR.
 
         $ git fetch --all
 
-#. Check out the ``skpkg-migration`` branch and sync with the remote branch.
+#. Check out the ``skpkg-public`` branch and sync with the remote branch.
 
     .. code-block:: bash
 
-        $ git checkout skpkg-migration
-        $ git pull origin skpkg-migration
+        $ git checkout skpkg
+        $ git pull origin skpkg
 
 #. Make a copy of ``news/TEMPLATE.rst`` and rename to ``news/<branch-name>.rst``.
 
-#. (optional) If you are using a Linux shell, you can setup an ``alias`` to make the creation of the news file ready for editing much quicker and easier:
-
-
-    Add the following line to ``~/.bashrc`` or ``~/.zshrc`` file:
-
-    .. code-block:: bash
-
-        $ alias cpnews="cp news/TEMPLATE.rst news/$(git rev-parse --abbrev-ref HEAD).rst"
-
-    Run the following command to apply the shell configuration.
-
-    .. code-block:: bash
-
-        $ source ~/.bashrc  # if you are using bash
-        $ source ~/.zshrc  # if you are using zsh
-
-    Now, whenever you want to create a news file, simply navigate to the top-level directory in the project and type ``cpnews`` on the command line.
-
-    You can then open the project in an editor. The news file located under ``news`` will have the name ``<branch-name>.rst`` where ``<branch-name>`` is replaced by the current branch name.
-
-    Add a description of the edits made in this PR. This should be a user-facing high-level summary of the edits made in this PR and will be automatically converted into the ``CHANGELOG.rst`` when the code is released.
-
-    .. note::
-
-        How do I write good news items? What if the changes in the PR are trivial and no news is needed? Please check out the news guide in the FAQ :ref:`here<news-item-practice>`.
-
+#. (optional) If you are using a Linux shell, you can setup an ``alias`` to make the creation of the news file ready for editing much quicker and easier. Read :ref:`faq-github-news-automate` to learn how to setup shortcuts.
 
 #. Do not delete ``news/TEMPLATE.rst``. Leave it as it is.
 
@@ -62,6 +37,6 @@ Let's create a news item for the changes made in this PR.
 
     .. code-block:: bash
 
-        $ git add news/skpkg-migration.rst
-        $ git commit -m "chore: Add news item for skpkg-migration"
-        $ git push origin skpkg-migration
+        $ git add news/skpkg-public.rst
+        $ git commit -m "chore: Add news item for skpkg-public"
+        $ git push origin skpkg-public
