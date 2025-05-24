@@ -437,11 +437,11 @@ Move documentation files
 #. Copy documentation from the old to the new repository:
 
     .. code-block:: bash
-        
+
         $ cp -n -r ../doc/source/* ./doc/source.
 
     .. note::
-        
+
         If files are moved to a different path like ``doc/manual/source`` (old) to ``doc/source`` (new), open the project in IDE and do a global search (ctrl + shift + f) for ``../`` or ``..`` and modify all relative path instances.
 
 #. Ensure the documentation can be built locally:
@@ -485,11 +485,11 @@ Move documentation files
 #. In ``news/docs..rst``, add the following content under ``Fixed:``:
 
     .. code-block:: text
-        
+
         **Added:**
 
         * <news item>
-        
+
         **Fixed:**
 
         * Support ``scikit-package`` Level 5 standard (https://scikit-package.github.io/scikit-package/).
@@ -522,11 +522,11 @@ Step 3. Final check
 #. Now let's archive the old repository and rename it:
 
     .. code-block:: bash
-    
+
         $ mv <package-name> <package-name>-archive
 
 #. Then, let's clone the latest version of the new repository from the remote:
-        
+
     .. code-block:: bash
 
         $ cd ~/dev
