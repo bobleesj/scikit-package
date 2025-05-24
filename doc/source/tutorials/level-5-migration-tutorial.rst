@@ -38,7 +38,7 @@ Step 1. Pre-commit workflow
         $ git remote add upstream <URL-of-the-original-repo>
 
     .. note::
-        
+
         Are you the creator of the repository? You can type ``origin`` instead of ``upstream`` in the rest of the tutorial. e.g., ``git pull origin main`` instead of ``git pull upstream main``. Here, we assume a forking workflow.
 
 Run ``black`` in your codebase
@@ -48,7 +48,7 @@ Run ``black`` in your codebase
 
     $ git checkout main
     $ git pull upstream main
-        
+
 
 #. Activate the conda environment and install ``black``:
 
@@ -88,7 +88,7 @@ Run ``black`` in your codebase
 #. Push the changes to the ``black-edits`` branch:
 
     .. code-block:: bash
-    
+
      $ git add .
      $ git commit -m "skpkg: apply black to all files in the project directory"
      $ git push origin black-edits
@@ -115,9 +115,9 @@ Apply pre-commit auto-fixes without manual edits
 #. Create a new package using ``scikit-package``::
 
     $ package create publicly
-    
+
 #. Copy the ``pre-commit`` configuration files from the new to the old directoy::
-    
+
     $ cp <package-name>/.pre-commit-config.yaml .
     $ cp <package-name>/.isort.cfg .
     $ cp <package-name>/.flake8 .
@@ -131,7 +131,7 @@ Apply pre-commit auto-fixes without manual edits
     $ git add . && git commit -m "style: apply pre-commit hooks with no manual edits"``
 
 #. Push the changes to the remote repository::
-    
+
     $ git push origin pre-commit-auto
 
 #. Create a PR from ``username/pre-commit-auto`` to ``upstream/migration``. The PR title can be ``skpkg: apply pre-commit to project directory with no manual edits``.
