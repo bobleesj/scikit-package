@@ -42,10 +42,12 @@ Step 1. Pre-commit workflow
 
     .. note::
 
-        Are you the creator of the repository? You can type ``origin`` instead of ``upstream`` in the rest of the tutorial. e.g., ``git pull origin main`` instead of ``git pull upstream main``. Here, we assume a forking workflow.
+        - Are you the creator of the repository? You can type ``origin`` instead of ``upstream`` in the rest of the tutorial, e.g., ``git pull origin main`` instead of ``git pull upstream main``. Here, we assume a forking workflow.
+        - Is your default branch called ``master``? Run ``git pull upstream master`` throughout the guide instead. However, please note that ``main`` is the default branch name for GitHub.
+
 
 Run ``black`` in your codebase
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Create a new branch called ``black-edits``. This branch will be used to apply ``black`` to all files in the old project directory:
 
@@ -109,9 +111,9 @@ Run ``black`` in your codebase
         $ git commit -m "skpkg: apply black to all files in the project directory"
         $ git push origin black-edits
 
-#. Create a PR from ``username/black-edits`` to ``upstream/main``. The PR title can be ``skpkg: apply black line-length 79 to all files in the project directory``.
+#. Create a PR from ``username/black-edits`` to ``upstream/main``.
 
-    If your default branch is called ``master``, run ``git pull upstream master`` instead. However, ``main`` is the new default branch name for GitHub.
+    The PR title can be ``skpkg: apply black line-length 79 to all files in the project directory``.
 
 #. Review and wait for the PR to be merged to ``upstream/main``. If you are the project maintainer, you can merge the PR yourself.
 
@@ -408,7 +410,7 @@ Add configuration files
         $ git pull upstream migration
         $ git checkout -b config
 
-#. Add and commit configuraton files:
+#. Add and commit configuration files:
 
     .. code-block:: bash
 
@@ -437,11 +439,11 @@ Move documentation files
 #. Copy documentation from the old to the new repository:
 
     .. code-block:: bash
-        
+
         $ cp -n -r ../doc/source/* ./doc/source.
 
     .. note::
-        
+
         If files are moved to a different path like ``doc/manual/source`` (old) to ``doc/source`` (new), open the project in IDE and do a global search (ctrl + shift + f) for ``../`` or ``..`` and modify all relative path instances.
 
 #. Ensure the documentation can be built locally:
@@ -485,16 +487,16 @@ Move documentation files
 #. In ``news/docs..rst``, add the following content under ``Fixed:``:
 
     .. code-block:: text
-        
+
         **Added:**
 
         * <news item>
-        
+
         **Fixed:**
 
         * Support ``scikit-package`` Level 5 standard (https://scikit-package.github.io/scikit-package/).
 
-#. Add the news files
+#. Add the news files:
 
     .. code-block:: bash
 
@@ -503,7 +505,9 @@ Move documentation files
 
 #. Create a PR from ``usernmae/doc`` to ``upstream/migration``.
 
-    The PR title can be ``skpkg: migrate documentation, public facing static files, README.rst``.
+    The PR title can be ``skpkg: migrate documentation, README, and public static files``.
+
+#. Once the PR is merged to ``upstream/main``, move to the final step!
 
 Step 3. Final check
 -------------------
@@ -519,14 +523,14 @@ Step 3. Final check
 
 #. Ask the project maintainer to create a PR from ``upstream/migration`` to ``upstream/main``
 
-#. Now let's archive the old repository and rename it:
+#. After the PR is merged to ``upstream/main``, archive the old repository by naming it:
 
     .. code-block:: bash
-    
+
         $ mv <package-name> <package-name>-archive
 
-#. Then, let's clone the latest version of the new repository from the remote:
-        
+#. Clone the latest version of the package from the remote:
+
     .. code-block:: bash
 
         $ cd ~/dev
@@ -534,10 +538,11 @@ Step 3. Final check
         $ git remote add upstream <URL-of-the-original-repo>
         $ git pull upstream main
 
-#. Now, you should be able to run the following to test your pacakge!
+#. Now, you should be able to run the following to test your package!
 
     .. code-block:: bash
 
+        $ conda activate <package-name>-env
         $ pytest
         $ pre-commit run --all-files
 
@@ -546,4 +551,4 @@ Step 3. Final check
 Ready for release?
 ------------------
 
-Are you ready for reelease to PyPI and conda-forge? Let's start from :ref:`release-pypi-github`!
+Are you ready to release your package to PyPI and conda-forge? Let's start from :ref:`release-pypi-github`!
