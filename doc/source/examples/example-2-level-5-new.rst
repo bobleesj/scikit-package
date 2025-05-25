@@ -1,7 +1,7 @@
 .. _example-2:
 
-Example 2. Create your first public package at Level 5
-======================================================
+(Ex 2) Create your first public Python at Level 5
+==================================================
 
 In this example, we demonstrate how to create a new Level 5 public package from scratch. In this example the **maintainer** of the repository, who will have merge-rights, will be **Sir Lancelot**. To create the structure for the full featured public package he enters the following commands:
 

@@ -1,7 +1,7 @@
 .. _example-1:
 
-Example 1. Create your first package at Level 4
-===============================================
+(Ex 1) Create your first lightweight Python package at Level 4
+==============================================================
 
 In this example, we assume Mr Neutron previously initiated a project called ``diffraction-utils`` using ````scikit-package```` Level 3 and developed a shared class called ``DiffractionObject``. This ``DiffractionObject`` is used in code analyzing various diffraction data sourced from x-ray, neutron, and electron instruments. This class is written in a module called ``diffraction_objects.py`` which is reused in Python scripts in the ``scattering`` sub-project folder. **Mr Neutron**'s folder structure looks like:
 
@@ -207,7 +207,7 @@ Use GitHub to share code with colleagues
 
     $ git clone https://github.com/mrneutron/diffraction-utils.git
 
-If for some reason **Mr Neutron** created the repository as a private repository rather than a public one, **Mr Neutron** can still share it with trusted colleagues by adding their GitHub usernames in the :guilabel:`Setting` page of the GitHub repository. Or, in the spirit of open science, he can make the repository public.
+If for some reason **Mr Neutron** created the repository as a private repository rather than a public one, **Mr Neutron** can still share it with trusted colleagues by adding their GitHub usernames in the :guilabel:`Settings` page of the GitHub repository. Or, in the spirit of open science, he can make the repository public.
 
 As mentioned, ``scikit-package`` already created a simple ``README.md`` file, which by default is displayed at the repository landing page on GitHub. The ``README.md`` contains basic instructions for how the colleague can clone and install the package. **Mr Neutron** can edit the ``README.md`` file to make things even clearer.
 

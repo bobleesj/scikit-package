@@ -134,11 +134,11 @@ The Billinge Group's ``scikit-package`` has been modified from the NSLS-II scien
    :hidden:
    :caption: TUTORIALS
 
-   tutorials/level-1-2-3-tutorials
-   tutorials/level-4-tutorial
-   tutorials/level-5-tutorial
-   tutorials/level-4-to-5-tutorial
-   tutorials/level-5-migration-tutorial
+   tutorials/tutorial-level-1-2-3
+   tutorials/tutorial-level-4
+   tutorials/tutorial-level-5
+   tutorials/tutorial-level-4-to-5
+   tutorials/tutorial-level-5-migration
 
 .. toctree::
    :maxdepth: 2
@@ -161,10 +161,10 @@ The Billinge Group's ``scikit-package`` has been modified from the NSLS-II scien
    :caption: EXAMPLES
 
    examples/overview
-   examples/level-4-example
-   examples/level-5-example
-   examples/level-5-namespace-example
-   examples/level-5-migration-example
+   examples/example-1-level-4-new
+   examples/example-2-level-5-new
+   examples/example-3-level-5-namespace
+   examples/example-4-level-5-migration
 
 .. toctree::
    :maxdepth: 2

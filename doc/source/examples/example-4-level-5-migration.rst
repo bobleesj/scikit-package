@@ -1,6 +1,6 @@
 .. _example-4:
 
-Example 4. Migrate an existing package to Level 5
+(Ex 4) Migrate an existing package to Level 5
 =================================================
 
 In the final example, we demonstrate how you can migrate an existing legacy Python package to the Level 5 public standard. As in Example 2, we adopt the forking GitHub workflow where **Sir Lancelot is the maintainer** and **Sir Robin is the contributor**. The migration process is divided into two parts. The first involves fixing legacy issues that allow the existing code to pass pre-commit. Second, a new package directory structure is created and files from the old package are migrated over into the new package directory tree. The files fall into three categories, whether they are present just in the new package, just in the old package or in both. scikit-package has instructions for how to use Git to help with this transition.
