@@ -1,5 +1,6 @@
 import os
-from scikit_package.utils import io, file
+
+from scikit_package.utils import file, io
 from scikit_package.utils.shell import run
 
 
@@ -12,5 +13,5 @@ def main(args):
         print("\n" + "=" * 40)
         print(f"({i}/{folder_count}) {name}")
         print("" + "=" * 40)
-        run(f"gh issue list", cwd=folder_path)
-        run(f"gh pr list", cwd=folder_path)
+        run("gh issue list", cwd=folder_path)
+        run("gh pr list", cwd=folder_path)

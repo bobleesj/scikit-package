@@ -1,6 +1,6 @@
 import requests
 from packaging.version import parse as parse_version
-import os
+
 
 def get_pypi_version_sha(package_name, count=1):
     """Fetch the latest stable versions of the package and their SHA256."""
@@ -28,4 +28,3 @@ def get_pypi_version_sha(package_name, count=1):
             f"No matching package found for {package_name} on PyPI. "
             "Please check the name at https://pypi.org/project/"
         )
-
