@@ -2,6 +2,7 @@ from argparse import ArgumentParser
 
 from scikit_package.cli import add, create
 from scikit_package.cli.update import cf
+from scikit_package.cli.show import status
 
 SKPKG_GITHUB_URL = "https://github.com/scikit-package/scikit-package"
 
@@ -74,6 +75,20 @@ def setup_subparsers(parser):
         ),
     ]
     _add_subcommands(subparsers_update, update_commands, cf.update)
+    # "show" subparser
+    parser_show = parser.add_parser(
+        "show", help="Show the latest PR/issue."
+    )
+    subparsers_show = parser_show.add_subparsers(
+        dest="subcommand", required=True
+    )
+    show_commands = [
+        (
+            "status",
+            "Show all GitHub issues and pull requests.",
+        ),
+    ]
+    _add_subcommands(subparsers_show, show_commands, status.main)
 
 
 def main():
