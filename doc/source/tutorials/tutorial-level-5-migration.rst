@@ -482,19 +482,7 @@ Move documentation files
 
     .. code-block:: bash
 
-        $ cp news/TEMPLATE.rst news/doc.rst
-
-#. In ``news/docs..rst``, add the following content under ``Fixed:``:
-
-    .. code-block:: text
-
-        **Added:**
-
-        * <news item>
-
-        **Fixed:**
-
-        * Support ``scikit-package`` Level 5 standard (https://scikit-package.github.io/scikit-package/).
+        $ package add news --add -m "Support ``scikit-package`` Level 5 standard (https://scikit-package.github.io/scikit-package/)."
 
 #. Add the news files:
 
