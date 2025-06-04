@@ -183,7 +183,7 @@ First, we will copy the ``SHA256`` value from `pypi.org <http://pypi.org>`_:
 Can I automate the process of making a PR to the feedstock after PyPI/GitHub release?
 ----------------------------------------------------------------------------------------
 
-Yes! We provide ``package upate conda-forge`` to streamline the conda-forge release process after PyPI release.
+Yes! We provide ``package update conda-forge`` to streamline the conda-forge release process after PyPI release.
 
 #. Open ``~/.skpkgrc``
 
@@ -209,9 +209,9 @@ Yes! We provide ``package upate conda-forge`` to streamline the conda-forge rele
 
 #. Save ``~/.skpkgrc``
 
-#. Type ``package udpate feedstock``.
+#. Type ``package update feedstock``.
 
-#. Choose the the number corressponding to the feedstock. It will create a PR from ``origin/<latest-version>`` to ``upstream/main``.
+#. Enter the the number corresponding to the package. It will create a PR from ``origin/<latest-version>`` to ``upstream/main``.
 
 #. Done! Finish the rest of the steps provided in :ref:`conda-forge-feedstock-release`
 
