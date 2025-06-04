@@ -20,10 +20,7 @@ I already have a conda-forge feedstock. It's NOT my first time updating the pack
 Yes! We offer ``package update conda-forge`` command to prepare a PR for you. Please read :ref:`conda-forge-pr-automate`.
 
 I am new to conda-forge. I don't know what "feedstock" means. I released my package to PyPI and GitHub by following the instruction in :ref:`release-pypi-github`. How can I make my package installabe using ``conda install <package-name>``?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Here, you will learn how to release a conda package distributed through the ``conda-forge`` channel in 10 to 15 minutes so that you package can be installed using ``conda install <package-name>``. This guide assumes you are familiar with a basic clone, fork, and pull request workflow on GitHub.
 
