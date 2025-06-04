@@ -123,19 +123,11 @@ Let's create a news item for the changes made in this PR.
 
         $ git pull origin skpkg-public
 
-#. Make a copy of ``news/TEMPLATE.rst`` and rename to ``news/<branch-name>.rst``.
-
-#. (optional) If you are using a Linux shell, you can setup an ``alias`` to make the creation of the news file ready for editing much quicker and easier. Read :ref:`faq-github-news-automate` to learn how to setup shortcuts.
-
-#. Do not delete ``news/TEMPLATE.rst``. Leave it as it is.
-
 #. Do not modify other section headers in the rst file. Replace ``* <news item>`` with the following item:
 
-    .. code-block:: text
+    .. code-block:: bash
 
-        **Added:**
-
-        * Support public releases with scikit-package by migrating the package from Level 4 to Level 5 in the scikit-package standard.
+        $ package add news -add -m "Support PyPI and conda-forge releases with ``scikit-package`` Level 5 standard."
 
 #. Push the change to the remote GitHub repository.
 

@@ -111,7 +111,7 @@ Run ``black`` in your codebase
         $ git commit -m "skpkg: apply black to all files in the project directory"
         $ git push origin black-edits
 
-#. Create a PR from ``username/black-edits`` to ``upstream/main``.
+#. Create a PR from ``<username>/black-edits`` to ``upstream/main``.
 
     The PR title can be ``skpkg: apply black line-length 79 to all files in the project directory``.
 
@@ -166,7 +166,7 @@ Apply pre-commit auto-fixes without manual edits
 
         $ git push origin pre-commit-auto
 
-#. Create a PR from ``username/pre-commit-auto`` to ``upstream/migration``. The PR title can be ``skpkg: apply pre-commit to project directory with no manual edits``.
+#. Create a PR from ``<username>/pre-commit-auto`` to ``upstream/migration``. The PR title can be ``skpkg: apply pre-commit to project directory with no manual edits``.
 
     .. note::
 
@@ -216,7 +216,7 @@ Here, instead of fixing all errors at once, we will address each type of error o
         $ git commit -m "skpkg: fix <theme> errors"
         $ git push origin pre-commit-<theme>
 
-#. Create a PR from ``username/pre-commit-<theme>`` to ``upstream/migration``. The PR title can be ``skpkg: fix <theme> errors``.
+#. Create a PR from ``<username>/pre-commit-<theme>`` to ``upstream/migration``. The PR title can be ``skpkg: fix <theme> errors``.
 
 #. Wait for the PR to be merged to ``upstream/migration`` branch.
 
@@ -391,7 +391,7 @@ Setup GitHub Actions
 
         git push origin setup-CI
 
-#. Create a PR from ``username/setup-CI`` to ``upstream/migration``.
+#. Create a PR from ``<username>/setup-CI`` to ``upstream/migration``.
 
     The pull request title can be ``skpkg: setup CI after migrating tests, src, requirements, and .github folder``.
 
@@ -419,7 +419,7 @@ Add configuration files
         $ git add .readthedocs.yaml .codecov.yml .github
         $ git commit -m "skpkg: add config files readthedocs, codecov, GitHub"
 
-#. Create a PR from ``username/config`` to ``upstream/migration``.
+#. Create a PR from ``<username>/config`` to ``upstream/migration``.
 
     The PR title can be ``skpkg: add configuration files for pre-commit, readthedocs, codecov``.
 
@@ -491,7 +491,7 @@ Move documentation files
         $ git add news
         $ git commit -m "skpkg: add news files"
 
-#. Create a PR from ``usernmae/doc`` to ``upstream/migration``.
+#. Create a PR from ``<usernmae>/doc`` to ``upstream/migration``.
 
     The PR title can be ``skpkg: migrate documentation, README, and public static files``.
 
