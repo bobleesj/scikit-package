@@ -6,13 +6,24 @@ Create conda package with conda-forge
 
 .. _conda-create-feedstock:
 
-I already have a conda-forge feedstock. I want to release a new package version. How do I do that?
---------------------------------------------------------------------------------------------------
+How to navigate this page
+-------------------------
 
-Please skip to the :ref:`conda-forge-feedstock-release` section below.
+I already have a conda-forge feedstock. It is my first time making a new conda package version.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-I am new to conda-forge. How do I create a conda package?
----------------------------------------------------------
+Please read :ref:`conda-forge-feedstock-release`.
+
+I already have a conda-forge feedstock. It's NOT my first time updating the package version. Can I automate this process?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Yes! We offer ``package update conda-forge`` command to prepare a PR for you. Please read :ref:`conda-forge-pr-automate`.
+
+I am new to conda-forge. I don't know what "feedstock" means. I released my package to PyPI and GitHub by following the instruction in :ref:`release-pypi-github`. How can I make my package installabe using ``conda install <package-name>``?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 Here, you will learn how to release a conda package distributed through the ``conda-forge`` channel in 10 to 15 minutes so that you package can be installed using ``conda install <package-name>``. This guide assumes you are familiar with a basic clone, fork, and pull request workflow on GitHub.
 
@@ -125,7 +136,7 @@ Step 3. Wait for recipe review
 .. _conda-forge-feedstock-release:
 
 How do I release a new version? I have the conda-forge feedstock
------------------------------------------------------------------
+----------------------------------------------------------------
 
 We release a new package once we have the ``version`` and ``SHA256`` sections in ``meta.yaml`` in ``https://github.com/conda-forge/<package-name>-feedstock`` located in the ``main`` branch. The conda-forge team asks to only modify ``meta.yaml``.
 
@@ -153,13 +164,56 @@ First, we will copy the ``SHA256`` value from `pypi.org <http://pypi.org>`_:
 
 #. Run ``git push --set-upstream origin <version-number>``.
 
-#. Create a PR to ``main``, complete the relevant checklists generated in the PR comment.
+#. Create a PR to ``upstream/main``.
+
+#. Complete the relevant checklists generated in the PR comment.
 
 #. Wait for the CI to pass and tag relevant maintainer(s) for review.
 
 #. Once the PR is merged, in 20 to 30 minutes, verify the latest conda-forge package version from the README badge or by visiting ``https://anaconda.org/conda-forge/<package-name>``. i.e.g, ``https://anaconda.org/conda-forge/diffpy.utils``.
 
 #. Done! Your package can be now installed using ``conda install <package-name>``.
+
+.. seealso::
+
+    For your next release, you can automate Step 1 through 12 in by running ``package update feedstock`` in your command line. Read the section below :ref:`conda-forge-pr-automate`.
+
+.. _conda-forge-pr-automate:
+
+Can I automate the process of making a PR to the feedstock after PyPI/GitHub release?
+----------------------------------------------------------------------------------------
+
+Yes! We provide ``package upate conda-forge`` to streamline the conda-forge release process after PyPI release.
+
+#. Open ``~/.skpkgrc``
+
+#. If you have not, add ``feedstock_path`` where your cloned ``<package-name>-feedstock`` directories are located.
+
+    .. code-block:: json
+
+        {
+            "default_context":
+            {
+                "maintainer_name": "<local-default-maintainer-name>",
+                "maintainer_email": "<local-default-maintainer-email>",
+                "maintainer_github_username": "<local-default-maintainer-github-username>",
+                "github_username_or_orgname": "<local-default-github-username-or-orgname>",
+                "contributors": "<local-default-contributors-name>",
+                "license_holders": "<local-default-license-holders-name>",
+                "project_name": "<local-default-project-name>",
+            },
+            "feedstock_path": "<directory-path-containing-feedstocks"
+        }
+
+    .. note:: What are the ``<local-default-...>`` values under ``default_contect``? You can override the existing default prompts when new a package is created. For more, please read :ref:`faq-set-default-prompt-value`.
+
+#. Save ``~/.skpkgrc``
+
+#. Type ``package udpate feedstock``.
+
+#. Choose the the number corressponding to the feedstock. It will create a PR from ``origin/<latest-version>`` to ``upstream/main``.
+
+#. Done! Finish the rest of the steps provided in :ref:`conda-forge-feedstock-release`
 
 
 .. _conda-forge-pre-release:
