@@ -86,10 +86,10 @@ def main():
     >>> package create public
     >>> package create manuscript
     >>> package create conda-forge
+    >>> package add news -add -m "Add awesome news item."
     >>> package add news -a -m "Add awesome news item."
     >>> package add no-news -m "It was a simple typo."
     >>> package update conda-forge
-    >>> package update (Not implemented yet)
     """
     parser = ArgumentParser(
         description="Reduce effort for maintaining and developing packages."

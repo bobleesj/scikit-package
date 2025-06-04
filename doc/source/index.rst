@@ -161,6 +161,7 @@ The Billinge Group's ``scikit-package`` has been modified from the NSLS-II scien
    :caption: SUPPORT
 
    support/frequently-asked-questions
+   support/cli-commands
 
 .. toctree::
    :maxdepth: 2

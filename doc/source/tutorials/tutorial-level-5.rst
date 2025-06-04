@@ -127,7 +127,7 @@ Let's create a news item for the changes made in this PR.
 
     .. code-block:: bash
 
-        $ package add news -add -m "Support PyPI and conda-forge releases with ``scikit-package`` Level 5 standard."
+        $ package add news -add -m "Support ``scikit-package`` Level 5 standard (https://scikit-package.github.io/scikit-package/)."
 
 #. Push the change to the remote GitHub repository.
 
@@ -136,7 +136,6 @@ Let's create a news item for the changes made in this PR.
         $ git add news/skpkg-public.rst
         $ git commit -m "chore: Add news item for skpkg-public"
         $ git push origin skpkg-public
-
 
 Create a pull request
 ^^^^^^^^^^^^^^^^^^^^^
